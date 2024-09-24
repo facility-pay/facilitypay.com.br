@@ -63,12 +63,12 @@ const SimulatorSection = () => {
 
     return [
       getFinalValueAfterTax(simulationValue, facilityTax)
-        .toFixed(2)
+        ?.toFixed(2)
         .replace(".", ","),
       getFinalValueAfterTax(simulationValue, competitorTax)
-        .toFixed(2)
+        ?.toFixed(2)
         .replace(".", ","),
-      (facilityValue - competitorValue).toFixed(2).replace(".", ","),
+      (facilityValue - competitorValue)?.toFixed(2).replace(".", ","),
     ];
   }, [facilityTaxes, competitorTaxes, simulationValue, installment]);
 

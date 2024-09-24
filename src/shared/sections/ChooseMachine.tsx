@@ -63,7 +63,7 @@ const MachineCard = ({
         <span className="font-extrabold text-whatsapp text-xl">
           R${" "}
           <span className="text-4xl">
-            {currValue.toFixed(2).replace(".", ",")}
+            {currValue?.toFixed(2).replace(".", ",")}
           </span>
         </span>
       </div>
