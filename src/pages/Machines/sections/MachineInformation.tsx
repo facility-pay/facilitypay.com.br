@@ -7,9 +7,8 @@ import {
   useMachineInformation,
 } from "@/hooks/useMachineInformation";
 import { moneyFormatter } from "@/utils/money";
-import Off20 from "@/assets/images/20off.svg";
 import TestLogo from "@/assets/images/test.png";
-import { SVGProps, useCallback, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import Icon from "@/components/Icon";
 import Image from "next/image";
 import Button from "@/components/Button";
