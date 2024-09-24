@@ -1,0 +1,12 @@
+export { default as MiniFrontSVG } from "./mini-front.svg";
+export { default as MiniFrontSmallSVG } from "./mini-front-small.svg";
+export { default as MiniBackSVG } from "./mini-back.svg";
+export { default as MiniDiagonalSVG } from "./mini-diagonal.svg";
+export { default as ProFrontSVG } from "./pro-front.svg";
+export { default as ProFrontSmallSVG } from "./pro-front-small.svg";
+export { default as ProBackSVG } from "./pro-back.svg";
+export { default as ProDiagonalSVG } from "./pro-diagonal.svg";
+export { default as SmartFrontSVG } from "./smart-front.svg";
+export { default as SmartFrontSmallSVG } from "./smart-front-small.svg";
+export { default as SmartBackSVG } from "./smart-back.svg";
+export { default as SmartDiagonalSVG } from "./smart-diagonal.svg";
