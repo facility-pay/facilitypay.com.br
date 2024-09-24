@@ -15,7 +15,7 @@ const Maquininha = () => {
       </div>
       <Section1 />
       {/* <Section2 isDark title="Conheça nossas maquininhas" /> */}
-      <Section2 />
+      <Section2 title="Conheça nossas maquininhas" />
       <MachineInformation machineKey="mini" />
       <MachineInformation position="right" machineKey="pro" />
       <MachineInformation machineKey="smart" />

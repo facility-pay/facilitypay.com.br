@@ -73,13 +73,13 @@ const SimulatorSection = () => {
   }, [facilityTaxes, competitorTaxes, simulationValue, installment]);
 
   return (
-    <section className="relative py-5 bg-simulator mx-[24px] tablet:mx-[60px] desktop:mx-[60px] my-[48px] rounded-[32px]">
+    <section className="relative py-5 bg-simulator mx-8 tablet:mx-[60px] desktop:mx-[60px] my-[48px] rounded-[32px]">
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex flex-col items-center justify-center self-center gap-7 pt-10">
-          <div className="bg-primary flex items-center justify-center rounded-full w-[80px] h-[80px]">
-            <Icon iconName="machine" />
+          <div className="bg-primary-dark flex items-center justify-center rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
+            <Icon iconName="simulator" />
           </div>
-          <span className="text-3xl text-dark-blue-heading text-center font-bold">
+          <span className="text-3xl text-primary-dark text-center font-bold">
             Com a FacilityPay você lucra muito mais!
           </span>
           <span className="text-base text-description text-center">
@@ -87,26 +87,26 @@ const SimulatorSection = () => {
           </span>
         </div>
         <div className="my-auto flex flex-col max-w-7xl mx-auto">
-          <div className="flex self-center py-10">
+          <div className="flex tablet:self-center py-10">
             <SimulatorSelect
               selectedItem={selectedTax}
               setSelectedItem={setSelectedTax}
             />
           </div>
 
-          <div className="flex flex-wrap grid desktop:grid-cols-4 justify-items-center items-center tablet:grid-cols-2 phone:grid-cols-1 gap-4 desktop:gap-10 flex-row">
+          <div className="flex flex-wrap justify-items-center justify-center items-center tablet:grid-cols-2 desktop:grid-cols-4 gap-4 desktop:gap-10 flex-row">
             <MoneyInput
               label="Seu valor de venda:"
               value={simulationValue}
               onChangeText={setSimulationValue}
             />
 
-            <div className="relative self-center grow min-w-full tablet:w-[270px] desktop:w-[270px] flex flex-col items-start gap-2">
+            <div className="relative self-center grow w-full tablet:w-[270px] desktop:w-[270px] flex flex-col items-start gap-2">
               <label className="px-6 text-sm text-gray-dark">
                 Taxa{" "}
                 <label className="text-gray-dark font-bold">FacilityPay:</label>
               </label>
-              <div className="w-full h-[60px] items-center justify-center rounded-full py-4 px-8 bg-secondary">
+              <div className="w-full h-[60px] flex items-center rounded-full py-4 px-8 bg-secondary">
                 <p className="text-gray-dark text-base font-bold">
                   {facilityTaxes[installment]}%
                 </p>
@@ -123,14 +123,14 @@ const SimulatorSection = () => {
               onChangeValue={setInstallment}
             />
 
-            <div className="relative grow min-w-full tablet:w-[270px] desktop:w-[270px] flex flex-col items-start gap-2">
+            <div className="relative grow w-full tablet:w-[270px] desktop:w-[270px] flex flex-col items-start gap-2">
               <label className="px-6 text-sm text-gray-dark">
                 Taxa dos{" "}
                 <label className="text-gray-dark font-bold">
                   concorrentes:
                 </label>
               </label>
-              <div className="w-full h-[60px] items-center justify-center rounded-full py-4 bg-description-15 px-8">
+              <div className="w-full h-[60px] flex items-center rounded-full py-4 bg-description-15 px-8">
                 <p className="text-description-55 text-base font-bold opacity-100">
                   {competitorTaxes[installment]}%
                 </p>

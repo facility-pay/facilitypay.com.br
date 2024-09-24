@@ -48,11 +48,11 @@ const talkingAboutUsItems: Array<TalkingAboutUsItem> = [
 
 const TalkingAboutUs = () => {
   return (
-    <section className="bg-gradient-to-r from-grey-light to-[#D5DFE7] max-w-full px-8 tablet:px-20 desktop:px-20 pb-20 mx-[24px] tablet:mx-[60px] desktop:mx-[60px] my-[48px] rounded-[32px]">
+    <section className="bg-gradient-to-r from-grey-light to-[#D5DFE7] max-w-full px-8 tablet:px-20 desktop:px-20 pb-20 mx-[24px] tablet:mx-[60px] nmy tablet:my-[48px] rounded-[32px]">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center justify-center self-center gap-7 pt-10 pb-6">
-          <div className="bg-primary flex items-center justify-center rounded-full w-[80px] h-[80px]">
-            <Icon iconName="machine" />
+          <div className="bg-primary-dark flex items-center justify-center rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
+            <Icon iconName="megaphone" />
           </div>
           <span className="text-xl tablet:text-3xl desktop:text-3xl text-dark-blue-heading text-center font-bold">
             O que saiu na mídia?

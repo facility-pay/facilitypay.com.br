@@ -76,7 +76,7 @@ const machinesAdvantages: Array<MachineAdvantageItem> = [
 export default function Home() {
   const section1ClassName = useMemo(() => {
     const defaultClass =
-      "min-h-[60vh] tablet:min-h-[100vh] bg-no-repeat bg-[url('../assets/shapes/section1-shape.svg')] bg-right-top";
+      "min-h-[60vh] tablet:min-h-[100vh] pb-20 bg-no-repeat bg-[url('../assets/shapes/section1-shape.svg')] bg-right-top";
     const classWidth = `bg-[length:100vw] tablet:bg-[length:100vh]`;
 
     return [defaultClass, classWidth].join(" ");
@@ -88,7 +88,7 @@ export default function Home() {
         <LoopBanner />
       </div>
 
-      <section className="bg-section1">
+      <section className="bg-section1 pb-[4.5rem] tablet:pb-0">
         <div className="flex flex-col tablet:hidden max-w-[80vw] gap-4 px-5 py-10">
           <p className="text-[2.5rem] leading-[2.75rem] font-bold text-dark-blue-heading">
             {section1Copies.title}
@@ -98,7 +98,7 @@ export default function Home() {
           </p>
         </div>
         <div className={section1ClassName}>
-          <div className="flex tablet:items-center z-10 min-h-inherit bg-no-repeat bg-[url('../assets/shapes/section1-yellow-shape.svg')] bg-[length:125%] tablet:bg-[length:45%] bg-[top_5rem_right_3rem] tablet:bg-[top_8rem_right_15rem]">
+          <div className="flex tablet:items-center z-10 min-h-inherit bg-no-repeat bg-[url('../assets/shapes/section1-yellow-shape.svg')] bg-[length:130%] tablet:bg-[length:45%] bg-[top_5rem_right_2rem] tablet:bg-[top_8rem_right_15rem]">
             <div className="relative flex max-w-[50vw] tablet:pb-[10vh] desktop:pb-[10vh] tablet:pl-[15vw] desktop:pl-[15vw] tablet:pr-[10vw] desktop:pr-[10vw] flex-col items-start gap-5 justify-start bg-no-repeat bg-[url('../assets/illustrations/dots.svg')] bg-[top_3rem_left_5rem]">
               <div className="hidden tablet:flex flex-col gap-6">
                 <Image alt="mini-logo" src={MiniFacilityLogo} />
@@ -110,7 +110,7 @@ export default function Home() {
                 </p>
               </div>
               <Button
-                className="w-[80vw] absolute left-[calc(100%+3rem)] bottom-[2rem] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
+                className="w-[100vw] absolute left-[2.5rem] bottom-[-4.5rem] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
                 type="primary"
               >
                 Aproveitar taxas
@@ -120,6 +120,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Taxes />
       {/* <div className={`absolute top-[825}px] items-center`}>
         <div className="flex bg-blue-flag items-center justify-center w-20 h-20 rounded-full">
           <Icon iconName="flag" />
@@ -128,10 +129,10 @@ export default function Home() {
       <section className="flex flex-col items-center min-h-[100vh] bg-white py-20 rounded-[2rem] bg-no-repeat bg-home-section3 px-8 mx-8 bg-cover bg-[center_top]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col items-center justify-center gap-6 pb-14">
-            <div className="border-2 self-center border-secondary rounded-full p-4">
+            <div className="flex justify-center items-center border-2 self-center border-secondary rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
               <Icon iconName="rocket" />
             </div>
-            <span className="font-bold text-center text-3xl">
+            <span className="font-bold text-center text-2xl tablet:text-3xl">
               Mais que uma máquina. São muitas vantagens:{" "}
             </span>
           </div>
@@ -168,13 +169,11 @@ export default function Home() {
       </section>
 
       {/* <section className="max-w-7xl mx-auto bg-white py-20"></section> */}
-      <ChooseMachine />
-      <Taxes />
       <Simulator />
-      <Testimonials />
-      <TalkingAboutUs />
       <FullScreenVideo />
-      <ChooseMachine isDark buttonCopy="Quero essa maquininha" />
+      <Testimonials />
+      <ChooseMachine />
+      <TalkingAboutUs />
     </div>
   );
 }

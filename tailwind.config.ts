@@ -6,7 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/shared/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/assets/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/assets/**/*.{js,ts,jsx,tsx,mdx,svg}",
     "./src/hooks/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -57,8 +57,12 @@ const config: Config = {
       keyframes: {
         scroll: {
           "100%": {
-            transform: "translate(calc(-50% - 0.625rem))",
+            transform: "translate(calc(-50% - 0.75rem))",
           },
+        },
+        "scroll-right": {
+          "0%": { transform: "translateX(calc(-50% - 0.75rem))" },
+          "100%": { transform: "translateX(0%)" },
         },
       },
     },

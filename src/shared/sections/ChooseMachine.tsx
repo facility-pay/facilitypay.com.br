@@ -73,11 +73,13 @@ const MachineCard = ({
           ({ itemKey: productItemKey, isChecked, label }) => (
             <li
               key={`${productItemKey}-${itemKey}`}
-              className="flex flex-row items-center gap-3"
+              className="flex flex-row items-center gap-4"
             >
-              <Icon iconName={isChecked ? "check" : "uncheck"} />
+              <div className="bg-white">
+                <Icon iconName={isChecked ? "check" : "uncheck"} />
+              </div>
               <span
-                className={"text-base text-gray-dark ".concat(
+                className={"text-sm tablet:text-base text-gray-dark ".concat(
                   !isChecked ? "line-through text-black opacity-50" : ""
                 )}
               >
@@ -106,7 +108,7 @@ const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
 
   const sectionClassName = useMemo(() => {
     const defaultClassName =
-      "max-w-full min-h-[105vh] px-8 tablet:px-20 desktop:px-20 pb-20 mx-[24px] tablet:mx-[60px] desktop:mx-[60px] my-[48px] rounded-[32px]";
+      "max-w-full min-h-[105vh] px-8 tablet:px-20 desktop:px-20 pb-20 tablet:mx-[60px] desktop:mx-[60px] tablet:my-[48px] rounded-[32px]";
     const className = isDark
       ? "bg-[#171717]"
       : "bg-gradient-to-r from-grey-light to-[#D5DFE7]";
@@ -116,7 +118,7 @@ const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
 
   const iconContainerClassName = useMemo(() => {
     const defaultClassName =
-      "bg-primary flex items-center justify-center rounded-full w-[80px] h-[80px]";
+      "bg-primary-dark flex items-center justify-center rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]";
     const className = isDark ? "bg-secondary" : "";
 
     return [defaultClassName, className].join(" ");
@@ -124,7 +126,7 @@ const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
 
   const titleClassName = useMemo(() => {
     const defaultClassName =
-      "text-2xl tablet:text-3xl desktop:text-3xl text-dark-blue-heading text-center font-bold";
+      "text-2xl tablet:text-3xl desktop:text-3xl text-primary-dark text-center font-bold";
     const className = isDark ? "text-white" : "";
 
     return [defaultClassName, className].join(" ");
@@ -133,9 +135,9 @@ const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
   return (
     <section className={sectionClassName}>
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-center justify-center self-center gap-4 pt-6">
+        <div className="flex flex-col items-center justify-center self-center gap-4 py-6">
           <div className={iconContainerClassName}>
-            <Icon iconName="machine" />
+            <Icon iconName="target" />
           </div>
           <span className={titleClassName}>
             Escolha a maquininha certa para o seu negócio

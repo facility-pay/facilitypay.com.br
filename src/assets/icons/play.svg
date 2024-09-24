@@ -1,3 +1,7 @@
-<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg className="hidden tablet:block" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M4.375 5.33167C4.375 4.5405 5.25025 4.06266 5.91576 4.49049L19.3998 13.1588C20.0122 13.5525 20.0122 14.4475 19.3998 14.8412L5.91576 23.5095C5.25025 23.9373 4.375 23.4595 4.375 22.6683V5.33167Z" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg className="block tablet:hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.75 4.83167C3.75 4.0405 4.62525 3.56266 5.29076 3.99049L16.4415 11.1588C17.0538 11.5525 17.0538 12.4475 16.4415 12.8412L5.29076 20.0095C4.62525 20.4373 3.75 19.9595 3.75 19.1683V4.83167Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

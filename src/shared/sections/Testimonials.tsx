@@ -46,7 +46,7 @@ const testimonials: Array<TestimonialItem> = [
 
 const Testimonials = () => {
   return (
-    <section className="relative bg-white max-w-full px-5 tablet:px-20 desktop:px-20 pb-20">
+    <section className="relative bg-white max-w-full px-8 tablet:px-20 desktop:px-20 pb-20 my-[48px] tablet:my-[100px]">
       <div className="absolute hidden tablet:flex desktop:flex">
         <QuotesSVG />
       </div>
@@ -55,7 +55,7 @@ const Testimonials = () => {
       </div>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center justify-center self-center gap-7 pt-10">
-          <div className="bg-primary-dark flex items-center justify-center rounded-full w-[60px] h-[60px]">
+          <div className="bg-primary-dark flex items-center justify-center rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
             <Icon iconName="chat" />
           </div>
           <span className="text-3xl text-dark-blue-heading text-center font-bold">

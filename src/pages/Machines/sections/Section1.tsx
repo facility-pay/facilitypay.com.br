@@ -12,7 +12,7 @@ const section1Copies = {
 const Section1 = () => {
   const section1ClassName = useMemo(() => {
     const defaultClass =
-      "min-h-[65vh] tablet:min-h-[100vh] bg-no-repeat bg-[url('../assets/shapes/machines/section1-shape.svg')] bg-right-top";
+      "min-h-[65vh] tablet:min-h-[100vh] bg-no-repeat bg-[url('../assets/shapes/machines/section1-shape.svg')] bg-right-top py-[8rem] tablet:py-0";
     const classWidth = `bg-[length:100vw] tablet:bg-[length:100vh]`;
 
     return [defaultClass, classWidth].join(" ");
@@ -20,7 +20,7 @@ const Section1 = () => {
 
   return (
     <section className="bg-section1">
-      <div className="flex flex-col tablet:hidden max-w-[vw] gap-4 px-5 py-10">
+      <div className="flex flex-col tablet:hidden max-w-[vw] gap-4 px-8 py-10">
         <p className="text-[2.5rem] leading-[2.75rem] font-bold text-dark-blue-heading">
           {section1Copies.title}
         </p>
@@ -37,7 +37,7 @@ const Section1 = () => {
                 {section1Copies.description}
               </p>
             </div>
-            <div className="absolute min-w-[calc(100vw-6rem)] tablet:min-w-max left-[calc(100%+3rem)] bottom-[1rem] mt-5 tablet:bottom-0 tablet:left-0 tablet:relative">
+            <div className="absolute w-[100vw] left-0 bottom-[-4rem] mt-5 tablet:bottom-0 tablet:left-0 tablet:relative">
               <div className="flex flex-col tablet:flex-row items-center justify-between gap-4">
                 <span className="opacity-0 tablet:hidden">
                   Conferir todas as taxas

@@ -28,7 +28,7 @@ const Input = ({ label, value, onChangeText }: InputProps) => {
   );
 
   return (
-    <div className="grow min-w-full tablet:w-[270px] desktop:w-[270px] flex flex-col gap-2">
+    <div className="grow w-full tablet:w-[270px] desktop:w-[270px] flex flex-col gap-2">
       {label && <label className="px-6 text-sm text-gray-dark">{label}</label>}
       <div className="relative flex flex-row max-h-[60px] items-center border border-gray-dark rounded-full py-4 px-8">
         <input

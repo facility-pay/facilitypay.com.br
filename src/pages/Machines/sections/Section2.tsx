@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import Icon from "@/components/Icon";
 import Separator from "@/components/Separator";
 import {
   mapSVGByMachineKey,
@@ -28,11 +29,10 @@ const Section2 = ({
       : "bg-white";
 
     return [defaultClassName, className, minimumHeighClassName].join(" ");
-  }, [isDark]);
+  }, [isDark, minimumHeighClassName]);
 
   const titleClassName = useMemo(() => {
-    const defaultClassName =
-      "font-bold text-center text-3xl text-dark-blue-heading";
+    const defaultClassName = "font-bold text-center text-3xl text-primary-dark";
     const className = isDark ? "text-white" : "";
 
     return [defaultClassName, className].join(" ");
@@ -59,9 +59,11 @@ const Section2 = ({
       <div
         className={["max-w-7xl mx-auto px-8", minimumHeighClassName].join(" ")}
       >
-        <div className="flex flex-col items-center justify-center pb-6 tablet:pb-0 pt-20 gap-6">
+        <div className="flex flex-col items-center justify-center pb-6 tablet:pb-0 pt-0 tablet:pt-20 gap-6">
           {isDark && (
-            <div className="bg-secondary rounded-full w-[4rem] h-[4rem]"></div>
+            <div className="flex items-center justify-center bg-blue-flag rounded-full w-[4rem] h-[4rem]">
+              <Icon iconName="know-machines" />
+            </div>
           )}
           <span className={titleClassName}>{title}</span>
         </div>
@@ -99,7 +101,9 @@ const Section2 = ({
 
       {!isDark && (
         <div className="absolute top-[-2rem] right-[calc(50%-2rem)]">
-          <div className="bg-blue-flag rounded-full w-[4rem] h-[4rem]"></div>
+          <div className="flex items-center justify-center bg-blue-flag rounded-full w-[4rem] h-[4rem]">
+            <Icon iconName="know-machines" />
+          </div>
         </div>
       )}
     </section>

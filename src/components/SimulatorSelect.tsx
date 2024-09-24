@@ -24,7 +24,7 @@ const SimulatorSelect = ({
   setSelectedItem,
 }: SimulatorSelectProps) => {
   return (
-    <div className="flex flex-row self-center w-[270px] desktop:w-[360px] justify-center items-center bg-white rounded-full">
+    <div className="flex flex-row self-center w-full w-[270px] desktop:w-[360px] justify-center items-center bg-white rounded-full">
       {items.map(({ label, key }) => {
         const isSelected = selectedItem === key;
         const defaultClassName =

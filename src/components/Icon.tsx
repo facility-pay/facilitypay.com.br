@@ -23,6 +23,11 @@ import CheckSVG from "@/assets/icons/check.svg";
 import UncheckSVG from "@/assets/icons/uncheck.svg";
 import YoutubeSVG from "@/assets/icons/youtube.svg";
 import PlaySVG from "@/assets/icons/play.svg";
+import TargetSVG from "@/assets/icons/target.svg";
+import MegaphoneSVG from "@/assets/icons/megaphone.svg";
+import ProfitSVG from "@/assets/icons/profit.svg";
+import SimulatorSVG from "@/assets/icons/simulator.svg";
+import KnowMachinesSVG from "@/assets/icons/know-machines.svg";
 
 import AleloSVG from "@/assets/card_brands/alelo.svg";
 import AmexSVG from "@/assets/card_brands/amex.svg";
@@ -73,7 +78,12 @@ export type IconName =
   | "check"
   | "uncheck"
   | "youtube"
-  | "play";
+  | "play"
+  | "target"
+  | "megaphone"
+  | "profit"
+  | "simulator"
+  | "know-machines";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const icons: { [key in IconName]: any } = {
@@ -113,6 +123,11 @@ const icons: { [key in IconName]: any } = {
   uncheck: UncheckSVG,
   youtube: YoutubeSVG,
   play: PlaySVG,
+  target: TargetSVG,
+  megaphone: MegaphoneSVG,
+  profit: ProfitSVG,
+  simulator: SimulatorSVG,
+  "know-machines": KnowMachinesSVG,
 };
 
 type IconProps = {

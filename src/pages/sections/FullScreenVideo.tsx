@@ -6,12 +6,12 @@ const LoopBanner = () => {
   return (
     <div className="overflow-x-hidden absolute z-20 bg-secondary">
       <div className="w-max animate-[scroll_10s_linear_infinite] py-1.5">
-        <ul className="flex flex-row gap-6">
+        <ul className="flex gap-6">
           {[...new Array(6)].map((_, index) => {
             return (
               <div
                 key={index}
-                className="w-[100vw] tablet:w-[50vw] desktop:w-[33vw] flex flex-row items-center gap-4"
+                className="w-full tablet:w-[50vw] desktop:w-[33vw] flex flex-row items-center gap-4"
               >
                 <Icon iconName="machine" />
                 <span className="font-bold text-base text-black">
@@ -39,7 +39,7 @@ const FullScreenVideo = () => {
   }, []);
 
   return (
-    <section className="relative overflow-x-hidden h-[100vh]">
+    <section className="relative overflow-x-hidden h-[70vh] tablet:h-[100vh]">
       <LoopBanner />
       <div
         className="absolute flex flex-col justify-center items-center gap-8 inset-0 bg-local bg-no-repeat bg-full-video-screen bg-[length:100%]"
@@ -49,7 +49,10 @@ const FullScreenVideo = () => {
           backgroundAttachment: "scroll, fixed",
         }}
       >
-        <span className="text-3xl text-white text-center font-bold">
+        <div className="flex items-center justify-center border-2 border-secondary w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px] rounded-full">
+          <Icon iconName="profit" />
+        </div>
+        <span className="text-2xl tablet:text-3xl text-white text-center font-bold">
           Lucre muito mais com a<br />
           FacilityPay
         </span>
@@ -58,7 +61,7 @@ const FullScreenVideo = () => {
           className="flex flex-row items-center gap-2"
         >
           <Icon iconName="play" color="white" />
-          <a className="underline text-base font-medium text-white">
+          <a className="underline text-sm tablet:text-base font-medium text-white">
             Assistir o video
           </a>
         </button>

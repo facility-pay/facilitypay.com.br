@@ -61,21 +61,21 @@ const TestimonialCarousel = ({
   return (
     <div>
       <div className="relative flex flex-row items-center justify-center gap-10 pt-8 tablet:pt-[60px] desktop:pt-[60px]">
-        <button className="absolute left-[-10px] z-10 flex rounded-xl items-center justify-center w-[60px] h-[60px] bg-[#ADADAD] opacity-50">
+        <button className="absolute left-[-24px] z-10 flex rounded-xl items-center justify-center w-[60px] h-[60px] bg-[#ADADAD] opacity-50">
           <Icon iconName="arrow-left" color="white" />
         </button>
-        <ul className="flex flex-row items-center gap-10 px-8">
+        <ul className="flex flex-row items-center gap-10">
           {testimonials
             .map((testimonial) => (
               <Testimonial key={testimonial.name} {...testimonial} />
             ))
             .filter((_, index) => index < 1)}
         </ul>
-        <button className="absolute right-[-10px] z-10 flex rounded-xl items-center justify-center w-[60px] h-[60px] bg-secondary">
+        <button className="absolute right-[-24px] z-10 flex rounded-xl items-center justify-center w-[60px] h-[60px] bg-secondary">
           <Icon iconName="arrow-right" color="black" />
         </button>
       </div>
-      <div className="flex flex-row justify-center items-center gap-5 px-8 pt-6 tablet:pt-16 desktop:pt-16">
+      <div className="flex flex-row justify-center items-center gap-5 pt-6 tablet:pt-16 desktop:pt-16">
         {[...new Array(groupItemsByThree(testimonials))].map((_, index) => (
           <button
             key={index}
