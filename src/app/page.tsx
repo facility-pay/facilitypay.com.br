@@ -6,13 +6,9 @@ import Image from "next/image";
 import MiniFacilityLogo from "@/assets/logos/mini-logo.png";
 import { useMemo } from "react";
 import Icon, { IconName } from "@/components/Icon";
-import Simulator from "@/shared/sections/Simulator";
-import Taxes from "@/shared/sections/Taxes";
-import Testimonials from "@/shared/sections/Testimonials";
-import ChooseMachine from "@/shared/sections/ChooseMachine";
-import TalkingAboutUs from "@/shared/sections/TalkingAboutUs";
-import FullScreenVideo from "@/pages/sections/FullScreenVideo";
 import Link from "next/link";
+import Head from "next/head";
+import dynamic from "next/dynamic";
 
 const section1Copies = {
   title: `As menores taxas do Brasil no parcelado`,
@@ -73,6 +69,46 @@ const machinesAdvantages: Array<MachineAdvantageItem> = [
   },
 ];
 
+const MyLazyLoadedTaxes = dynamic(() => import("@/shared/sections/Taxes"), {
+  ssr: false,
+  loading: () => <></>,
+});
+const MyLazyLoadedSimulator = dynamic(
+  () => import("@/shared/sections/Simulator"),
+  {
+    ssr: false,
+    loading: () => <></>,
+  }
+);
+const MyLazyLoadedFullScreenVideo = dynamic(
+  () => import("@/pages/sections/FullScreenVideo"),
+  {
+    ssr: false,
+    loading: () => <></>,
+  }
+);
+const MyLazyLoadedTestimonials = dynamic(
+  () => import("@/shared/sections/Testimonials"),
+  {
+    ssr: false,
+    loading: () => <></>,
+  }
+);
+const MyLazyLoadedChooseMachine = dynamic(
+  () => import("@/shared/sections/ChooseMachine"),
+  {
+    ssr: false,
+    loading: () => <></>,
+  }
+);
+const MyLazyLoadedTalkingAboutUs = dynamic(
+  () => import("@/shared/sections/TalkingAboutUs"),
+  {
+    ssr: false,
+    loading: () => <></>,
+  }
+);
+
 export default function Home() {
   const section1ClassName = useMemo(() => {
     const defaultClass =
@@ -84,6 +120,32 @@ export default function Home() {
 
   return (
     <div className="w-screen h-screen max-w-full bg-white">
+      <Head>
+        <link
+          rel="preload"
+          href="/assets/shapes/section1-shape.svg"
+          as="image"
+          type="image/svg+xml"
+        />
+        <link
+          rel="preload"
+          href="/assets/shapes/section1-yellow-shape.svg"
+          as="image"
+          type="image/svg+xml"
+        />
+        <link
+          rel="preload"
+          href="/assets/illustrations/dots.svg"
+          as="image"
+          type="image/svg+xml"
+        />
+        <link
+          rel="preload"
+          href="https://cdn.prod.website-files.com/65c1399ac999a342139b5069/660492b660901f344d12ee80_Photo_BG_POS_Beauty.webp"
+          as="image"
+          type="image/svg+xml"
+        />
+      </Head>
       <div className="overflow-x-hidden">
         <LoopBanner />
       </div>
@@ -120,12 +182,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Taxes />
-      {/* <div className={`absolute top-[825}px] items-center`}>
-        <div className="flex bg-blue-flag items-center justify-center w-20 h-20 rounded-full">
-          <Icon iconName="flag" />
-        </div>
-      </div> */}
+      <MyLazyLoadedTaxes />
       <section className="flex flex-col items-center min-h-[100vh] bg-white py-20 rounded-[2rem] bg-no-repeat bg-home-section3 px-8 mx-8 bg-cover bg-[center_top]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col items-center justify-center gap-6 pb-14">
@@ -167,13 +224,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* <section className="max-w-7xl mx-auto bg-white py-20"></section> */}
-      <Simulator />
-      <FullScreenVideo />
-      <Testimonials />
-      <ChooseMachine />
-      <TalkingAboutUs />
+      <MyLazyLoadedSimulator />
+      <MyLazyLoadedFullScreenVideo />
+      <MyLazyLoadedTestimonials />
+      <MyLazyLoadedChooseMachine />
+      <MyLazyLoadedTalkingAboutUs />
     </div>
   );
 }
