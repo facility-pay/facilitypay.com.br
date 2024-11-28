@@ -18,7 +18,6 @@ import MachineInformationContainer, {
   MachineInformationContainerProps,
 } from "./container";
 import Image from "next/image";
-import { SmartFrontPNG } from "@/assets/images/machines";
 import Featured from "@/components/Featured";
 
 type MachineInformationProps = Pick<

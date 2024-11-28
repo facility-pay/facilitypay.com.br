@@ -1,8 +1,7 @@
 import Icon, { IconName } from "@/components/Icon";
-import PlanPicker from "@/components/PlansPicker";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
-import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
-import { LegacyRef, useMemo } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useMemo } from "react";
 import TopRightSVG from "@/assets/shapes/plans/top-right.svg";
 import Button from "@/components/Button";
 import { brands } from "@/utils/cards";
@@ -15,57 +14,57 @@ type SelectItemProps = {
   onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
 };
 
-const items: Array<SelectItemProps> = [
-  {
-    itemKey: "express",
-    icon: "on-time",
-    label: "na hora",
-  },
-  {
-    itemKey: "profit",
-    icon: "one-day",
-    label: "um dia depois",
-  },
-  {
-    itemKey: "spot",
-    icon: "one-day",
-    label: "um dia depois",
-  },
-  {
-    itemKey: "light",
-    icon: "one-day",
-    label: "um dia depois",
-  },
-];
+// const items: Array<SelectItemProps> = [
+//   {
+//     itemKey: "express",
+//     icon: "on-time",
+//     label: "na hora",
+//   },
+//   {
+//     itemKey: "profit",
+//     icon: "one-day",
+//     label: "um dia depois",
+//   },
+//   {
+//     itemKey: "spot",
+//     icon: "one-day",
+//     label: "um dia depois",
+//   },
+//   {
+//     itemKey: "light",
+//     icon: "one-day",
+//     label: "um dia depois",
+//   },
+// ];
 
-type Taxes = {
-  debit: number;
-  credit: number;
-  credit12x: number;
-};
+// type Taxes = {
+//   debit: number;
+//   credit: number;
+//   credit12x: number;
+// };
 
-const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
-  express: {
-    debit: 1.39,
-    credit: 3.51,
-    credit12x: 10.55,
-  },
-  profit: {
-    debit: 1.45,
-    credit: 3.29,
-    credit12x: 9.48,
-  },
-  spot: {
-    debit: 0.99,
-    credit: 2.99,
-    credit12x: 11.18,
-  },
-  light: {
-    debit: 1.39,
-    credit: 3.2,
-    credit12x: 10.12,
-  },
-};
+// const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
+//   express: {
+//     debit: 1.39,
+//     credit: 3.51,
+//     credit12x: 10.55,
+//   },
+//   profit: {
+//     debit: 1.45,
+//     credit: 3.29,
+//     credit12x: 9.48,
+//   },
+//   spot: {
+//     debit: 0.99,
+//     credit: 2.99,
+//     credit12x: 11.18,
+//   },
+//   light: {
+//     debit: 1.39,
+//     credit: 3.2,
+//     credit12x: 10.12,
+//   },
+// };
 
 const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
   const indexAsAString = index.toString();
@@ -105,7 +104,7 @@ const lightTaxes = [
 ];
 
 const TaxesTable = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
+  const [, emblaApi] = useEmblaCarousel({
     slidesToScroll: "auto",
     loop: false,
     breakpoints: {
@@ -113,28 +112,28 @@ const TaxesTable = () => {
     },
   });
 
-  const { selectedIndex, setSelectedIndex } = useSelectedIndex(emblaApi);
+  const { selectedIndex } = useSelectedIndex(emblaApi);
   const selectedItem = mapIndexToItemKey(selectedIndex);
 
-  const taxes = useMemo(() => {
-    const currentTaxInformation = taxesInformation[selectedItem];
+  // const taxes = useMemo(() => {
+  //   const currentTaxInformation = taxesInformation[selectedItem];
 
-    return Object.keys(currentTaxInformation).map((key) => {
-      const value = currentTaxInformation?.[key as keyof Taxes];
+  //   return Object.keys(currentTaxInformation).map((key) => {
+  //     const value = currentTaxInformation?.[key as keyof Taxes];
 
-      const label =
-        key === "debit"
-          ? "Débito"
-          : key === "credit"
-          ? "Crédito"
-          : "Crédito em 12 vezes";
+  //     const label =
+  //       key === "debit"
+  //         ? "Débito"
+  //         : key === "credit"
+  //         ? "Crédito"
+  //         : "Crédito em 12 vezes";
 
-      return {
-        label,
-        tax: `${value.toString().replace(".", ",")}%`,
-      };
-    });
-  }, [selectedItem]);
+  //     return {
+  //       label,
+  //       tax: `${value.toString().replace(".", ",")}%`,
+  //     };
+  //   });
+  // }, [selectedItem]);
 
   const mastercardAndVisaFacilityTaxes = useMemo(() => {
     switch (selectedItem) {
