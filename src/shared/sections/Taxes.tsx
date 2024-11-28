@@ -2,45 +2,39 @@ import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import TaxesSelect from "@/components/TaxesSelect";
 import { brands } from "@/utils/cards";
-import Link from "next/link";
 
 const Taxes = () => {
   return (
-    <section className="relative mt-[4.5rem] mb-[4.5rem] tablet:mb-[6rem]">
+    <section className="max-w-7xl mx-auto relative mt-[4.5rem] mb-[4.5rem] tablet:mb-[6rem]">
       <div className="bg-white max-w-full px-8 tablet:px-20 desktop:px-20 max-w-7xl mx-auto">
         <div className="flex flex-row justify-center self-start items-center">
-          <p className="text-3xl text-center font-bold text-primary-dark">
+          <p className="text-2xl desktop:text-4xl text-center font-bold text-dark-blue-heading">
             As menores taxas do Brasil. De verdade!
           </p>
-          {/* <div className="flex flex-row justify-start items-center bg-whatsapp py-3 px-5 rounded-full self-start">
-          <Icon iconName="whatsapp" />
-          <p className="font-semibold text-base text-white">Adquira agora</p>
-        </div> */}
         </div>
-        <p className="text-base text-center text-description py-6">
-          Você deseja receber:
+        <p className="text-sm desktop:text-lg text-center text-description py-6">
+          Veja nossos{" "}
+          <strong className="text-dark-blue-heading">planos:</strong>
         </p>
-        <TaxesSelect />
-        <div className="flex flex-col gap-4 tablet:flex-row desktop:flex-row w-full items-center justify-between pt-0 tablet:pt-[60px] desktop:pt-[60px]">
-          <span className="opacity-0">Conferir todas as taxas</span>
+        <div className="py-4">
+          <TaxesSelect />
+        </div>
+        <div className="flex flex-col tablet:flex-row desktop:flex-row w-full items-center justify-center pt-0 tablet:pt-[60px] desktop:pt-[60px]">
           <Button
             type="primary"
             className="max-w-full min-w-full tablet:min-w-96"
           >
-            Adquirir maquininha
-            <Icon iconName="chevron-right" />
+            Ver todos os planos e taxas
+            <Icon
+              iconName="chevron-right"
+              className="text-black group-hover:text-secondary"
+            />
           </Button>
-          <Link
-            className="underline flex items-center text-sm gap-4 text-gray-dark"
-            href="/"
-          >
-            Ver todas as taxas
-            <Icon iconName="chevron-right" />
-          </Link>
         </div>
-        <p className="text-base text-center	text-description pt-8 pb-8">
-          Aceite as principais <span className="font-bold">bandeiras</span> e{" "}
-          <span className="font-bold">carteiras digitais</span>
+        <p className="text-sm desktop:text-xl text-center	text-description pt-8 pb-8">
+          Aceite as principais{" "}
+          <span className="font-bold text-black">bandeiras</span> e{" "}
+          <span className="font-bold text-black">carteiras digitais</span>
         </p>
 
         <div className="hidden flex-row flex-wrap tablet:flex justify-center flex-row gap-10">

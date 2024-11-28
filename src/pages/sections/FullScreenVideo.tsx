@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 const LoopBanner = () => {
   return (
     <div className="overflow-x-hidden absolute z-20 bg-secondary">
-      <div className="w-max animate-[scroll_10s_linear_infinite] py-1.5">
+      <div className="w-max animate-[scroll-right_10s_linear_infinite] py-1.5">
         <ul className="flex gap-6">
           {[...new Array(6)].map((_, index) => {
             return (
@@ -14,9 +14,9 @@ const LoopBanner = () => {
                 className="w-full tablet:w-[50vw] desktop:w-[33vw] flex flex-row items-center gap-4"
               >
                 <Icon iconName="machine" />
-                <span className="font-bold text-base text-black">
+                <span className="font-bold text-base desktop:text-lg text-black">
                   FacilityPay PRO{" "}
-                  <span className="font-normal">por 12x de R$ 38,81</span>
+                  <span className="font-normal">por 12x de R$ 35,81</span>
                 </span>
               </div>
             );
@@ -42,7 +42,7 @@ const FullScreenVideo = () => {
     <section className="relative overflow-x-hidden h-[70vh] tablet:h-[100vh]">
       <LoopBanner />
       <div
-        className="absolute flex flex-col justify-center items-center gap-8 inset-0 bg-local bg-no-repeat bg-full-video-screen bg-[length:100%]"
+        className="absolute flex flex-col justify-center items-center gap-8 inset-0 bg-local bg-no-repeat bg-full-video-screen bg-[length:80%]"
         style={{
           backgroundPosition: "0 0, 50%",
           backgroundSize: "auto, cover",
@@ -52,7 +52,7 @@ const FullScreenVideo = () => {
         <div className="flex items-center justify-center border-2 border-secondary w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px] rounded-full">
           <Icon iconName="profit" />
         </div>
-        <span className="text-2xl tablet:text-3xl text-white text-center font-bold">
+        <span className="text-2xl tablet:text-3xl desktop:text-4xl text-white text-center font-bold">
           Lucre muito mais com a<br />
           FacilityPay
         </span>
@@ -70,7 +70,7 @@ const FullScreenVideo = () => {
       <YoutubeModal
         isOpened={isVideoOpened}
         onClose={onCloseVideo}
-        videoId="lxrAjEQb5RQ"
+        videoId="kREuZ3Xr-8Q"
       />
     </section>
   );

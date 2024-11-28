@@ -1,16 +1,23 @@
 import Button from "@/components/Button";
 import Featured from "@/components/Featured";
-import Icon from "@/components/Icon";
+import Icon, { IconName } from "@/components/Icon";
 import Separator from "@/components/Separator";
 import {
   MachineItem,
+  MachineKey,
   MachineProductItem,
   mapSVGByMachineKey,
   products,
   useMachineInformation,
 } from "@/hooks/useMachineInformation";
-import { moneyFormatter } from "@/utils/money";
-import { useMemo } from "react";
+import SimpleQuote from "@/assets/illustrations/simple-quote.svg";
+import MobileSimpleQuote from "@/assets/illustrations/mobile-simple-quote.svg";
+import DoubleQuotes from "@/assets/illustrations/double-quotes.svg";
+import { LegacyRef, useCallback, useMemo } from "react";
+import PlanPicker, { Plan } from "@/components/PlansPicker";
+import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
+import { useSelectedIndex } from "@/hooks/useSelectedIndex";
+import ContainerWithSimpleQuotes from "@/containers/ContainerWithSimpleQuotes";
 
 type MachineCardProps = MachineItem & {
   buttonCopy?: string;
@@ -19,8 +26,8 @@ type MachineCardProps = MachineItem & {
 const MachineCard = ({
   itemKey,
   title,
-  prevValue,
   currValue,
+  prevValue,
   featured,
   disabledProducts,
   buttonCopy = "Pedir agora",
@@ -45,21 +52,18 @@ const MachineCard = ({
     }, [disabledProducts]);
 
   return (
-    <div className="relative w-full rounded-2xl rounded-tl-[48px] rounded-br-[48px] tablet:w-[373px] px-8 desktop:w-[373px] flex flex-col bg-white drop-shadow-[2px_8px_50px_rgba(0,0,0,0.10)]">
-      {featured && (
-        <div className="absolute right-2 top-2">
-          <Featured />
-        </div>
-      )}
+    <div className="relative w-full drop-shadow-[2px_8px_50px_rgba(0,0,0,0.10)] rounded-2xl rounded-tl-[48px] rounded-br-[48px] tablet:w-[373px] px-8 desktop:w-[373px] flex flex-col bg-white drop-shadow-[2px_8px_50px_rgba(0,0,0,0.10)]">
       <div className="flex items-center justify-center h-[250px]">
         <Image className="flex self-center" alt={`${itemKey}-image`} />
       </div>
       <Separator className="mb-3 tablet:mb-6 desktop:mb-6" />
       <div className="flex flex-col gap-4">
-        <span className="text-xl text-black font-extrabold">{title}</span>
-        <span className="text-base text-black opacity-60 line-through">
-          {moneyFormatter.format(prevValue)}
-        </span>
+        <div className="flex flex-row items-center gap-4">
+          <span className="text-xl desktop:text-2xl text-black font-extrabold">
+            {title}
+          </span>
+          {featured && <Featured />}
+        </div>
         <span className="font-extrabold text-whatsapp text-xl">
           R${" "}
           <span className="text-4xl">
@@ -92,29 +96,267 @@ const MachineCard = ({
 
       <Button type="primary" className="my-9">
         {buttonCopy}
-        <Icon iconName="chevron-right" />
+        <Icon
+          iconName="chevron-right"
+          className="text-black group-hover:text-secondary"
+        />
       </Button>
     </div>
   );
 };
 
+type SelectItemProps = {
+  itemKey: "express" | "profit" | "spot" | "light";
+  icon: IconName;
+  label: string;
+  isSelected?: boolean;
+  onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
+};
+
+const items: Array<SelectItemProps> = [
+  {
+    itemKey: "express",
+    icon: "on-time",
+    label: "na hora",
+  },
+  {
+    itemKey: "profit",
+    icon: "one-day",
+    label: "um dia depois",
+  },
+  {
+    itemKey: "spot",
+    icon: "one-day",
+    label: "um dia depois",
+  },
+  {
+    itemKey: "light",
+    icon: "one-day",
+    label: "um dia depois",
+  },
+];
+
+type Prices = {
+  black: {
+    [key in MachineKey]: number;
+  };
+  normal: {
+    [key in MachineKey]: number;
+  };
+};
+
+type Taxes = {
+  debit: number;
+  credit: number;
+  credit12x: number;
+};
+
+const machinePricesInformation: {
+  [key in SelectItemProps["itemKey"]]: Prices;
+} = {
+  express: {
+    black: {
+      mini: 179.91,
+      pro: 359.91,
+      smart: 422.91,
+    },
+    normal: {
+      mini: 247.9,
+      pro: 447.9,
+      smart: 547.9,
+    },
+  },
+  profit: {
+    black: {
+      mini: 179.91,
+      pro: 359.91,
+      smart: 422.91,
+    },
+    normal: {
+      mini: 247.9,
+      pro: 447.9,
+      smart: 547.9,
+    },
+  },
+  spot: {
+    black: {
+      mini: 179.91,
+      pro: 359.91,
+      smart: 422.91,
+    },
+    normal: {
+      mini: 247.9,
+      pro: 447.9,
+      smart: 547.9,
+    },
+  },
+  light: {
+    black: {
+      mini: 93.9,
+      pro: 287.9,
+      smart: 377.9,
+    },
+    normal: {
+      mini: 138.9,
+      pro: 324.9,
+      smart: 419.9,
+    },
+  },
+};
+
+const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
+  express: {
+    debit: 1.39,
+    credit: 3.51,
+    credit12x: 10.55,
+  },
+  profit: {
+    debit: 1.45,
+    credit: 3.29,
+    credit12x: 9.48,
+  },
+  spot: {
+    debit: 0.99,
+    credit: 2.99,
+    credit12x: 11.18,
+  },
+  light: {
+    debit: 1.39,
+    credit: 3.2,
+    credit12x: 10.12,
+  },
+};
+
+const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
+  switch (index) {
+    case 0 || 4:
+      return "express";
+    case 1 || 5:
+      return "profit";
+    case 2 || 6:
+      return "spot";
+    case 3 || 7:
+      return "light";
+    default:
+      return "express";
+  }
+};
+
+const mapKeyToLabel = (key: SelectItemProps["itemKey"]) => {
+  return String(key).charAt(0).toUpperCase() + String(key).slice(1);
+};
+
 type ChooseMachineProps = {
   isDark?: boolean;
   buttonCopy?: string;
+  hasBackground?: boolean;
 };
 
-const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
+const ChooseMachine = ({
+  isDark = false,
+  buttonCopy,
+  hasBackground = false,
+}: ChooseMachineProps) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    slidesToScroll: "auto",
+    loop: false,
+    breakpoints: {
+      "(min-width: 768px)": { active: false },
+    },
+  });
+
+  const { selectedIndex, setSelectedIndex } = useSelectedIndex(emblaApi);
+  const selectedItem = mapIndexToItemKey(selectedIndex);
   const { machines } = useMachineInformation();
+
+  const currentMachinePrice = useMemo(() => {
+    const machinePriceInformation = machinePricesInformation[selectedItem];
+
+    return machinePriceInformation;
+  }, [selectedItem]);
+
+  const renderItem = useCallback(
+    (item: Plan, index: number) => {
+      const isSelected = index === selectedIndex;
+
+      return (
+        <div
+          key={`belowSection_${item.itemKey}`}
+          className={[
+            "min-w-full px-[66px] desktop:px-0 desktop:min-w-[270px]",
+            isSelected ? "" : "hidden desktop:block",
+          ].join(" ")}
+        >
+          <div
+            className={[
+              "flex flex-row items-center gap-2 px-3 py-3.5 border-b border-description-15",
+            ].join(" ")}
+          >
+            <div
+              className={
+                isSelected
+                  ? "bg-secondary p-1.5 rounded"
+                  : "bg-grey-light p-1.5 rounded"
+              }
+            >
+              <Icon
+                iconName={item.icon}
+                className={isSelected ? "text-black" : "text-grey-light"}
+              />
+            </div>
+            <p className="text-black text-xs">
+              Receba <strong>{item.label}</strong>
+            </p>
+          </div>
+
+          <div
+            className={[
+              "flex flex-row items-center gap-2 rounded-xl px-3 py-3.5",
+            ].join(" ")}
+          >
+            <div
+              className={
+                isSelected
+                  ? "bg-secondary p-1.5 rounded"
+                  : "bg-grey-light p-1.5 rounded"
+              }
+            >
+              <Icon
+                iconName="promo"
+                className={isSelected ? "text-black" : "text-description"}
+              />
+            </div>
+            <p className="text-black text-xs">
+              <strong>Taxas</strong> do plano {mapKeyToLabel(item.itemKey)}:
+            </p>
+          </div>
+          <div className="flex flex-row items-center px-3">
+            <span className="text-black text-xs border-r border-description-55 pr-1">
+              Crédito: <strong>{taxesInformation[item.itemKey].credit}%</strong>
+            </span>
+            <span className="text-black text-xs border-r border-description-55 pl-1 pr-1">
+              Débito: <strong>{taxesInformation[item.itemKey].debit}%</strong>
+            </span>
+            <span className="text-black text-xs pl-1">
+              Crédito 12x:{" "}
+              <strong>{taxesInformation[item.itemKey].credit12x}%</strong>
+            </span>
+          </div>
+        </div>
+      );
+    },
+    [selectedIndex]
+  );
 
   const sectionClassName = useMemo(() => {
     const defaultClassName =
-      "max-w-full min-h-[105vh] px-8 tablet:px-20 desktop:px-20 pb-20 tablet:mx-[60px] desktop:mx-[60px] tablet:my-[48px] rounded-[32px]";
+      "relative max-w-full min-h-[105vh] tablet:px-20 desktop:px-20 py-20 rounded-[32px] mb-[40px] desktop:mb-0";
     const className = isDark
       ? "bg-[#171717]"
       : "bg-gradient-to-r from-grey-light to-[#D5DFE7]";
 
     return [defaultClassName, className].join(" ");
-  }, [isDark]);
+  }, [isDark, hasBackground]);
 
   const iconContainerClassName = useMemo(() => {
     const defaultClassName =
@@ -126,35 +368,59 @@ const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
 
   const titleClassName = useMemo(() => {
     const defaultClassName =
-      "text-2xl tablet:text-3xl desktop:text-3xl text-primary-dark text-center font-bold";
+      "text-2xl tablet:text-3xl desktop:text-4xl text-dark-blue-heading text-center font-bold";
     const className = isDark ? "text-white" : "";
 
     return [defaultClassName, className].join(" ");
   }, [isDark]);
 
   return (
-    <section className={sectionClassName}>
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-center justify-center self-center gap-4 py-6">
-          <div className={iconContainerClassName}>
-            <Icon iconName="target" />
-          </div>
-          <span className={titleClassName}>
-            Escolha a maquininha certa para o seu negócio
-          </span>
-        </div>
+    <ContainerWithSimpleQuotes id="choose-machine" shouldQuotesBeInverted>
+      <div className={sectionClassName}>
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col items-center justify-center self-center gap-4 py-6">
+            <div className={iconContainerClassName}>
+              <Icon iconName="target" />
+            </div>
+            <span className={titleClassName}>
+              Escolha a maquininha certa para o seu negócio
+            </span>
 
-        <div className="flex grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 flex-row justify-center justify-items-center items-center gap-10 tablet:pt-[60px] desktop:pt-[60px]">
-          {machines.map((machine) => (
-            <MachineCard
-              key={machine.itemKey}
-              {...machine}
-              buttonCopy={buttonCopy}
-            />
-          ))}
+            <span className="text-base text-center desktop:text-lg pt-8 text-description">
+              Selecione um dos <strong>planos</strong> para ver os valores das
+              maquininhas:
+            </span>
+          </div>
+
+          <PlanPicker
+            items={items}
+            ref={emblaRef as LegacyRef<EmblaViewportRefType> | undefined}
+            emblaApi={emblaApi}
+            selectedIndex={selectedIndex}
+            onSelectItem={setSelectedIndex}
+            bordered
+            renderItem={renderItem}
+          />
+
+          <div className="flex px-8 grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 flex-row justify-center justify-items-center items-center gap-10 tablet:pt-[60px] desktop:pt-[32px]">
+            {machines.map((machine) => {
+              const prevPrice = currentMachinePrice.normal[machine.itemKey];
+              const currentPrice = currentMachinePrice.black[machine.itemKey];
+
+              return (
+                <MachineCard
+                  key={machine.itemKey}
+                  {...machine}
+                  buttonCopy={buttonCopy}
+                  currValue={currentPrice}
+                  prevValue={prevPrice}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
-    </section>
+    </ContainerWithSimpleQuotes>
   );
 };
 

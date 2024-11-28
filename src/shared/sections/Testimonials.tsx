@@ -2,8 +2,9 @@ import Icon from "@/components/Icon";
 import TestimonialCarousel, {
   TestimonialItem,
 } from "@/components/TestimonialCarousel";
-import QuotesSVG from "@/assets/illustrations/quotes.svg";
-import ReverseQuotesSVG from "@/assets/illustrations/reverse-quotes.svg";
+import QuotesSVG from "@/assets/illustrations/testimonials/quotes.svg";
+import ReverseQuotesSVG from "@/assets/illustrations/testimonials/reverse-quotes.svg";
+import MobileQuotesSVG from "@/assets/illustrations/testimonials/mobile-quotes.svg";
 
 const testimonials: Array<TestimonialItem> = [
   {
@@ -11,7 +12,7 @@ const testimonials: Array<TestimonialItem> = [
       "https://gravatar.com/avatar/95b7a51bb2fa2abe710b99a493feada9?s=400&d=robohash&r=x",
     title: "Melhor empresa do mercado atualmente!",
     description:
-      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
+      "Obrigado FacilitPay! Ótimo atendimento, muito paciente a atendente, pena que esqueci o nome dela para mencioná-la aqui, mas o meu muito obrigado é geral para todos que já me atenderam! ❤️",
     name: "Roberto G. R.",
     rate: 5,
   },
@@ -39,26 +40,92 @@ const testimonials: Array<TestimonialItem> = [
     title: "Melhor taxa e o melhor atendimento sem dúvida!",
     description:
       "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
-    name: "Ricardo G. R.",
+    name: "José G. R.",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
+    name: "Fernando G. R.",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
+    name: "Ferran G. R.",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
+    name: "Raphinha G. R.",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
+    name: "Jorge G. R.",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
+    name: "Jamilson G. R.",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
+    name: "Bruno G. R.",
     rate: 5,
   },
 ];
 
-const Testimonials = () => {
+type TestimonialsProps = {
+  hasBackground?: boolean;
+};
+
+const Testimonials = ({ hasBackground = true }: TestimonialsProps) => {
   return (
-    <section className="relative bg-white max-w-full px-8 tablet:px-20 desktop:px-20 pb-20 my-[48px] tablet:my-[100px]">
-      <div className="absolute hidden tablet:flex desktop:flex">
+    <section
+      className={[
+        "relative max-w-full py-4 px-8 tablet:px-20 mx-8 tablet:mx-[60px] my-[48px] tablet:my-[100px] rounded-[32px]",
+        hasBackground ? "desktop:bg-simulator desktop:pb-[100px]" : "",
+      ].join(" ")}
+    >
+      <div className="absolute top-[3rem] hidden desktop:flex">
         <QuotesSVG />
       </div>
-      <div className="absolute hidden tablet:flex desktop:flex tablet:right-20 desktop:right-20">
+      <div className="absolute top-[3rem] hidden desktop:flex tablet:right-20 desktop:right-20">
         <ReverseQuotesSVG />
+      </div>
+      <div className="absolute top-0 left-0 flex tablet:flex desktop:hidden">
+        <MobileQuotesSVG />
       </div>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center justify-center self-center gap-7 pt-10">
           <div className="bg-primary-dark flex items-center justify-center rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
             <Icon iconName="chat" />
           </div>
-          <span className="text-3xl text-dark-blue-heading text-center font-bold">
+          <span className="text-2xl desktop:text-4xl text-dark-blue-heading text-center font-bold">
             O que nossos clientes dizem sobre a FacilityPay
           </span>
         </div>

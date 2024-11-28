@@ -9,7 +9,9 @@ const BannerItem = ({ label, icon }: BannerItemProps) => {
   return (
     <li className="bg-loop-banner flex items-center justify-center gap-4 w-[300px] tablet:w-[500px] desktop:w-[500px] rounded-lg py-2 text-center">
       {icon && <Icon iconName={icon} />}
-      <p className="text-center text-gray-dark font-bold">{label}</p>
+      <p className="text-sm desktop:text-lg text-center text-gray-dark font-semibold">
+        {label}
+      </p>
     </li>
   );
 };

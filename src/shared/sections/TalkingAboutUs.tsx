@@ -1,6 +1,10 @@
 import Icon from "@/components/Icon";
 import Image from "next/image";
 import Link from "next/link";
+import DoubleReversedQuotesSVG from "@/assets/illustrations/talking-about-us/double-reversed-quotes.svg";
+import SimpleQuoteSVG from "@/assets/illustrations/simple-quote.svg";
+import MobileStraightQuotesSVG from "@/assets/illustrations/talking-about-us/mobile-straight-quotes.svg";
+import ContainerWithSimpleQuotes from "@/containers/ContainerWithSimpleQuotes";
 
 type TalkingAboutUsItem = {
   type: "youtube";
@@ -12,16 +16,23 @@ const AboutUsItem = ({ id, title }: TalkingAboutUsItem) => {
   const thumbnail = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 
   return (
-    <div className="rounded-2xl p-6 items-center w-full tablet:w-[373px] desktop:w-[373px] flex flex-col gap-6 tablet:gap-10 desktop:gap-10 bg-white drop-shadow-[2px_8px_50px_rgba(0,0,0,0.10)]">
+    <div className="rounded-2xl p-2.5 desktop:p-5 items-center min-w-full min-h-full tablet:w-[373px] desktop:w-[373px] flex flex-col gap-6 tablet:gap-10 desktop:gap-10 bg-white drop-shadow-[2px_8px_50px_rgba(0,0,0,0.10)]">
       <Image
         alt="thumbnail"
         className="rounded-2xl"
-        width={373}
+        width={400}
         height={300}
         src={thumbnail}
       />
-      <Icon iconName="youtube" />
-      <span className="text-base font-extrabold text-gray-dark">{title}</span>
+
+      <div className="flex flex-col gap-6 tablet:gap-10 desktop:gap-10 p-5 desktop:p-0">
+        <div className="flex items-start min-w-full">
+          <Icon iconName="youtube" />
+        </div>
+        <span className="text-sm desktop:text-base font-extrabold text-gray-dark">
+          {title}
+        </span>
+      </div>
     </div>
   );
 };
@@ -46,33 +57,54 @@ const talkingAboutUsItems: Array<TalkingAboutUsItem> = [
   },
 ];
 
-const TalkingAboutUs = () => {
+type TalkingAboutUsProps = {
+  shouldRenderBackgroundColor?: boolean;
+};
+
+const TalkingAboutUs = ({
+  shouldRenderBackgroundColor = true,
+}: TalkingAboutUsProps) => {
   return (
-    <section className="bg-gradient-to-r from-grey-light to-[#D5DFE7] max-w-full px-8 tablet:px-20 desktop:px-20 pb-20 mx-[24px] tablet:mx-[60px] nmy tablet:my-[48px] rounded-[32px]">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-center justify-center self-center gap-7 pt-10 pb-6">
-          <div className="bg-primary-dark flex items-center justify-center rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
-            <Icon iconName="megaphone" />
+    <ContainerWithSimpleQuotes
+      id="talking-about-us"
+      shouldRenderBackgroundColor={shouldRenderBackgroundColor}
+    >
+      <div
+        className={[
+          "max-w-full desktop:px-20 pb-20 px-8 mt-[60px] desktop:mt-[100px]",
+        ].join(" ")}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col items-center justify-center self-center gap-7 pt-10 pb-6">
+            <div className="bg-primary-dark flex items-center justify-center rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
+              <Icon iconName="megaphone" />
+            </div>
+            <span className="text-xl tablet:text-3xl desktop:text-3xl text-dark-blue-heading text-center font-bold">
+              O que saiu na mídia?
+            </span>
           </div>
-          <span className="text-xl tablet:text-3xl desktop:text-3xl text-dark-blue-heading text-center font-bold">
-            O que saiu na mídia?
-          </span>
-        </div>
 
-        <div className="flex flex-row justify-center items-center justify-items-center grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-10">
-          {talkingAboutUsItems.map((item) => (
-            <AboutUsItem key={item.id} {...item} />
-          ))}
-        </div>
+          <div className="flex flex-row justify-center items-center justify-items-center grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-10">
+            {talkingAboutUsItems.map((item) => (
+              <AboutUsItem key={item.id} {...item} />
+            ))}
+          </div>
 
-        <Link
-          className="flex flex-row items-center gap-3 justify-center underline text-base text-black font-semibold pt-14"
-          href="/"
-        >
-          Ver mais <Icon iconName="chevron-right" />
-        </Link>
+          <Link
+            className="group flex flex-row items-center gap-3 justify-center underline text-sm desktop:text-base text-black font-semibold pt-14 hover:text-secondary"
+            href="https://www.youtube.com/results?search_query=facilitypay"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ver mais{" "}
+            <Icon
+              iconName="chevron-right"
+              className="text-black group-hover:text-secondary"
+            />
+          </Link>
+        </div>
       </div>
-    </section>
+    </ContainerWithSimpleQuotes>
   );
 };
 

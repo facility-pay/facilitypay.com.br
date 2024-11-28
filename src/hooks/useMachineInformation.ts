@@ -1,23 +1,26 @@
-import MiniSVG from "@/assets/images/mini.svg";
-import ProSVG from "@/assets/images/pro.svg";
-import SmartSVG from "@/assets/images/smart.svg";
 import {
   MiniFrontSVG,
   MiniFrontSmallSVG,
-  MiniBackSVG,
   MiniDiagonalSVG,
   ProFrontSVG,
   ProFrontSmallSVG,
-  ProBackSVG,
   ProDiagonalSVG,
   SmartFrontSVG,
   SmartFrontSmallSVG,
-  SmartBackSVG,
   SmartDiagonalSVG,
+  MobileProFrontSVG,
+  MobileProFrontSmallSVG,
+  MobileProDiagonalSVG,
+  MobileMiniDiagonalSVG,
+  MobileMiniFrontSVG,
+  MobileMiniFrontSmallSVG,
+  MobileSmartDiagonalSVG,
+  MobileSmartFrontSVG,
+  MobileSmartFrontSmallSVG,
 } from "@/assets/images/machines";
 import { useCallback } from "react";
 
-type MachineKey = "mini" | "pro" | "smart";
+export type MachineKey = "mini" | "pro" | "smart";
 
 type MachineProductKey =
   | "free-delivery"
@@ -32,7 +35,9 @@ type MachineProductKey =
 export type MachineItem = {
   itemKey: MachineKey;
   title: string;
+  subtitle: string;
   description?: string;
+  strong?: string;
   prevValue: number;
   currValue: number;
   featured?: boolean;
@@ -48,8 +53,10 @@ const machines: Array<MachineItem> = [
   {
     itemKey: "mini",
     title: "Facility Mini",
+    subtitle: "Uma minizinha poderosa",
     description:
-      "Lorem ipsum tempor nibh tincidunt feugiat placerat, risus pretium maecenas elit amet nunc, euismod nisi taciti erns himenaeos sociosqu. id torquent sem fringilla dui dictum urna elementum amet, egestas. Taciti placerat pretium ipsum tellus augue ad, pharetra vitae taciti potenti nostra auctor nibh. orci faucibus orci lorem tempor justo dapibus vulputate ornare, phasellus sagittis semper eros risus donec mattis. Nunc urna conubia platea senectus:",
+      "Pratica, portátil e econômica. São apenas alguns dos adjetivos para descrever essa maquininha. Com um visual compacto, ela é indicada, principalmente para delivery.",
+    strong: "Não precisa de celular para vender.",
     prevValue: 299.9,
     currValue: 239.9,
     disabledProducts: ["touchscreen", "product-management"],
@@ -57,8 +64,10 @@ const machines: Array<MachineItem> = [
   {
     itemKey: "pro",
     title: "Facility Pro",
+    subtitle: "Melhor custo benefício",
     description:
       "Lorem ipsum tempor nibh tincidunt feugiat placerat, risus pretium maecenas elit amet nunc, euismod nisi taciti erns himenaeos sociosqu. id torquent sem fringilla dui dictum urna elementum amet, egestas. Taciti placerat pretium ipsum tellus augue ad, pharetra vitae taciti potenti nostra auctor nibh. orci faucibus orci lorem tempor justo dapibus vulputate ornare, phasellus sagittis semper eros risus donec mattis. Nunc urna conubia platea senectus:",
+    strong: "Nunc urna conubia platea senectus:",
     prevValue: 529,
     currValue: 429.8,
     featured: true,
@@ -67,8 +76,10 @@ const machines: Array<MachineItem> = [
   {
     itemKey: "smart",
     title: "Facility Smart",
+    subtitle: "Mais completa e tenológica",
     description:
       "Lorem ipsum tempor nibh tincidunt feugiat placerat, risus pretium maecenas elit amet nunc, euismod nisi taciti erns himenaeos sociosqu. id torquent sem fringilla dui dictum urna elementum amet, egestas. Taciti placerat pretium ipsum tellus augue ad, pharetra vitae taciti potenti nostra auctor nibh. orci faucibus orci lorem tempor justo dapibus vulputate ornare, phasellus sagittis semper eros risus donec mattis. Nunc urna conubia platea senectus:",
+    strong: "Nunc urna conubia platea senectus:",
     prevValue: 629,
     currValue: 519.9,
   },
@@ -88,20 +99,22 @@ export const products: Array<MachineProductItem> = [
 export const mapSVGByMachineKey = (key: MachineKey) => {
   switch (key) {
     case "mini":
-      return MiniSVG;
+      return MobileMiniFrontSVG;
     case "pro":
-      return ProSVG;
+      return MobileProFrontSVG;
     case "smart":
     default:
-      return SmartSVG;
+      return MobileSmartFrontSVG;
   }
 };
 
 export type MachineImages = {
   ImageFront: unknown;
   ImageFrontSmall: unknown;
-  ImageBack: unknown;
   ImageDiagonal: unknown;
+  MobileImageFront: unknown;
+  MobileImageFrontSmall: unknown;
+  MobileImageDiagonal: unknown;
 };
 
 const getAllSvgImagesByMachineKey = (key: MachineKey): MachineImages => {
@@ -110,23 +123,29 @@ const getAllSvgImagesByMachineKey = (key: MachineKey): MachineImages => {
       return {
         ImageFront: MiniFrontSVG,
         ImageFrontSmall: MiniFrontSmallSVG,
-        ImageBack: MiniBackSVG,
         ImageDiagonal: MiniDiagonalSVG,
+        MobileImageFront: MobileMiniFrontSVG,
+        MobileImageFrontSmall: MobileMiniFrontSmallSVG,
+        MobileImageDiagonal: MobileMiniDiagonalSVG,
       };
     case "pro":
       return {
         ImageFront: ProFrontSVG,
         ImageFrontSmall: ProFrontSmallSVG,
-        ImageBack: ProBackSVG,
         ImageDiagonal: ProDiagonalSVG,
+        MobileImageFront: MobileProFrontSVG,
+        MobileImageFrontSmall: MobileProFrontSmallSVG,
+        MobileImageDiagonal: MobileProDiagonalSVG,
       };
     case "smart":
     default:
       return {
         ImageFront: SmartFrontSVG,
         ImageFrontSmall: SmartFrontSmallSVG,
-        ImageBack: SmartBackSVG,
         ImageDiagonal: SmartDiagonalSVG,
+        MobileImageFront: MobileSmartFrontSVG,
+        MobileImageFrontSmall: MobileSmartFrontSmallSVG,
+        MobileImageDiagonal: MobileSmartDiagonalSVG,
       };
   }
 };

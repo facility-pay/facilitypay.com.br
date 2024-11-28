@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useMemo } from "react";
 
 const section1Copies = {
-  title: "A maquininha mais tecnológica e moderna",
+  title: "Mais tecnologia para você",
   description:
-    "Lorem ipsum dolor sit amet, consect adipiscing elit. Aliquam pretiumac tristique leo bibendum.",
+    "Fação gestão de produtos, controle de estoque, cardápio digital, transações bancárias e muito mais diretamente em sua máquina.",
 };
 
 const Section1 = () => {
@@ -20,11 +20,13 @@ const Section1 = () => {
 
   return (
     <section className="bg-section1">
-      <div className="flex flex-col tablet:hidden max-w-[vw] gap-4 px-8 py-10">
-        <p className="text-[2.5rem] leading-[2.75rem] font-bold text-dark-blue-heading">
+      <div className="flex flex-col tablet:hidden max-w-[80vw] gap-4 px-8 py-10">
+        <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
           {section1Copies.title}
         </p>
-        <p className="text-lg text-description">{section1Copies.description}</p>
+        <p className="text-sm desktop:text-lg text-description">
+          {section1Copies.description}
+        </p>
       </div>
       <div className={section1ClassName}>
         <div className="flex tablet:items-center z-10 min-h-inherit bg-no-repeat bg-[url('../assets/shapes/machines/section1-middle-shape.svg')] bg-[length:125%] tablet:bg-[length:45%] bg-[top_5rem_right_-5rem] tablet:bg-[top_8rem_right_10rem]">
@@ -47,15 +49,8 @@ const Section1 = () => {
                   type="primary"
                   shouldRenderChevron
                 >
-                  Quero essa maquininha
+                  Adquirir maquininha
                 </Button>
-                <Link
-                  className="flex flex-row items-center text-center gap-4 underline text-sm text-gray-dark"
-                  href="/"
-                >
-                  Ver as taxas
-                  <Icon iconName="chevron-right" color="gray-dark" />
-                </Link>
               </div>
             </div>
           </div>

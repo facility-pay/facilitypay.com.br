@@ -4,8 +4,11 @@ import SmileSVG from "@/assets/icons/smile.svg";
 import FlagSVG from "@/assets/icons/flag.svg";
 import WhatsappSVG from "@/assets/icons/whatsapp.svg";
 import ChevronRightSVG from "@/assets/icons/chevron-right.svg";
+import ChevronLeftSVG from "@/assets/icons/chevron-left.svg";
+import ChevronDownSVG from "@/assets/icons/chevron-down.svg";
 import ClockSVG from "@/assets/icons/clock.svg";
 import OneDaySVG from "@/assets/icons/one-day.svg";
+import OnTimeSVG from "@/assets/icons/on-time.svg";
 import ThirtyDaysSVG from "@/assets/icons/30-days.svg";
 import CardSVG from "@/assets/icons/card.svg";
 import OutlinedClockSVG from "@/assets/icons/outlined-clock.svg";
@@ -28,6 +31,11 @@ import MegaphoneSVG from "@/assets/icons/megaphone.svg";
 import ProfitSVG from "@/assets/icons/profit.svg";
 import SimulatorSVG from "@/assets/icons/simulator.svg";
 import KnowMachinesSVG from "@/assets/icons/know-machines.svg";
+import TaxesMachinesSVG from "@/assets/icons/taxes-machine.svg";
+import Off20SVG from "@/assets/icons/20off.svg";
+import PathSVG from "@/assets/icons/path.svg";
+import ContextSVG from "@/assets/icons/context.svg";
+import PromoSVG from "@/assets/icons/promo.svg";
 
 import AleloSVG from "@/assets/card_brands/alelo.svg";
 import AmexSVG from "@/assets/card_brands/amex.svg";
@@ -40,6 +48,13 @@ import TicketSVG from "@/assets/card_brands/ticket.svg";
 import VisaSVG from "@/assets/card_brands/visa.svg";
 import VrSVG from "@/assets/card_brands/vr.svg";
 
+import FacebookSVG from "@/assets/icons/facebook.svg";
+import InstagramSVG from "@/assets/icons/instagram.svg";
+import InstagramRadialSVG from "@/assets/icons/instagram-radial.svg";
+import YtbSVG from "@/assets/icons/ytb.svg";
+import MailSVG from "@/assets/icons/mail.svg";
+import TrueWhatsappSVG from "@/assets/icons/true-whatsapp.svg";
+
 import FacilityLetterSVG from "@/assets/logos/facility-letter.svg";
 
 export type IconName =
@@ -47,6 +62,8 @@ export type IconName =
   | "percentage"
   | "smile"
   | "chevron-right"
+  | "chevron-left"
+  | "chevron-down"
   | "flag"
   | "whatsapp"
   | "clock"
@@ -83,7 +100,19 @@ export type IconName =
   | "megaphone"
   | "profit"
   | "simulator"
-  | "know-machines";
+  | "know-machines"
+  | "facebook"
+  | "instagram"
+  | "instagram-radial"
+  | "ytb"
+  | "mail"
+  | "true-whatsapp"
+  | "taxes-machine"
+  | "20-off"
+  | "path"
+  | "on-time"
+  | "context"
+  | "promo";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const icons: { [key in IconName]: any } = {
@@ -91,6 +120,8 @@ const icons: { [key in IconName]: any } = {
   percentage: PercentageSVG,
   smile: SmileSVG,
   "chevron-right": ChevronRightSVG,
+  "chevron-left": ChevronLeftSVG,
+  "chevron-down": ChevronDownSVG,
   flag: FlagSVG,
   whatsapp: WhatsappSVG,
   clock: ClockSVG,
@@ -128,6 +159,18 @@ const icons: { [key in IconName]: any } = {
   profit: ProfitSVG,
   simulator: SimulatorSVG,
   "know-machines": KnowMachinesSVG,
+  facebook: FacebookSVG,
+  instagram: InstagramSVG,
+  "instagram-radial": InstagramRadialSVG,
+  ytb: YtbSVG,
+  mail: MailSVG,
+  "true-whatsapp": TrueWhatsappSVG,
+  "taxes-machine": TaxesMachinesSVG,
+  "20-off": Off20SVG,
+  path: PathSVG,
+  "on-time": OnTimeSVG,
+  context: ContextSVG,
+  promo: PromoSVG,
 };
 
 type IconProps = {
@@ -136,10 +179,10 @@ type IconProps = {
   color?: string;
 };
 
-const Icon = ({ iconName, className, color = "black" }: IconProps) => {
+const Icon = ({ iconName, className, color }: IconProps) => {
   const ChoosenIcon = icons[iconName];
 
-  return <ChoosenIcon className={className} color={color} />;
+  return <ChoosenIcon color={color} className={className} />;
 };
 
 export default Icon;

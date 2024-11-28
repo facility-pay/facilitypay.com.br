@@ -1,5 +1,6 @@
 import { PropsWithChildren, useMemo } from "react";
 import Icon from "./Icon";
+import Link from "next/link";
 
 type ButtonProps = PropsWithChildren & {
   type: "primary" | "secondary";
@@ -7,6 +8,8 @@ type ButtonProps = PropsWithChildren & {
   className?: string;
   isDark?: boolean;
   shouldRenderChevron?: boolean;
+  onClick?: VoidFunction;
+  href?: string;
 };
 
 const Button = ({
@@ -14,8 +17,10 @@ const Button = ({
   width,
   children,
   isDark = false,
+  href,
   shouldRenderChevron = false,
   className,
+  onClick,
 }: ButtonProps) => {
   const typeClassName = useMemo(() => {
     if (type === "primary") {
@@ -24,7 +29,9 @@ const Button = ({
         : "bg-secondary hover:bg-black";
     }
 
-    return "bg-white border hover:bg-black";
+    return isDark
+      ? "bg-[#171717] border border-secondary hover:bg-secondary"
+      : "bg-white border border-gray-dark hover:bg-black";
   }, [type, isDark]);
 
   const widthClassName = useMemo(() => {
@@ -47,7 +54,7 @@ const Button = ({
 
   const classNames = useMemo(() => {
     const defaultClassName =
-      "flex flex-row items-center justify-center gap-2 rounded-lg rounded-br-3xl font-semibold py-4 text-base min-w-28 max-w-80 ";
+      "group flex flex-row items-center justify-center gap-2 rounded-lg rounded-br-3xl font-semibold py-4 text-sm desktop:text-base min-w-28 max-w-80 ";
 
     const darkClassName = isDark
       ? "text-secondary hover:text-black"
@@ -62,8 +69,17 @@ const Button = ({
     ].join(" ");
   }, [typeClassName, widthClassName, className, isDark]);
 
+  if (!!href) {
+    return (
+      <Link className={classNames} href={href}>
+        {children}
+        {shouldRenderChevron && <Icon iconName="chevron-right" />}
+      </Link>
+    );
+  }
+
   return (
-    <button className={classNames}>
+    <button className={classNames} onClick={onClick}>
       {children}
       {shouldRenderChevron && <Icon iconName="chevron-right" />}
     </button>
