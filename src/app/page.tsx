@@ -206,7 +206,7 @@ export default function Home() {
         </div>
       </section>
       <MyLazyLoadedSimulator />
-      {/* <MyLazyLoadedFullScreenVideo /> */}
+      <MyLazyLoadedFullScreenVideo />
       <MyLazyLoadedTestimonials hasBackground={false} />
       <MyLazyLoadedChooseMachine hasBackground />
       <MyLazyLoadedTalkingAboutUs />

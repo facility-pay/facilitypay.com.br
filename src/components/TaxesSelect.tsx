@@ -1,4 +1,4 @@
-import { LegacyRef, useMemo, useState } from "react";
+import { LegacyRef, useMemo } from "react";
 import Icon, { IconName } from "./Icon";
 import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
@@ -65,14 +65,16 @@ const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
 };
 
 const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
-  switch (index) {
-    case 0 || 4:
+  const indexAsAString = index.toString();
+
+  switch (indexAsAString) {
+    case "0":
       return "express";
-    case 1 || 5:
+    case "1":
       return "profit";
-    case 2 || 6:
+    case "2":
       return "spot";
-    case 3 || 7:
+    case "3":
       return "light";
     default:
       return "express";

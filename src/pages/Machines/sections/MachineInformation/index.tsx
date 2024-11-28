@@ -149,14 +149,16 @@ const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
 };
 
 const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
-  switch (index) {
-    case 0 || 4:
+  const indexAsAString = index.toString();
+
+  switch (indexAsAString) {
+    case "0":
       return "express";
-    case 1 || 5:
+    case "1":
       return "profit";
-    case 2 || 6:
+    case "2":
       return "spot";
-    case 3 || 7:
+    case "3":
       return "light";
     default:
       return "express";
@@ -263,16 +265,8 @@ const MachineInformation = ({
     [selectedIndex]
   );
 
-  const {
-    title,
-    subtitle,
-    description,
-    strong,
-    prevValue,
-    currValue,
-    allImages,
-    disabledProducts,
-  } = getMachineInformationByKey(machineKey);
+  const { title, subtitle, description, strong, allImages, disabledProducts } =
+    getMachineInformationByKey(machineKey);
 
   const {
     ImageFront,
@@ -370,8 +364,6 @@ const MachineInformation = ({
     machineKey,
     title,
     subtitle,
-    prevValue,
-    currValue,
     description,
     strong,
     filteredProducts,

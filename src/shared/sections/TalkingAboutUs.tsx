@@ -1,9 +1,6 @@
 import Icon from "@/components/Icon";
 import Image from "next/image";
 import Link from "next/link";
-import DoubleReversedQuotesSVG from "@/assets/illustrations/talking-about-us/double-reversed-quotes.svg";
-import SimpleQuoteSVG from "@/assets/illustrations/simple-quote.svg";
-import MobileStraightQuotesSVG from "@/assets/illustrations/talking-about-us/mobile-straight-quotes.svg";
 import ContainerWithSimpleQuotes from "@/containers/ContainerWithSimpleQuotes";
 
 type TalkingAboutUsItem = {
@@ -67,7 +64,7 @@ const TalkingAboutUs = ({
   return (
     <ContainerWithSimpleQuotes
       id="talking-about-us"
-      shouldRenderBackgroundColor={shouldRenderBackgroundColor}
+      shouldRenderBackgroundColorOnDesktop={shouldRenderBackgroundColor}
     >
       <div
         className={[

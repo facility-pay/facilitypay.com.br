@@ -10,9 +10,6 @@ import {
   products,
   useMachineInformation,
 } from "@/hooks/useMachineInformation";
-import SimpleQuote from "@/assets/illustrations/simple-quote.svg";
-import MobileSimpleQuote from "@/assets/illustrations/mobile-simple-quote.svg";
-import DoubleQuotes from "@/assets/illustrations/double-quotes.svg";
 import { LegacyRef, useCallback, useMemo } from "react";
 import PlanPicker, { Plan } from "@/components/PlansPicker";
 import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
@@ -27,7 +24,6 @@ const MachineCard = ({
   itemKey,
   title,
   currValue,
-  prevValue,
   featured,
   disabledProducts,
   buttonCopy = "Pedir agora",
@@ -228,14 +224,16 @@ const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
 };
 
 const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
-  switch (index) {
-    case 0 || 4:
+  const indexAsAString = index.toString();
+
+  switch (indexAsAString) {
+    case "0":
       return "express";
-    case 1 || 5:
+    case "1":
       return "profit";
-    case 2 || 6:
+    case "2":
       return "spot";
-    case 3 || 7:
+    case "3":
       return "light";
     default:
       return "express";
@@ -252,11 +250,7 @@ type ChooseMachineProps = {
   hasBackground?: boolean;
 };
 
-const ChooseMachine = ({
-  isDark = false,
-  buttonCopy,
-  hasBackground = false,
-}: ChooseMachineProps) => {
+const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: "auto",
     loop: false,
@@ -356,7 +350,7 @@ const ChooseMachine = ({
       : "bg-gradient-to-r from-grey-light to-[#D5DFE7]";
 
     return [defaultClassName, className].join(" ");
-  }, [isDark, hasBackground]);
+  }, [isDark]);
 
   const iconContainerClassName = useMemo(() => {
     const defaultClassName =

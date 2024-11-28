@@ -1,5 +1,4 @@
 import MoneyInput from "@/components/MoneyInput";
-import SimulatorSelect from "@/components/SimulatorSelect";
 import { LegacyRef, useMemo, useState } from "react";
 import YellowArrow from "@/assets/illustrations/yellow-arrow.svg";
 import GrayArrow from "@/assets/illustrations/gray-arrow.svg";
@@ -79,14 +78,16 @@ const getFinalValueAfterTax = (value: number, tax: number) => {
 };
 
 const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
-  switch (index) {
-    case 0 || 4:
+  const indexAsAString = index.toString();
+
+  switch (indexAsAString) {
+    case "0":
       return "express";
-    case 1 || 5:
+    case "1":
       return "profit";
-    case 2 || 6:
+    case "2":
       return "spot";
-    case 3 || 7:
+    case "3":
       return "light";
     default:
       return "express";

@@ -1,6 +1,4 @@
 import Button from "@/components/Button";
-import Icon from "@/components/Icon";
-import Link from "next/link";
 import { useMemo } from "react";
 
 const section1Copies = {

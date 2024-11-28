@@ -5,7 +5,7 @@ import {
   mapSVGByMachineKey,
   useMachineInformation,
 } from "@/hooks/useMachineInformation";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 
 type KnowOurMachinesProps = {
@@ -17,9 +17,9 @@ const KnowOurMachines = ({
   title = "Mais que uma máquina. São muitas vantagens: ",
   isDark,
 }: KnowOurMachinesProps) => {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
-  const isOnMachinesPage = pathname?.includes("/maquininhas");
+  // const isOnMachinesPage = pathname?.includes("/maquininhas");
 
   const { machines } = useMachineInformation();
 

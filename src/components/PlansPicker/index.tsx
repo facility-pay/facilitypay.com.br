@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode } from "react";
+import { forwardRef, LegacyRef, ReactNode } from "react";
 import Icon, { IconName } from "../Icon";
 import { EmblaViewportRefType } from "embla-carousel-react";
 import { EmblaCarouselType } from "embla-carousel";
@@ -157,7 +157,10 @@ const PlanPicker = forwardRef<EmblaViewportRefType, PlanPickerProps>(
             </div>
           </button>
           <div className="plans__embla">
-            <div className="plans__embla__viewport" ref={emblaRef as any}>
+            <div
+              className="plans__embla__viewport"
+              ref={emblaRef as LegacyRef<HTMLDivElement> | undefined}
+            >
               <div className="plans__embla__container desktop:flex flex-row justify-between">
                 {items.map((item, index) => {
                   return (
@@ -226,5 +229,7 @@ const PlanPicker = forwardRef<EmblaViewportRefType, PlanPickerProps>(
     );
   }
 );
+
+PlanPicker.displayName = "PlanPicker";
 
 export default PlanPicker;
