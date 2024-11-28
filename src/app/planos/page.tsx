@@ -2,12 +2,19 @@
 
 import LoopBanner from "@/components/LoopBanner";
 import Layout from "@/containers/Layout";
-import Section1 from "@/pages/Machines/sections/Section1";
-import SimulatorSection from "@/shared/sections/Simulator";
+import TaxesTable from "@/pages/Plans/TaxesTable";
 import dynamic from "next/dynamic";
 
 const MyLazyLoadedChooseMachine = dynamic(
   () => import("@/shared/sections/ChooseMachine"),
+  {
+    ssr: false,
+    loading: () => <></>,
+  }
+);
+
+const MyLazyLoadedSimulator = dynamic(
+  () => import("@/shared/sections/Simulator"),
   {
     ssr: false,
     loading: () => <></>,
@@ -23,8 +30,8 @@ const Planos = () => {
 
   return (
     <Layout renderLoopBanner={renderLoopBanner}>
-      <Section1 />
-      <SimulatorSection />
+      <TaxesTable />
+      <MyLazyLoadedSimulator />
       <MyLazyLoadedChooseMachine />
     </Layout>
   );

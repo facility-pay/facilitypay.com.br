@@ -15,6 +15,7 @@ import PlanPicker, { Plan } from "@/components/PlansPicker";
 import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
 import ContainerWithSimpleQuotes from "@/containers/ContainerWithSimpleQuotes";
+import Image from "next/image";
 
 type MachineCardProps = MachineItem & {
   buttonCopy?: string;
@@ -28,7 +29,7 @@ const MachineCard = ({
   disabledProducts,
   buttonCopy = "Pedir agora",
 }: MachineCardProps) => {
-  const Image = mapSVGByMachineKey(itemKey);
+  const MachineImage = mapSVGByMachineKey(itemKey);
 
   const productsWithIcons: Array<MachineProductItem & { isChecked: boolean }> =
     useMemo(() => {
@@ -50,7 +51,11 @@ const MachineCard = ({
   return (
     <div className="relative w-full drop-shadow-[2px_8px_50px_rgba(0,0,0,0.10)] rounded-2xl rounded-tl-[48px] rounded-br-[48px] tablet:w-[373px] px-8 desktop:w-[373px] flex flex-col bg-white drop-shadow-[2px_8px_50px_rgba(0,0,0,0.10)]">
       <div className="flex items-center justify-center h-[250px]">
-        <Image className="flex self-center" alt={`${itemKey}-image`} />
+        <Image
+          className="flex self-center"
+          alt={`${itemKey}-image`}
+          src={MachineImage}
+        />
       </div>
       <Separator className="mb-3 tablet:mb-6 desktop:mb-6" />
       <div className="flex flex-col gap-4">

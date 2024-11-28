@@ -5,7 +5,8 @@ import {
   mapSVGByMachineKey,
   useMachineInformation,
 } from "@/hooks/useMachineInformation";
-// import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 
 type KnowOurMachinesProps = {
@@ -17,9 +18,8 @@ const KnowOurMachines = ({
   title = "Mais que uma máquina. São muitas vantagens: ",
   isDark,
 }: KnowOurMachinesProps) => {
-  // const pathname = usePathname();
-
-  // const isOnMachinesPage = pathname?.includes("/maquininhas");
+  const pathname = usePathname();
+  const isOnMachinesPage = pathname?.includes("/maquininhas");
 
   const { machines } = useMachineInformation();
 
@@ -80,14 +80,15 @@ const KnowOurMachines = ({
           ].join(" ")}
         >
           {machines.map(({ itemKey, title }) => {
-            const Image = mapSVGByMachineKey(itemKey);
+            const MachineImage = mapSVGByMachineKey(itemKey);
 
             return (
               <div key={itemKey} className={itemContainerClassName}>
                 <div className="flex items-center justify-center h-[250px]">
                   <Image
-                    className="flex self-center"
                     alt={`${itemKey}-image`}
+                    src={MachineImage}
+                    className="flex self-center"
                   />
                 </div>
                 <Separator className="my-3 tablet:my-6 desktop:my-6" />
@@ -96,7 +97,9 @@ const KnowOurMachines = ({
                   className="min-w-full mt-3 tablet:mt-6"
                   type="secondary"
                   isDark={isDark}
-                  href={`#${itemKey}`}
+                  href={
+                    isOnMachinesPage ? `#${itemKey}` : `/maquininhas#${itemKey}`
+                  }
                 >
                   Saiba mais
                 </Button>

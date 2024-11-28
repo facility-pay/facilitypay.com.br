@@ -30,7 +30,7 @@ const ContainerWithSimpleQuotes = ({
       <div className="opacity-50">
         {shouldQuotesBeInverted ? (
           <>
-            <div className="absolute top-[2rem] left-[2rem] hidden tablet:flex desktop:flex">
+            <div className="absolute top-[3rem] left-[2rem] hidden tablet:flex desktop:flex">
               <SimpleQuoteSVG />
             </div>
             <div className="absolute bottom-[2rem] right-0 hidden tablet:flex desktop:flex">

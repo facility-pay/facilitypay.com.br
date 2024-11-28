@@ -17,6 +17,9 @@ import PlanPicker, { Plan } from "@/components/PlansPicker";
 import MachineInformationContainer, {
   MachineInformationContainerProps,
 } from "./container";
+import Image from "next/image";
+import { SmartFrontPNG } from "@/assets/images/machines";
+import Featured from "@/components/Featured";
 
 type MachineInformationProps = Pick<
   MachineInformationContainerProps,
@@ -317,58 +320,64 @@ const MachineInformation = ({
     });
   }, [disabledProducts]);
 
-  const renderMachineInformation = useCallback(() => {
-    const blackFridayPrice = currentMachinePrice.black[machineKey];
-    const previousPrice = currentMachinePrice.normal[machineKey];
+  const renderMachineInformation = useCallback(
+    (isFeatured?: boolean) => {
+      const blackFridayPrice = currentMachinePrice.black[machineKey];
+      const previousPrice = currentMachinePrice.normal[machineKey];
 
-    return (
-      <div className="flex flex-col w-full gap-4">
-        <span className="text-3xl font-bold text-white">{title}</span>
-        <span className="text-base font-extrabold text-secondary">
-          {subtitle}
-        </span>
-        <span className="text-base text-white opacity-50 line-through">
-          {moneyFormatter.format(previousPrice)}
-        </span>
-        <span className="font-extrabold text-whatsapp text-xl">
-          R${" "}
-          <span className="text-4xl">
-            {blackFridayPrice?.toFixed(2).replace(".", ",")}
+      return (
+        <div className="flex flex-col w-full gap-4">
+          <div className="flex flex-row items-center gap-4">
+            <span className="text-3xl font-bold text-white">{title}</span>
+            {isFeatured && <Featured />}
+          </div>
+          <span className="text-base font-extrabold text-secondary">
+            {subtitle}
           </span>
-        </span>
-        <Separator className="my-1 tablet:my-3 desktop:my-3" />
+          <span className="text-base text-white opacity-50 line-through">
+            {moneyFormatter.format(previousPrice)}
+          </span>
+          <span className="font-extrabold text-whatsapp text-xl">
+            R${" "}
+            <span className="text-4xl">
+              {blackFridayPrice?.toFixed(2).replace(".", ",")}
+            </span>
+          </span>
+          <Separator className="my-1 tablet:my-3 desktop:my-3" />
 
-        <div className="flex flex-col gap-8 pb-8">
-          <span className="text-base text-white">{description}</span>
+          <div className="flex flex-col gap-8 pb-8">
+            <span className="text-base text-white">{description}</span>
 
-          <span className="text-base font-bold text-white">{strong}</span>
-          <ul className="flex flex-col gap-2">
-            {filteredProducts.map(({ itemKey: productItemKey, label }) => (
-              <li
-                key={`${productItemKey}-${machineKey}`}
-                className="flex flex-row items-center gap-3"
-              >
-                <Icon iconName="check" />
-                <span className="text-base text-white ">{label}</span>
-              </li>
-            ))}
-          </ul>
+            <span className="text-base font-bold text-white">{strong}</span>
+            <ul className="flex flex-col gap-2">
+              {filteredProducts.map(({ itemKey: productItemKey, label }) => (
+                <li
+                  key={`${productItemKey}-${machineKey}`}
+                  className="flex flex-row items-center gap-3"
+                >
+                  <Icon iconName="check" />
+                  <span className="text-base text-white ">{label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <Button type="primary" width="100%" shouldRenderChevron>
+            Quero a maquininha
+          </Button>
         </div>
-
-        <Button type="primary" width="100%" shouldRenderChevron>
-          Quero a maquininha
-        </Button>
-      </div>
-    );
-  }, [
-    machineKey,
-    title,
-    subtitle,
-    description,
-    strong,
-    filteredProducts,
-    currentMachinePrice,
-  ]);
+      );
+    },
+    [
+      machineKey,
+      title,
+      subtitle,
+      description,
+      strong,
+      filteredProducts,
+      currentMachinePrice,
+    ]
+  );
 
   return (
     <MachineInformationContainer id={machineKey} {...props}>
@@ -387,19 +396,19 @@ const MachineInformation = ({
 
           <div className="flex px-8 tablet:hidden flex-col w-full gap-6">
             <div className={bigMachineImageContainerClassName}>
-              <MobileImageFront />
+              <Image alt="front" src={MobileImageFront} />
 
               <div className="absolute top-[1rem] right-[1rem]">
                 <Icon iconName="20-off" />
               </div>
             </div>
 
-            <div className="flex flex-row justify-center items-center w-full h-full gap-6">
+            <div className="flex flex-row justify-center items-center w-[65%] h-full gap-6">
               <div className={smallMachineImageContainerClassName}>
-                <MobileImageFrontSmall />
+                <Image alt="front-small" src={MobileImageFrontSmall} />
               </div>
               <div className={smallMachineImageContainerClassName}>
-                <MobileImageDiagonal />
+                <Image alt="front-diagonal" src={MobileImageDiagonal} />
               </div>
             </div>
           </div>
@@ -409,24 +418,26 @@ const MachineInformation = ({
 
             <div className="hidden tablet:flex flex-col w-full gap-6">
               <div className={bigMachineImageContainerClassName}>
-                <ImageFront />
+                <Image alt="smart-front-png" src={ImageFront} />
 
                 <div className="absolute top-[4rem] left-[-2rem]">
                   <Icon iconName="20-off" />
                 </div>
               </div>
 
-              <div className="flex flex-row justify-center items-center w-full gap-6">
+              <div className="flex flex-row justify-center items-center w-[65%] gap-6">
                 <div className={smallMachineImageContainerClassName}>
-                  <ImageFrontSmall />
+                  <Image alt="front-small" src={ImageFrontSmall} />
                 </div>
                 <div className={smallMachineImageContainerClassName}>
-                  <ImageDiagonal />
+                  <Image alt="front-diagonal" src={ImageDiagonal} />
                 </div>
               </div>
             </div>
 
-            {position === "right" ? renderMachineInformation() : null}
+            {position === "right"
+              ? renderMachineInformation(machineKey === "pro")
+              : null}
           </div>
         </div>
       </div>

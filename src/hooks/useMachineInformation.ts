@@ -1,22 +1,22 @@
 import {
-  MiniFrontSVG,
-  MiniFrontSmallSVG,
-  MiniDiagonalSVG,
-  ProFrontSVG,
-  ProFrontSmallSVG,
-  ProDiagonalSVG,
-  SmartFrontSVG,
-  SmartFrontSmallSVG,
-  SmartDiagonalSVG,
-  MobileProFrontSVG,
-  MobileProFrontSmallSVG,
-  MobileProDiagonalSVG,
-  MobileMiniDiagonalSVG,
-  MobileMiniFrontSVG,
-  MobileMiniFrontSmallSVG,
-  MobileSmartDiagonalSVG,
-  MobileSmartFrontSVG,
-  MobileSmartFrontSmallSVG,
+  SmartFrontPNG,
+  SmartFrontSmallPNG,
+  SmartDiagonalPNG,
+  MobileSmartDiagonalPNG,
+  MobileSmartFrontPNG,
+  MobileSmartFrontSmallPNG,
+  MiniFrontPNG,
+  MiniFrontSmallPNG,
+  MiniDiagonalPNG,
+  MobileMiniFrontPNG,
+  MobileMiniFrontSmallPNG,
+  MobileMiniDiagonalPNG,
+  ProFrontPNG,
+  ProFrontSmallPNG,
+  ProDiagonalPNG,
+  MobileProFrontPNG,
+  MobileProFrontSmallPNG,
+  MobileProDiagonalPNG,
 } from "@/assets/images/machines";
 import { useCallback } from "react";
 
@@ -99,12 +99,12 @@ export const products: Array<MachineProductItem> = [
 export const mapSVGByMachineKey = (key: MachineKey) => {
   switch (key) {
     case "mini":
-      return MobileMiniFrontSVG;
+      return MobileMiniFrontPNG;
     case "pro":
-      return MobileProFrontSVG;
+      return MobileProFrontPNG;
     case "smart":
     default:
-      return MobileSmartFrontSVG;
+      return MobileSmartFrontPNG;
   }
 };
 
@@ -121,31 +121,31 @@ const getAllSvgImagesByMachineKey = (key: MachineKey): MachineImages => {
   switch (key) {
     case "mini":
       return {
-        ImageFront: MiniFrontSVG,
-        ImageFrontSmall: MiniFrontSmallSVG,
-        ImageDiagonal: MiniDiagonalSVG,
-        MobileImageFront: MobileMiniFrontSVG,
-        MobileImageFrontSmall: MobileMiniFrontSmallSVG,
-        MobileImageDiagonal: MobileMiniDiagonalSVG,
+        ImageFront: MiniFrontPNG,
+        ImageFrontSmall: MiniFrontSmallPNG,
+        ImageDiagonal: MiniDiagonalPNG,
+        MobileImageFront: MobileMiniFrontPNG,
+        MobileImageFrontSmall: MobileMiniFrontSmallPNG,
+        MobileImageDiagonal: MobileMiniDiagonalPNG,
       };
     case "pro":
       return {
-        ImageFront: ProFrontSVG,
-        ImageFrontSmall: ProFrontSmallSVG,
-        ImageDiagonal: ProDiagonalSVG,
-        MobileImageFront: MobileProFrontSVG,
-        MobileImageFrontSmall: MobileProFrontSmallSVG,
-        MobileImageDiagonal: MobileProDiagonalSVG,
+        ImageFront: ProFrontPNG,
+        ImageFrontSmall: ProFrontSmallPNG,
+        ImageDiagonal: ProDiagonalPNG,
+        MobileImageFront: MobileProFrontPNG,
+        MobileImageFrontSmall: MobileProFrontSmallPNG,
+        MobileImageDiagonal: MobileProDiagonalPNG,
       };
     case "smart":
     default:
       return {
-        ImageFront: SmartFrontSVG,
-        ImageFrontSmall: SmartFrontSmallSVG,
-        ImageDiagonal: SmartDiagonalSVG,
-        MobileImageFront: MobileSmartFrontSVG,
-        MobileImageFrontSmall: MobileSmartFrontSmallSVG,
-        MobileImageDiagonal: MobileSmartDiagonalSVG,
+        ImageFront: SmartFrontPNG,
+        ImageFrontSmall: SmartFrontSmallPNG,
+        ImageDiagonal: SmartDiagonalPNG,
+        MobileImageFront: MobileSmartFrontPNG,
+        MobileImageFrontSmall: MobileSmartFrontSmallPNG,
+        MobileImageDiagonal: MobileSmartDiagonalPNG,
       };
   }
 };
