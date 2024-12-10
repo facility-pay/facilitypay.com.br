@@ -137,7 +137,7 @@ const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
 };
 
 const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
-  const indexAsAString = index.toString();
+  const indexAsAString = index?.toString();
 
   switch (indexAsAString) {
     case "0":
@@ -164,7 +164,10 @@ const MachineInformation = ({
   setSelectedIndex,
   ...props
 }: MachineInformationProps) => {
-  const selectedItem = mapIndexToItemKey(selectedIndex);
+  const selectedItem = useMemo(
+    () => mapIndexToItemKey(selectedIndex),
+    [selectedIndex]
+  );
   const { getMachineInformationByKey } = useMachineInformation();
 
   const currentMachinePrice = useMemo(() => {
@@ -302,6 +305,7 @@ const MachineInformation = ({
     (isFeatured?: boolean) => {
       const blackFridayPrice = currentMachinePrice.black[machineKey];
       const previousPrice = currentMachinePrice.normal[machineKey];
+      const currentLink = items?.[selectedIndex]?.link ?? "/";
 
       return (
         <div className="flex flex-col w-full gap-4">
@@ -346,7 +350,7 @@ const MachineInformation = ({
             type="primary"
             width="100%"
             shouldRenderChevron
-            href={items[selectedIndex]?.link}
+            href={currentLink}
           >
             Quero a maquininha
           </Button>
@@ -354,6 +358,7 @@ const MachineInformation = ({
       );
     },
     [
+      selectedIndex,
       machineKey,
       title,
       subtitle,
