@@ -12,8 +12,8 @@ const testimonials: Array<TestimonialItem> = [
       "https://gravatar.com/avatar/95b7a51bb2fa2abe710b99a493feada9?s=400&d=robohash&r=x",
     title: "Melhor empresa do mercado atualmente!",
     description:
-      "Obrigado FacilitPay! Ótimo atendimento, muito paciente a atendente, pena que esqueci o nome dela para mencioná-la aqui, mas o meu muito obrigado é geral para todos que já me atenderam! ❤️",
-    name: "Roberto G. R.",
+      "Tive uma dúvida em relação a uma venda e fui prontamente atendido e tive a dúvida esclarecida. Obrigado pelo suporte, como sempre um ótimo atendimento!",
+    name: "@overpowerinformatica",
     rate: 5,
   },
   {
@@ -21,8 +21,8 @@ const testimonials: Array<TestimonialItem> = [
       "https://gravatar.com/avatar/4b633e9e7d56f47baa6ce0f0a25f1e27?s=400&d=robohash&r=x",
     title: "As melhores taxas no Brasil atualmente!",
     description:
-      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
-    name: "Maria G. R.",
+      "Obrigado FacilitPay! Ótimo atendimento, muito paciente a atendente, pena que esqueci o nome dela para mencioná-la aqui, mas o meu muito obrigado é geral para todos que já me atenderam! ❤️",
+    name: "@marlenemiguelda",
     rate: 3,
   },
   {
@@ -30,71 +30,8 @@ const testimonials: Array<TestimonialItem> = [
       "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
     title: "Melhor taxa e o melhor atendimento sem dúvida!",
     description:
-      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
-    name: "Ricardo G. R.",
-    rate: 5,
-  },
-  {
-    imageUrl:
-      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
-    title: "Melhor taxa e o melhor atendimento sem dúvida!",
-    description:
-      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
-    name: "José G. R.",
-    rate: 5,
-  },
-  {
-    imageUrl:
-      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
-    title: "Melhor taxa e o melhor atendimento sem dúvida!",
-    description:
-      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
-    name: "Fernando G. R.",
-    rate: 5,
-  },
-  {
-    imageUrl:
-      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
-    title: "Melhor taxa e o melhor atendimento sem dúvida!",
-    description:
-      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
-    name: "Ferran G. R.",
-    rate: 5,
-  },
-  {
-    imageUrl:
-      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
-    title: "Melhor taxa e o melhor atendimento sem dúvida!",
-    description:
-      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
-    name: "Raphinha G. R.",
-    rate: 5,
-  },
-  {
-    imageUrl:
-      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
-    title: "Melhor taxa e o melhor atendimento sem dúvida!",
-    description:
-      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
-    name: "Jorge G. R.",
-    rate: 5,
-  },
-  {
-    imageUrl:
-      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
-    title: "Melhor taxa e o melhor atendimento sem dúvida!",
-    description:
-      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
-    name: "Jamilson G. R.",
-    rate: 5,
-  },
-  {
-    imageUrl:
-      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
-    title: "Melhor taxa e o melhor atendimento sem dúvida!",
-    description:
-      "Curabitur consequat sem augue atia consectetur curabitur, duis elit nunce convallis interdum aliquam at webin accumsan ac dictumst faucibus.",
-    name: "Bruno G. R.",
+      "Acabei de ser atendido por Eduardo do Suporte atendimento, bom, mas ano passado tive um problema com eles na parte do pós-venda devido a demora de responder via Whatsapp, porém isso foi resolvido já, e quando precisei foi rápido o suporte e pôs-vendas! Obrigado!",
+    name: "@jgsfotografias",
     rate: 5,
   },
 ];

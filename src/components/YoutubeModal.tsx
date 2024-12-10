@@ -7,21 +7,13 @@ type YoutubeModalProps = {
 };
 
 const YoutubeModal = ({ isOpened, onClose, videoId }: YoutubeModalProps) => {
-  useEffect(() => {
-    document.body.style.overflow = isOpened ? "hidden" : "auto";
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpened]);
-
-  if (!isOpened) return null;
-
   const handleBackdropClick = (e: unknown) => {
     if ((e as { target: { id: string } }).target.id === "backdrop") {
       onClose();
     }
   };
+
+  if (!isOpened) return null;
 
   return (
     <div

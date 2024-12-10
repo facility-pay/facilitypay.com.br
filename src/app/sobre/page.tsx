@@ -60,22 +60,19 @@ const About = () => {
                 funcionamos.
               </span>
               <span className="text-description">
-                Lorem ipsum tempor nibh tincidunt feugiat placerat, risus
-                pretium maecenas elit amet nunc, euismod nisi taciti erns
-                himenaeos sociosqu. id torquent sem fringilla dui dictum urna
-                elementum amet, egestas.
+                A FacilityPay nasceu com um propósito bem definido: oferecer
+                acesso a taxas justas e acessíveis para negócios de todos os
+                portes, sejam eles pequenos, médios ou grandes.
               </span>
               <span className="text-description">
-                Taciti placerat pretium ipsum tellus augue ad, pharetra vitae
-                taciti potenti nostra auctor nibh. orci faucibus orci lorem
-                tempor justo dapibus vulputate ornare, phasellus sagittis semper
-                eros risus donec mattis.
-              </span>
-              <span className="text-description">
-                Lorem ipsum tempor nibh tincidunt feugiat placerat, risus
-                pretium maecenas elit amet nunc, euismod nisi taciti erns
-                himenaeos sociosqu. id torquent sem fringilla dui dictum urna
-                elementum amet, egestas.
+                Identificamos uma grande lacuna no mercado de pagamentos: a
+                falta de transparência. Muitas empresas oferecem taxas que
+                dependem de metas de faturamento ou têm validade limitada, mas
+                escondem essas condições nas “letrinhas miúdas”. Na FacilityPay,
+                fazemos diferente: todas as nossas condições são claras e sem
+                surpresas, desde o momento da compra da sua maquininha. Nosso
+                compromisso é garantir que seu negócio tenha sempre as melhores
+                taxas, sem complicação.
               </span>
             </div>
           </div>
@@ -95,7 +92,7 @@ const About = () => {
             Nossa trajetória
           </span>
           <span className="text-base text-description text-center">
-            Taciti placerat pretium ipsum tellus augue ad dapibus vulputate
+            Conheça como chegamos até aqui
           </span>
         </div>
 
@@ -109,22 +106,17 @@ const About = () => {
               </div>
             </div>
             <span className="text-description">
-              A FacilityPay nasceu há mais de dois anos, no mercado da{" "}
-              <strong>Grande Vitória, no Espírito Santo</strong>, com outra
-              marca de máquinas. Em 2023, fizemos uma parceria com a PagSeguro,
-              uma das líderes em serviços financeiros e soluções de pagamento no
-              Brasil.
+              A FacilityPay foi fundada em <strong>Vitória, ES</strong>, em
+              2016, com o objetivo de trazer uma nova opção em meios de
+              pagamento para a região. A adesão dos capixabas foi rápida, e o
+              crescimento da empresa foi exponencial.
             </span>
             <span className="text-description">
-              Com isso, ampliamos nossa atuação para todo o território nacional,
-              levando nossas maquininhas para milhares de clientes. Essa
-              parceria também traz benefícios para você, como frete grátis 100%
-              seguro, garantia vitalícia, troca de bobina grátis e atendimento
-              24 horas por dia, todos os dias da semana.
-            </span>
-            <span className="text-description">
-              Mas não se preocupe: as taxas são exclusivas da FacilityPay, uma
-              das menores do mercado.
+              Em 2023, surgiu a oportunidade de firmar uma parceria com a
+              Pagseguro, uma das maiores empresas de pagamentos do Brasil. A
+              partir dessa colaboração, ampliamos nossas operações para todo o
+              país, oferecendo as menores taxas no parcelado do mercado, sempre
+              com transparência e responsabilidade.
             </span>
           </div>
           <div className="hidden desktop:block relative flex-1 flex justify-start">

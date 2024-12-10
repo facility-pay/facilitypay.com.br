@@ -19,6 +19,7 @@ import Image from "next/image";
 
 type MachineCardProps = MachineItem & {
   buttonCopy?: string;
+  link?: string;
 };
 
 const MachineCard = ({
@@ -28,6 +29,7 @@ const MachineCard = ({
   featured,
   disabledProducts,
   buttonCopy = "Pedir agora",
+  link = "/",
 }: MachineCardProps) => {
   const MachineImage = mapSVGByMachineKey(itemKey);
 
@@ -95,7 +97,7 @@ const MachineCard = ({
         )}
       </ul>
 
-      <Button type="primary" className="my-9">
+      <Button type="primary" className="my-9" href={link}>
         {buttonCopy}
         <Icon
           iconName="chevron-right"
@@ -107,33 +109,32 @@ const MachineCard = ({
 };
 
 type SelectItemProps = {
-  itemKey: "express" | "profit" | "spot" | "light";
+  itemKey: "profit" | "spot" | "light";
   icon: IconName;
   label: string;
   isSelected?: boolean;
+  link?: string;
   onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
 };
 
 const items: Array<SelectItemProps> = [
   {
-    itemKey: "express",
-    icon: "on-time",
-    label: "na hora",
-  },
-  {
     itemKey: "profit",
     icon: "one-day",
     label: "um dia depois",
+    link: "https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c",
   },
   {
     itemKey: "spot",
     icon: "one-day",
     label: "um dia depois",
+    link: "https://afiliados.facilitypay.com.br/checkout/3ad884d0-d58d-4adc-b1e2-61dcb97d47e0",
   },
   {
     itemKey: "light",
     icon: "one-day",
     label: "um dia depois",
+    link: "https://afiliados.facilitypay.com.br/checkout/57bfc785-60fb-482a-8798-c3923a2f0643",
   },
 ];
 
@@ -155,18 +156,6 @@ type Taxes = {
 const machinePricesInformation: {
   [key in SelectItemProps["itemKey"]]: Prices;
 } = {
-  express: {
-    black: {
-      mini: 179.91,
-      pro: 359.91,
-      smart: 422.91,
-    },
-    normal: {
-      mini: 247.9,
-      pro: 447.9,
-      smart: 547.9,
-    },
-  },
   profit: {
     black: {
       mini: 179.91,
@@ -206,11 +195,6 @@ const machinePricesInformation: {
 };
 
 const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
-  express: {
-    debit: 1.39,
-    credit: 3.51,
-    credit12x: 10.55,
-  },
   profit: {
     debit: 1.45,
     credit: 3.29,
@@ -233,15 +217,13 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 
   switch (indexAsAString) {
     case "0":
-      return "express";
-    case "1":
       return "profit";
-    case "2":
+    case "1":
       return "spot";
-    case "3":
+    case "2":
       return "light";
     default:
-      return "express";
+      return "profit";
   }
 };
 
@@ -405,11 +387,13 @@ const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
             {machines.map((machine) => {
               const prevPrice = currentMachinePrice.normal[machine.itemKey];
               const currentPrice = currentMachinePrice.black[machine.itemKey];
+              const currentLink = items[selectedIndex]?.link;
 
               return (
                 <MachineCard
                   key={machine.itemKey}
                   {...machine}
+                  link={currentLink}
                   buttonCopy={buttonCopy}
                   currValue={currentPrice}
                   prevValue={prevPrice}

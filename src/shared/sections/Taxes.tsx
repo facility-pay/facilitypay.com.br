@@ -23,6 +23,7 @@ const Taxes = () => {
           <Button
             type="primary"
             className="max-w-full min-w-full tablet:min-w-96"
+            href="/planos"
           >
             Ver todos os planos e taxas
             <Icon

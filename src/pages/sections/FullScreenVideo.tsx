@@ -42,9 +42,9 @@ const FullScreenVideo = () => {
     <section className="relative overflow-x-hidden h-[70vh] tablet:h-[100vh]">
       <LoopBanner />
       <div
-        className="absolute flex flex-col justify-center items-center gap-8 inset-0 bg-local bg-no-repeat bg-full-video-screen bg-[length:80%]"
+        className="absolute flex flex-col max-w-[100vw] overflow-x-hidden justify-center items-center gap-8 inset-0 bg-local bg-no-repeat bg-mobile-full-video-screen desktop:bg-full-video-screen bg-[length:80%]"
         style={{
-          backgroundPosition: "0 0, 50%",
+          backgroundPosition: "0 0, 0%",
           backgroundSize: "auto, cover",
           backgroundAttachment: "scroll, fixed",
         }}

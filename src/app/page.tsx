@@ -141,8 +141,9 @@ export default function Home() {
                 </p>
               </div>
               <Button
-                className="w-[100vw] absolute left-[2rem] bottom-[-4.5rem] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
+                className="w-[100vw] absolute left-[3.5rem] bottom-[-4.5rem] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
                 type="primary"
+                href="https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c"
               >
                 Aproveitar taxas
                 <Icon
@@ -188,7 +189,11 @@ export default function Home() {
 
           <div className="flex flex-col tablet:flex-row gap-4 items-center justify-between pt-0 tablet:pt-20 w-full">
             <span className="opacity-0">Saiba mais</span>
-            <Button type="primary" width="100%">
+            <Button
+              type="primary"
+              width="100%"
+              href="https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c"
+            >
               Adquirir maquininha
               <Icon
                 iconName="chevron-right"

@@ -47,6 +47,7 @@ import PluxeeSVG from "@/assets/card_brands/pluxee.svg";
 import TicketSVG from "@/assets/card_brands/ticket.svg";
 import VisaSVG from "@/assets/card_brands/visa.svg";
 import VrSVG from "@/assets/card_brands/vr.svg";
+import PixSVG from "@/assets/card_brands/pix.svg";
 
 import FacebookSVG from "@/assets/icons/facebook.svg";
 import InstagramSVG from "@/assets/icons/instagram.svg";
@@ -112,7 +113,8 @@ export type IconName =
   | "path"
   | "on-time"
   | "context"
-  | "promo";
+  | "promo"
+  | "pix";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const icons: { [key in IconName]: any } = {
@@ -171,6 +173,7 @@ const icons: { [key in IconName]: any } = {
   "on-time": OnTimeSVG,
   context: ContextSVG,
   promo: PromoSVG,
+  pix: PixSVG,
 };
 
 type IconProps = {

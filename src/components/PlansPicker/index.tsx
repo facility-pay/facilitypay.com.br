@@ -7,7 +7,7 @@ import { usePrevNextButtons } from "@/hooks/usePrevNextButtons";
 import "./embla.css";
 
 export type Plan = {
-  itemKey: "express" | "profit" | "spot" | "light";
+  itemKey: "profit" | "spot" | "light";
   label: string;
   icon: IconName;
   children?: ReactNode;
@@ -34,7 +34,7 @@ const PlanItem = ({
   isDark = false,
 }: PlanItemProps) => {
   const defaultClassName =
-    "plans__embla__slide !min-w-[inherit] tablet:w-[270px] desktop:w-[270px] flex flex-col gap-6";
+    "plans__embla__slide !min-w-[inherit] tablet:w-[360px] desktop:w-[360px] flex flex-col gap-6";
   const notSelectedClassName = "opacity-0 desktop:opacity-100";
 
   const defaultContainerClassName =
@@ -136,7 +136,7 @@ const PlanPicker = forwardRef<EmblaViewportRefType, PlanPickerProps>(
     {
       emblaApi,
       items = [],
-      selectedIndex,
+      selectedIndex = 1,
       onSelectItem,
       bordered,
       hasBackground = true,

@@ -17,15 +17,15 @@ const sections: FooterSection = [
     subSections: [
       {
         name: "Planos e Taxas",
+        href: "/planos",
       },
       {
         name: "Sobre nós",
+        href: "/sobre",
       },
       {
         name: "Indique e ganhe",
-      },
-      {
-        name: "Blog",
+        href: "/indique",
       },
     ],
   },
@@ -34,12 +34,15 @@ const sections: FooterSection = [
     subSections: [
       {
         name: "Facility Mini",
+        href: "/maquininhas#mini",
       },
       {
         name: "Facility Pro",
+        href: "/maquininhas#pro",
       },
       {
         name: "Facility Smart",
+        href: "/maquininhas#smart",
       },
     ],
   },

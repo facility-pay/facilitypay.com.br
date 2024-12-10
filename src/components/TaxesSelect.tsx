@@ -5,7 +5,7 @@ import { useSelectedIndex } from "@/hooks/useSelectedIndex";
 import PlanPicker from "./PlansPicker";
 
 type SelectItemProps = {
-  itemKey: "express" | "profit" | "spot" | "light";
+  itemKey: "profit" | "spot" | "light";
   icon: IconName;
   label: string;
   isSelected?: boolean;
@@ -13,11 +13,6 @@ type SelectItemProps = {
 };
 
 const items: Array<SelectItemProps> = [
-  {
-    itemKey: "express",
-    icon: "on-time",
-    label: "na hora",
-  },
   {
     itemKey: "profit",
     icon: "one-day",
@@ -42,11 +37,6 @@ type Taxes = {
 };
 
 const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
-  express: {
-    debit: 1.39,
-    credit: 3.51,
-    credit12x: 10.55,
-  },
   profit: {
     debit: 1.45,
     credit: 3.29,
@@ -66,18 +56,15 @@ const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
 
 const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
   const indexAsAString = index.toString();
-
   switch (indexAsAString) {
     case "0":
-      return "express";
-    case "1":
       return "profit";
-    case "2":
+    case "1":
       return "spot";
-    case "3":
+    case "2":
       return "light";
     default:
-      return "express";
+      return "profit";
   }
 };
 

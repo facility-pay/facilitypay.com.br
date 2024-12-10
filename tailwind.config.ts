@@ -6,15 +6,19 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/shared/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/assets/**/*.{js,ts,jsx,tsx,mdx,svg}",
+    "./src/assets/**/*.{js,ts,jsx,tsx,mdx,svg,png}",
     "./src/hooks/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     backgroundImage: {
       "full-video-screen":
-        "linear-gradient(#0006,#0006), url(https://cdn.prod.website-files.com/65c1399ac999a342139b5069/660492b660901f344d12ee80_Photo_BG_POS_Beauty.webp)",
+        "linear-gradient(#0006,#0006), url('../assets/images/video-thumb.png')",
+      "mobile-full-video-screen":
+        "linear-gradient(#0006,#0006), url('../assets/images/mobile-video-thumb.png')",
+      "indicate-participate":
+        "linear-gradient(#0006,#0006), url('../assets/images/participate.png')",
       "home-section3":
-        "linear-gradient(#00000090,#00000095), url(https://cdn.prod.website-files.com/65c1399ac999a342139b5069/660492b660901f344d12ee80_Photo_BG_POS_Beauty.webp)",
+        "linear-gradient(#0006,#0006), url('../assets/images/advantages.png')",
       section1: "linear-gradient(#E0E8EA, #FFFFFF, #E4EBED)",
       simulator: "linear-gradient(#EFF4F848, #D5DFE748)",
       "loop-banner": "linear-gradient(#E6ECF265, #E6ECF220)",

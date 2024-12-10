@@ -9,9 +9,10 @@ type UseSelectedIndexType = {
 export const useSelectedIndex = (
   emblaApi: EmblaCarouselType | undefined
 ): UseSelectedIndexType => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(1);
 
   const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
+    console.log(emblaApi.selectedScrollSnap());
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, []);
 

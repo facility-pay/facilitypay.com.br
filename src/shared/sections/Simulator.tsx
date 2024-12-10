@@ -13,18 +13,13 @@ import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
 import ContainerWithSimpleQuotes from "@/containers/ContainerWithSimpleQuotes";
 
 type SelectItemProps = {
-  itemKey: "express" | "profit" | "spot" | "light";
+  itemKey: "profit" | "spot" | "light";
   icon: IconName;
   label: string;
   isSelected?: boolean;
+  link?: string;
   onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
 };
-
-const expressTaxes = [
-  3.51, 4.31, 4.9, 5.49, 6.08, 6.66, 7.74, 8.31, 8.88, 9.45, 10, 10.55, 11.11,
-  11.65, 12.19, 12.72, 13.26, 13.79,
-];
-
 const profitTaxes = [
   2.96, 3.92, 4.47, 5.01, 5.56, 6.09, 6.67, 7.2, 7.72, 8.24, 8.76, 9.28, 9.78,
   10.29, 10.79, 11.28, 11.78, 12.27,
@@ -42,24 +37,22 @@ const lightTaxes = [
 
 const items: Array<SelectItemProps> = [
   {
-    itemKey: "express",
-    icon: "on-time",
-    label: "na hora",
-  },
-  {
     itemKey: "profit",
     icon: "one-day",
     label: "um dia depois",
+    link: "https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c",
   },
   {
     itemKey: "spot",
     icon: "one-day",
     label: "um dia depois",
+    link: "https://afiliados.facilitypay.com.br/checkout/3ad884d0-d58d-4adc-b1e2-61dcb97d47e0",
   },
   {
     itemKey: "light",
     icon: "one-day",
     label: "um dia depois",
+    link: "https://afiliados.facilitypay.com.br/checkout/57bfc785-60fb-482a-8798-c3923a2f0643",
   },
 ];
 
@@ -82,15 +75,13 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 
   switch (indexAsAString) {
     case "0":
-      return "express";
-    case "1":
       return "profit";
-    case "2":
+    case "1":
       return "spot";
-    case "3":
+    case "2":
       return "light";
     default:
-      return "express";
+      return "profit";
   }
 };
 
@@ -111,8 +102,6 @@ const SimulatorSection = () => {
 
   const [facilityTaxes, competitorTaxes] = useMemo(() => {
     switch (selectedTax) {
-      case "express":
-        return [expressTaxes, taxesD0Competitor];
       case "profit":
         return [profitTaxes, taxesD1Competitor];
       case "spot":
@@ -286,6 +275,7 @@ const SimulatorSection = () => {
             <Button
               type="primary"
               className="max-w-full min-w-full tablet:min-w-96"
+              href={items[selectedIndex]?.link}
             >
               Adquirir maquininha
               <Icon

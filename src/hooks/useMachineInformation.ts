@@ -66,8 +66,7 @@ const machines: Array<MachineItem> = [
     title: "Facility Pro",
     subtitle: "Melhor custo benefício",
     description:
-      "Lorem ipsum tempor nibh tincidunt feugiat placerat, risus pretium maecenas elit amet nunc, euismod nisi taciti erns himenaeos sociosqu. id torquent sem fringilla dui dictum urna elementum amet, egestas. Taciti placerat pretium ipsum tellus augue ad, pharetra vitae taciti potenti nostra auctor nibh. orci faucibus orci lorem tempor justo dapibus vulputate ornare, phasellus sagittis semper eros risus donec mattis. Nunc urna conubia platea senectus:",
-    strong: "Nunc urna conubia platea senectus:",
+      "A Facility Pro é a maquininha de cartão que está sempre com você! Versátil, resistente e ao mesmo tempo supermoderna, ela permite que você receba suas vendas no débito, crédito ou voucher com rapidez e total agilidade. E o melhor: com garantia vitalícia, ela é a parceira ideal para o sucesso do seu negócio.",
     prevValue: 529,
     currValue: 429.8,
     featured: true,
@@ -78,8 +77,7 @@ const machines: Array<MachineItem> = [
     title: "Facility Smart",
     subtitle: "Mais completa e tenológica",
     description:
-      "Lorem ipsum tempor nibh tincidunt feugiat placerat, risus pretium maecenas elit amet nunc, euismod nisi taciti erns himenaeos sociosqu. id torquent sem fringilla dui dictum urna elementum amet, egestas. Taciti placerat pretium ipsum tellus augue ad, pharetra vitae taciti potenti nostra auctor nibh. orci faucibus orci lorem tempor justo dapibus vulputate ornare, phasellus sagittis semper eros risus donec mattis. Nunc urna conubia platea senectus:",
-    strong: "Nunc urna conubia platea senectus:",
+      "A Facility Smart é a maquininha ideal para quem busca modernidade e eficiência. Com sistema Android, tela touch intuitiva e conexão via Wi-Fi ou chip, ela garante praticidade em qualquer tipo de venda.\n\nAlém de versátil, permite emitir comprovantes digitais e acompanhar vendas em tempo real, tudo em um único dispositivo pensado para facilitar seu dia a dia.",
     prevValue: 629,
     currValue: 519.9,
   },

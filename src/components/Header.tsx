@@ -30,14 +30,16 @@ const options: NavOption[] = [
 
 const Header = () => {
   return (
-    <header className="relative max-w-full mx-auto py-6">
+    <header className="relative z-50 max-w-full mx-auto py-6">
       <div className="min-w-full flex flex-row items-center justify-evenly">
         <div className="flex flex-row items-center justify-between">
-          <Image
-            className="border-r border-grey-divider pr-4 desktop:pr-8"
-            alt="facility-logo"
-            src={FacilityLogo}
-          />
+          <Link href="/">
+            <Image
+              className="border-r border-grey-divider pr-4 desktop:pr-8 cursor-pointer"
+              alt="facility-logo"
+              src={FacilityLogo}
+            />
+          </Link>
           <div className="relative hidden desktop:block pl-4 desktop:pl-8">
             <span className="group relative font-semibold text-base text-gray-dark">
               Atendimento
@@ -131,12 +133,14 @@ const Header = () => {
               <Button
                 className="min-w-full desktop:min-w-[180px]"
                 type="primary"
+                href="https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c"
               >
                 Pedir agora
               </Button>
               <Button
                 className="min-w-full desktop:min-w-[100px]"
                 type="secondary"
+                href="https://portal.facilitypay.com.br/login"
               >
                 Entrar
               </Button>
@@ -175,7 +179,12 @@ const Header = () => {
                     <span className="font-bold text-sm text-description">
                       Sou cliente
                     </span>
-                    <button className="group/support flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg">
+                    <Link
+                      href="http://wa.me/5527998159001"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/support flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg"
+                    >
                       <Icon
                         iconName="true-whatsapp"
                         color="#3DBE64"
@@ -188,13 +197,18 @@ const Header = () => {
                       <span className="font-semibold text-whatsapp group-hover/support:text-white">
                         Suporte
                       </span>
-                    </button>
+                    </Link>
                   </div>
                   <div className="flex flex-col gap-2.5">
                     <span className="font-bold text-sm text-description">
                       Não sou cliente
                     </span>
-                    <button className="group/comercial flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg">
+                    <Link
+                      href="http://wa.me/5527998126432"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/comercial flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg"
+                    >
                       <Icon
                         iconName="true-whatsapp"
                         color="#3DBE64"
@@ -207,7 +221,7 @@ const Header = () => {
                       <span className="font-semibold text-whatsapp group-hover/comercial:text-white">
                         Comercial
                       </span>
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -242,12 +256,14 @@ const Header = () => {
               <Button
                 className="min-w-full desktop:min-w-[180px]"
                 type="primary"
+                href="https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c"
               >
                 Pedir agora
               </Button>
               <Button
                 className="min-w-full desktop:min-w-[100px]"
                 type="secondary"
+                href="https://portal.facilitypay.com.br/login"
               >
                 Entrar
               </Button>

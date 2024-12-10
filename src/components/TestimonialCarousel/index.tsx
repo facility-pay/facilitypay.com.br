@@ -14,7 +14,7 @@ export type TestimonialItem = {
 
 type TestimonialProps = TestimonialItem;
 
-const Testimonial = ({ description }: TestimonialProps) => {
+const Testimonial = ({ name, description }: TestimonialProps) => {
   return (
     <div className="embla__slide drop-shadow-[2px_8px_20px_rgba(0,0,0,0.03)]">
       <li className="flex flex-col gap-6 h-[360px] tablet:h-[440px] desktop:h-[440px] rounded-2xl py-10 px-6 bg-white">
@@ -23,7 +23,7 @@ const Testimonial = ({ description }: TestimonialProps) => {
             <Icon iconName="instagram-radial" />
           </div>
           <span className="font-semibold text-sm desktop:text-base text-black">
-            @bruno_frigeri
+            {name}
           </span>
         </div>
         <span className="text-sm desktop:text-base text-description">
