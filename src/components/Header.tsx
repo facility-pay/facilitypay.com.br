@@ -3,6 +3,7 @@ import Image from "next/image";
 import Icon from "./Icon";
 import Link from "next/link";
 import Button from "./Button";
+import { usePathname } from "next/navigation";
 
 type NavOption = {
   label: string;
@@ -29,6 +30,10 @@ const options: NavOption[] = [
 ];
 
 const Header = () => {
+  const pathname = usePathname();
+
+  const getIsSelected = (currentPath: string) => currentPath === pathname;
+
   return (
     <header className="relative z-50 max-w-full mx-auto py-6">
       <div className="min-w-full flex flex-row items-center justify-evenly">
@@ -41,7 +46,7 @@ const Header = () => {
             />
           </Link>
           <div className="relative hidden desktop:block pl-4 desktop:pl-8">
-            <span className="group relative font-semibold text-base text-gray-dark">
+            <span className="group relative font-semibold text-base text-gray-dark cursor-pointer">
               Atendimento
               <div className="absolute top-[100%] left-[40%] pt-1">
                 <Icon iconName="chevron-down" />
@@ -106,6 +111,7 @@ const Header = () => {
           <nav className="mt-0 min-w-fit relative bg-transparent flex flex-row items-center py-0">
             {options.map(({ href, label }, index) => {
               const isLast = index === options.length - 1;
+              const isSelected = getIsSelected(href);
 
               return (
                 <div
@@ -121,7 +127,10 @@ const Header = () => {
                   />
                   <Link
                     href={href}
-                    className="font-semibold text-base text-gray-dark group-hover/option:text-secondary group-hover/option:underline"
+                    className={[
+                      "font-semibold text-base text-gray-dark group-hover/option:text-secondary group-hover/option:underline",
+                      isSelected ? "text-secondary" : "",
+                    ].join(" ")}
                   >
                     {label}
                   </Link>

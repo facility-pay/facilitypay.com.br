@@ -11,14 +11,14 @@ import { moneyFormatter } from "@/utils/money";
 import { LegacyRef, useCallback, useMemo } from "react";
 import Icon, { IconName } from "@/components/Icon";
 import Button from "@/components/Button";
-import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
-import { useSelectedIndex } from "@/hooks/useSelectedIndex";
+import { EmblaViewportRefType } from "embla-carousel-react";
 import PlanPicker, { Plan } from "@/components/PlansPicker";
 import MachineInformationContainer, {
   MachineInformationContainerProps,
 } from "./container";
 import Image from "next/image";
 import Featured from "@/components/Featured";
+import { EmblaCarouselType } from "embla-carousel";
 
 type MachineInformationProps = Pick<
   MachineInformationContainerProps,
@@ -26,6 +26,10 @@ type MachineInformationProps = Pick<
 > & {
   machineKey: MachineItem["itemKey"];
   position?: "right" | "left";
+  emblaApi?: EmblaCarouselType;
+  emblaRef?: EmblaViewportRefType;
+  selectedIndex: number;
+  setSelectedIndex: (index: number) => void;
 };
 
 type SelectItemProps = {
@@ -154,17 +158,12 @@ const mapKeyToLabel = (key: SelectItemProps["itemKey"]) => {
 const MachineInformation = ({
   machineKey,
   position = "left",
+  emblaApi,
+  emblaRef,
+  selectedIndex,
+  setSelectedIndex,
   ...props
 }: MachineInformationProps) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    slidesToScroll: "auto",
-    loop: false,
-    breakpoints: {
-      "(min-width: 768px)": { active: false },
-    },
-  });
-
-  const { selectedIndex, setSelectedIndex } = useSelectedIndex(emblaApi);
   const selectedItem = mapIndexToItemKey(selectedIndex);
   const { getMachineInformationByKey } = useMachineInformation();
 

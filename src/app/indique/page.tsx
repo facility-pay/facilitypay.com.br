@@ -3,15 +3,11 @@
 import Button from "@/components/Button";
 import Icon, { IconName } from "@/components/Icon";
 import ContainerWithSimpleQuotes from "@/containers/ContainerWithSimpleQuotes";
-import ImagesContainer from "@/containers/ImagesContainer";
 import Layout from "@/containers/Layout";
 import Image from "next/image";
 import { useMemo } from "react";
 import ModelInticate from "@/assets/images/indicate.png";
 import Link from "next/link";
-import useEmblaCarousel from "embla-carousel-react";
-import { useDotButton } from "@/hooks/useDotButton";
-import { usePrevNextButtons } from "@/hooks/usePrevNextButtons";
 import LoopBanner from "@/components/LoopBanner";
 
 type MachineAdvantageItem = {
@@ -64,23 +60,11 @@ const machinesAdvantages: Array<MachineAdvantageItem> = [
 ];
 
 const Indique = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ slidesToScroll: "auto" });
-
   const renderLoopBanner = () => (
     <div className="overflow-x-hidden">
       <LoopBanner />
     </div>
   );
-
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi);
-
-  const {
-    prevBtnDisabled,
-    nextBtnDisabled,
-    onPrevButtonClick,
-    onNextButtonClick,
-  } = usePrevNextButtons(emblaApi);
 
   const section1ClassName = useMemo(() => {
     const defaultClass =
@@ -312,7 +296,7 @@ const Indique = () => {
                     className="w-full text-base text-white outline-0 outline-none bg-transparent"
                     placeholder="Digite seu nome completo..."
                     value=""
-                    onChange={(event) => {}}
+                    onChange={() => {}}
                   />
                 </div>
               </div>
@@ -326,7 +310,7 @@ const Indique = () => {
                     className="w-full text-base text-white outline-0 outline-none bg-transparent"
                     placeholder="Digite seu melhor e-mail..."
                     value=""
-                    onChange={(event) => {}}
+                    onChange={() => {}}
                   />
                 </div>
               </div>
@@ -342,7 +326,7 @@ const Indique = () => {
                     className="w-full text-base text-white outline-0 outline-none bg-transparent"
                     placeholder="(99) 99999-9999"
                     value=""
-                    onChange={(event) => {}}
+                    onChange={() => {}}
                   />
                 </div>
               </div>
@@ -356,7 +340,7 @@ const Indique = () => {
                     className="w-full text-base text-white outline-0 outline-none bg-transparent"
                     placeholder="Digite seu CPF ou CNPJ..."
                     value=""
-                    onChange={(event) => {}}
+                    onChange={() => {}}
                   />
                 </div>
               </div>

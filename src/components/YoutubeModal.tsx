@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 type YoutubeModalProps = {
   videoId: string;
   isOpened?: boolean;

@@ -61,11 +61,6 @@ const taxesD1Competitor = [
   25.1, 26, 26.6, 27.2,
 ];
 
-const taxesD0Competitor = [
-  5.39, 5.99, 8.1, 9.3, 12.1, 13.7, 15.6, 17.4, 19.4, 23, 23.5, 24, 24.5, 25,
-  25.5, 26.4, 27, 27.6,
-];
-
 const getFinalValueAfterTax = (value: number, tax: number) => {
   return value - (value * tax) / 100;
 };
