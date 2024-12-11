@@ -11,14 +11,14 @@ import { moneyFormatter } from "@/utils/money";
 import { LegacyRef, useCallback, useMemo } from "react";
 import Icon, { IconName } from "@/components/Icon";
 import Button from "@/components/Button";
-import { EmblaViewportRefType } from "embla-carousel-react";
+import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
 import PlanPicker, { Plan } from "@/components/PlansPicker";
 import MachineInformationContainer, {
   MachineInformationContainerProps,
 } from "./container";
 import Image from "next/image";
 import Featured from "@/components/Featured";
-import { EmblaCarouselType } from "embla-carousel";
+import { useSelectedIndex } from "@/hooks/useSelectedIndex";
 
 type MachineInformationProps = Pick<
   MachineInformationContainerProps,
@@ -26,10 +26,6 @@ type MachineInformationProps = Pick<
 > & {
   machineKey: MachineItem["itemKey"];
   position?: "right" | "left";
-  emblaApi?: EmblaCarouselType;
-  emblaRef?: EmblaViewportRefType;
-  selectedIndex: number;
-  setSelectedIndex: (index: number) => void;
 };
 
 type SelectItemProps = {
@@ -43,16 +39,16 @@ type SelectItemProps = {
 
 const items: Array<SelectItemProps> = [
   {
-    itemKey: "profit",
-    icon: "one-day",
-    label: "um dia depois",
-    link: "https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c",
-  },
-  {
     itemKey: "spot",
     icon: "one-day",
     label: "um dia depois",
     link: "https://afiliados.facilitypay.com.br/checkout/3ad884d0-d58d-4adc-b1e2-61dcb97d47e0",
+  },
+  {
+    itemKey: "profit",
+    icon: "one-day",
+    label: "um dia depois",
+    link: "https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c",
   },
   {
     itemKey: "light",
@@ -158,16 +154,18 @@ const mapKeyToLabel = (key: SelectItemProps["itemKey"]) => {
 const MachineInformation = ({
   machineKey,
   position = "left",
-  emblaApi,
-  emblaRef,
-  selectedIndex,
-  setSelectedIndex,
   ...props
 }: MachineInformationProps) => {
-  const selectedItem = useMemo(
-    () => mapIndexToItemKey(selectedIndex),
-    [selectedIndex]
-  );
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    slidesToScroll: "auto",
+    loop: false,
+    breakpoints: {
+      "(min-width: 768px)": { active: false },
+    },
+    startIndex: 1,
+  });
+  const { selectedIndex, setSelectedIndex } = useSelectedIndex(emblaApi);
+  const selectedItem = mapIndexToItemKey(selectedIndex);
   const { getMachineInformationByKey } = useMachineInformation();
 
   const currentMachinePrice = useMemo(() => {
@@ -278,7 +276,7 @@ const MachineInformation = ({
     smallMachineImageContainerClassName,
   ] = useMemo(() => {
     const defaultClassName =
-      "relative flex items-center justify-center w-full border border-white-20 rounded-lg rounded-br-2xl tablet:rounded-2xl tablet:rounded-br-[48px]";
+      "relative flex items-center justify-center w-full border border-white-20 rounded-lg rounded-br-2xl tablet:rounded-2xl tablet:rounded-br-[48px] py-6";
 
     return [
       defaultClassName,
@@ -371,8 +369,8 @@ const MachineInformation = ({
 
   return (
     <MachineInformationContainer id={machineKey} {...props}>
-      <div className="bg-[#171717] min-h-[100vh] rounded-2xl my-10">
-        <div className="max-w-7xl mx-auto">
+      <div className="bg-[#171717] rounded-2xl my-10">
+        <div className="relative max-w-full desktop:max-w-7xl desktop:mx-auto desktop:flex flex-col items-center">
           <PlanPicker
             items={items}
             ref={emblaRef as LegacyRef<EmblaViewportRefType> | undefined}

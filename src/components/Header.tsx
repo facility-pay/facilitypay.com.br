@@ -4,6 +4,7 @@ import Icon from "./Icon";
 import Link from "next/link";
 import Button from "./Button";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 type NavOption = {
   label: string;
@@ -30,6 +31,9 @@ const options: NavOption[] = [
 ];
 
 const Header = () => {
+  const [shouldShowMobileSupportSection, setShouldShowMobileSupportSection] =
+    useState<boolean>(false);
+
   const pathname = usePathname();
 
   const getIsSelected = (currentPath: string) => currentPath === pathname;
@@ -45,7 +49,7 @@ const Header = () => {
               src={FacilityLogo}
             />
           </Link>
-          <div className="relative hidden desktop:block pl-4 desktop:pl-8">
+          <div className="relative inline-block hidden desktop:block pl-4 desktop:pl-8">
             <span className="group relative font-semibold text-base text-gray-dark cursor-pointer">
               Atendimento
               <div className="absolute top-[100%] left-[40%] pt-1">
@@ -168,72 +172,81 @@ const Header = () => {
               key="services"
               className="group/services min-w-full desktop:min-w-fit rounded transition-all px-8 desktop:px-2 py-2 desktop:py-1 mx-2"
             >
-              <div className="flex flex-row gap-4 items-center ">
+              <div
+                onClick={() =>
+                  setShouldShowMobileSupportSection(
+                    !shouldShowMobileSupportSection
+                  )
+                }
+                className="flex flex-row gap-4 items-center"
+              >
                 <Icon
-                  iconName="chevron-right"
-                  className="block group-hover/services:hidden desktop:hidden text-secondary"
-                />
-                <Icon
-                  iconName="chevron-down"
-                  className="hidden group-hover/services:block desktop:hidden text-secondary"
+                  iconName={
+                    shouldShowMobileSupportSection
+                      ? "chevron-down"
+                      : "chevron-right"
+                  }
+                  className="group-hover/services:block desktop:hidden text-secondary"
                 />
                 <span className="font-semibold text-base text-gray-dark">
                   Atendimentos
                 </span>
               </div>
 
-              <div className="hidden group-hover/services:block mt-4">
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-col gap-2.5">
-                    <span className="font-bold text-sm text-description">
-                      Sou cliente
-                    </span>
-                    <Link
-                      href="http://wa.me/5527998159001"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/support flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg"
-                    >
-                      <Icon
-                        iconName="true-whatsapp"
-                        color="#3DBE64"
-                        className="block group-hover/support:hidden"
-                      />
-                      <Icon
-                        iconName="true-whatsapp"
-                        className="group-hover/support:text-white group-hover/support:block hidden"
-                      />
-                      <span className="font-semibold text-whatsapp group-hover/support:text-white">
-                        Suporte
+              {shouldShowMobileSupportSection && (
+                <div className="mt-4">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-2.5">
+                      <span className="font-bold text-sm text-description">
+                        Sou cliente
                       </span>
-                    </Link>
-                  </div>
-                  <div className="flex flex-col gap-2.5">
-                    <span className="font-bold text-sm text-description">
-                      Não sou cliente
-                    </span>
-                    <Link
-                      href="http://wa.me/5527998126432"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/comercial flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg"
-                    >
-                      <Icon
-                        iconName="true-whatsapp"
-                        color="#3DBE64"
-                        className="block group-hover/comercial:hidden"
-                      />
-                      <Icon
-                        iconName="true-whatsapp"
-                        className="group-hover/comercial:text-white group-hover/comercial:block hidden"
-                      />
-                      <span className="font-semibold text-whatsapp group-hover/comercial:text-white">
-                        Comercial
+                      <Link
+                        href="http://wa.me/5527998159001"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/support flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg"
+                      >
+                        <Icon
+                          iconName="true-whatsapp"
+                          color="#3DBE64"
+                          className="block group-hover/support:hidden"
+                        />
+                        <Icon
+                          iconName="true-whatsapp"
+                          className="group-hover/support:text-white group-hover/support:block hidden"
+                        />
+                        <span className="font-semibold text-whatsapp group-hover/support:text-white">
+                          Suporte
+                        </span>
+                      </Link>
+                    </div>
+                    <div className="flex flex-col gap-2.5">
+                      <span className="font-bold text-sm text-description">
+                        Não sou cliente
                       </span>
-                    </Link>
+                      <Link
+                        href="http://wa.me/5527998126432"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/comercial flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg"
+                      >
+                        <Icon
+                          iconName="true-whatsapp"
+                          color="#3DBE64"
+                          className="block group-hover/comercial:hidden"
+                        />
+                        <Icon
+                          iconName="true-whatsapp"
+                          className="group-hover/comercial:text-white group-hover/comercial:block hidden"
+                        />
+                        <span className="font-semibold text-whatsapp group-hover/comercial:text-white">
+                          Comercial
+                        </span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {options.map(({ href, label }, index) => {

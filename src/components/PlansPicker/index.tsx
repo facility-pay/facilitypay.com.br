@@ -190,7 +190,7 @@ const PlanPicker = forwardRef<EmblaViewportRefType, PlanPickerProps>(
           </button>
         </div>
 
-        <div className="flex flex-row items-center w-full gap-1 desktop:px-0 justify-between pt-4">
+        <div className="plans__embla__container flex flex-row w-full gap-1 desktop:px-0 justify-between pt-4">
           {items.map((item, index) => {
             const isSelected = index === selectedIndex;
 
@@ -202,7 +202,7 @@ const PlanPicker = forwardRef<EmblaViewportRefType, PlanPickerProps>(
               <div
                 key={`belowSection_${item.itemKey}`}
                 className={[
-                  "w-full mx-[66px] desktop:mx-0 desktop:px-3 desktop:min-w-[270px] flex flex-row justify-center desktop:justify-start items-center gap-2 rounded-xl py-3.5",
+                  "plans__embla__slide w-full tablet:w-[360px] desktop:w-[360px] desktop:min-w-max mx-[66px] desktop:mx-0 desktop:!px-3 desktop:min-w-[270px] flex flex-row justify-center desktop:justify-start items-center gap-2 rounded-xl py-3.5",
                   bordered ? "border" : "border-0",
                   isSelected
                     ? "border-black"

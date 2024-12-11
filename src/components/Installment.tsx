@@ -12,7 +12,7 @@ const Installment = ({ label, value, onChangeValue }: InstallmentProps) => {
         <select
           value={value}
           onChange={(event) => onChangeValue(Number(event.target.value))}
-          className="w-full text-base font-bold text-black outline-0 bg-transparent"
+          className="w-full text-base font-bold text-black outline-0 outline-none bg-transparent"
         >
           {[...new Array(18)].map((_, index) => (
             <option onChange={() => {}} key={index} value={index}>{`${

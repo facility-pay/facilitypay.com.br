@@ -232,7 +232,7 @@ const SimulatorSection = () => {
                     {facilityFormattedValue}
                   </span>
                 </span>
-                <div className="hidden desktop:flex absolute top-[calc(100%+12px)] left-[35%]">
+                <div className="hidden desktop:flex absolute top-[calc(100%+12px)] left-[25%]">
                   <YellowArrowRight />
                 </div>
               </div>

@@ -17,7 +17,7 @@ const MachineInformationContainer = ({
   return (
     <section
       id={id}
-      className="relative bg-[#171717] min-h-[100vh] mx-[24px] py-6 tablet:py-[75px] rounded-2xl my-10"
+      className="relative bg-[#171717] min-h-[100vh] mx-[24px] py-6 tablet:py-[75px] tablet:pb-[120px] rounded-2xl my-10"
     >
       <div className="opacity-50">
         {shouldRenderDots && (

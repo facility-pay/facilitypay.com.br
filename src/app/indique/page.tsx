@@ -9,6 +9,7 @@ import { useMemo } from "react";
 import ModelInticate from "@/assets/images/indicate.png";
 import Link from "next/link";
 import LoopBanner from "@/components/LoopBanner";
+import TopRightArrow from "@/assets/illustrations/indicate/top-right-arrow.svg";
 
 type MachineAdvantageItem = {
   key: string;
@@ -59,6 +60,26 @@ const machinesAdvantages: Array<MachineAdvantageItem> = [
   },
 ];
 
+type HowToParticipateItem = {
+  icon: IconName;
+  label: string;
+};
+
+const howToParticipateItems: Array<HowToParticipateItem> = [
+  {
+    icon: "facility-letter",
+    label: "Preencha o formulário",
+  },
+  {
+    icon: "facility-letter",
+    label: "Aguarde nossa equipe entrar em contato",
+  },
+  {
+    icon: "facility-letter",
+    label: "Venda através do seu link individual",
+  },
+];
+
 const Indique = () => {
   const renderLoopBanner = () => (
     <div className="overflow-x-hidden">
@@ -101,6 +122,7 @@ const Indique = () => {
               <Button
                 className="w-[100vw] absolute left-[3.5rem] bottom-[-4.5rem] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
                 type="primary"
+                href="#afilliate"
               >
                 Quero ser afiliado
                 <Icon
@@ -162,7 +184,7 @@ const Indique = () => {
                   </Button>
                   <Link
                     className="group/option flex flex-row items-center gap-4 underline text-sm text-gray-dark hover:text-secondary"
-                    href="/"
+                    href="#advantages"
                   >
                     Veja as vantagens
                     <Icon
@@ -213,7 +235,7 @@ const Indique = () => {
 
           <div className="flex flex-col tablet:flex-row gap-4 items-center justify-between pt-0 tablet:pt-20 w-full">
             <span className="opacity-0">Saiba mais</span>
-            <Button type="primary" width="100%">
+            <Button type="primary" width="100%" href="#afilliate">
               Quero ser afiliado
               <Icon
                 iconName="chevron-right"
@@ -222,7 +244,7 @@ const Indique = () => {
             </Button>
             <Link
               className="group/option flex flex-row items-center gap-4 underline text-sm text-gray-dark hover:text-secondary"
-              href="/"
+              href="#how-to-participate"
             >
               Como participar
               <Icon
@@ -239,27 +261,60 @@ const Indique = () => {
         className="bg-indicate-participate"
         shouldRenderBackgroundColorOnDesktop={false}
         shouldRenderBackgroundColorOnMobile={false}
+        isDark
       >
-        <div className="max-w-7xl mx-auto z-50 relative py-[100px] my-[75px]">
+        <div className="max-w-7xl mx-auto z-50 relative pt-[100px] pb-[75px] my-[75px]">
+          <div className="flex flex-col items-center gap-[20px] pb-[60px]">
+            <div className="flex items-center justify-center h-[80px] w-[80px] rounded-full bg-secondary">
+              <Icon iconName="flag" />
+            </div>
+
+            <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-white">
+              Como participar?
+            </p>
+            <p className="text-sm desktop:text-lg text-white">
+              Para se tornar um afiliado da FacilityPay é simples, veja o passo
+              a passo abaixo:
+            </p>
+          </div>
+
           <div className="my-auto grid grid-cols-1 justify-items-center tablet:grid-cols-2 desktop:grid-cols-3 gap-10">
-            {machinesAdvantages.map(({ key, icon, label, description }) => (
-              <div
-                key={key}
-                className="flex flex-col w-full tablet:w-[373px] desktop:w-[373px] bg-white rounded-2xl py-10 px-6 gap-4"
-              >
-                <div className="flex desktop:flex-col flex-row items-center desktop:items-start gap-4">
-                  <div className="flex justify-center items-center w-16 h-16 bg-[#FFBB00] bg-opacity-20 rounded-full">
-                    <Icon iconName={icon} />
+            {howToParticipateItems.map(({ icon, label }, index) => {
+              const isLast = index === howToParticipateItems.length - 1;
+              return (
+                <div
+                  key={label}
+                  className="relative flex flex-col w-full tablet:w-[400px] desktop:w-[400px] bg-white rounded-2xl py-10 px-6 gap-4"
+                >
+                  <div className="flex desktop:flex-col flex-row items-center desktop:items-start gap-4">
+                    <div className="flex justify-center items-center w-[60px] h-[60px] bg-secondary bg-opacity-20 rounded-full">
+                      <Icon iconName={icon} />
+                    </div>
+                    <p className="break-words text-lg desktop:text-xl font-extrabold text-black">
+                      {label}
+                    </p>
                   </div>
-                  <p className="break-words text-base desktop:text-xl font-extrabold text-black">
-                    {label}
-                  </p>
+                  {!isLast && (
+                    <div className="absolute left-[95%] z-30 top-[30%]">
+                      <TopRightArrow />
+                    </div>
+                  )}
                 </div>
-                <p className="text-black text-sm desktop:text-base">
-                  {description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+          <div className="flex flex-row justify-center items-center py-[40px]">
+            <Button
+              className="w-[100vw] absolute left-[3.5rem] bottom-[-4.5rem] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
+              type="primary"
+              href="#afilliate"
+            >
+              Quero ser afiliado
+              <Icon
+                iconName="chevron-right"
+                className="text-black group-hover:text-secondary"
+              />
+            </Button>
           </div>
         </div>
       </ContainerWithSimpleQuotes>

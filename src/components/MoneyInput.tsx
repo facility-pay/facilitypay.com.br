@@ -33,6 +33,7 @@ const Input = ({ label, value, onChangeText }: InputProps) => {
       <div className="relative flex flex-row max-h-[60px] items-center border border-gray-dark rounded-full py-4 px-8">
         <input
           type="text"
+          inputMode="numeric"
           className="text-base font-bold text-black outline-0 outline-none bg-transparent"
           value={formattedValue}
           onChange={(event) => {

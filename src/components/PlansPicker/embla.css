@@ -1,6 +1,6 @@
 .plans__embla {
   min-width: 100%;
-  --slide-size: 25%;
+  --slide-size: 33%;
 }
 .plans__embla__viewport {
   overflow: visible;
@@ -52,7 +52,7 @@
     margin: auto;
     --slide-height: 20rem;
     --slide-spacing: 1rem;
-    --slide-size: 50%;
+    --slide-size: 33%;
   }
 
   .plans__embla__viewport {

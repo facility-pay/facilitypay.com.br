@@ -162,7 +162,7 @@ export default function Home() {
             <div className="flex justify-center items-center border-2 self-center border-secondary rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
               <Icon iconName="rocket" />
             </div>
-            <span className="font-bold text-center text-2xl tablet:text-3xl desktop:text-4xl">
+            <span className="font-bold text-center text-2xl tablet:text-3xl desktop:text-4xl text-white">
               Mais que uma máquina. São muitas vantagens:{" "}
             </span>
           </div>

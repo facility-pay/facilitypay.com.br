@@ -74,18 +74,18 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 };
 
 const profitTaxes = [
-  2.96, 3.92, 4.47, 5.01, 5.56, 6.09, 6.67, 7.2, 7.72, 8.24, 8.76, 9.28, 9.78,
-  10.29, 10.79, 11.28, 11.78, 12.27,
+  1.39, 2.96, 3.92, 4.47, 5.01, 5.56, 6.09, 6.67, 7.2, 7.72, 8.24, 8.76, 9.28,
+  9.78, 10.29, 10.79, 11.28, 11.78, 12.27,
 ];
 
 const spotTaxes = [
-  2.99, 5.57, 6.15, 6.73, 7.3, 7.87, 8.43, 9, 9.55, 10.1, 10.64, 11.18, 11.72,
-  12.25, 12.78, 13.3, 13.82, 14.34,
+  0.99, 2.99, 5.57, 6.15, 6.73, 7.3, 7.87, 8.43, 9, 9.55, 10.1, 10.64, 11.18,
+  11.72, 12.25, 12.78, 13.3, 13.82, 14.34,
 ];
 
 const lightTaxes = [
-  3.2, 4.53, 5.05, 5.57, 6.08, 6.59, 7.65, 8.14, 8.65, 9.14, 9.63, 10.12, 10.61,
-  11.09, 11.56, 12.04, 12.51, 12.98,
+  1.39, 3.2, 4.53, 5.05, 5.57, 6.08, 6.59, 7.65, 8.14, 8.65, 9.14, 9.63, 10.12,
+  10.61, 11.09, 11.56, 12.04, 12.51, 12.98,
 ];
 
 const eloLightTaxes = [
@@ -95,7 +95,7 @@ const eloLightTaxes = [
 
 const eloProfitTaxes = [
   1.45, 3.29, 4.07, 4.62, 5.16, 5.71, 6.24, 6.87, 7.4, 7.92, 8.44, 8.96, 9.48,
-  9.98, 10.49, 11.48, 11.98, 12.47,
+  9.98, 10.49, 10.99, 11.48, 11.98, 12.47,
 ];
 
 const eloSpotTaxes = [
@@ -169,7 +169,7 @@ const TaxesTable = () => {
         <MobileTopRightSVG />
       </div>
 
-      <div className="relative max-w-7xl mx-auto z-50 px-0 desktop:px-8">
+      <div className="relative max-w-7xl mx-auto z-40 px-0 desktop:px-8">
         <div className="flex flex-col pt-6 items-center z-10 pt-[90px] gap-6">
           <div className="flex items-center justify-center w-[60px] h-[60px] bg-secondary rounded-full">
             <Icon iconName="flag" />
@@ -182,24 +182,22 @@ const TaxesTable = () => {
             Veja nossos <strong>planos:</strong>
           </span>
 
-          <div className="min-w-full desktop:flex flex-col items-center desktop:justify-between gap-[10px] desktop:gap-[100px] pt-[40px]">
-            <div className="flex flex-col items-center">
-              <PlanPicker
-                items={items}
-                ref={emblaRef as LegacyRef<EmblaViewportRefType> | undefined}
-                emblaApi={emblaApi}
-                selectedIndex={selectedIndex}
-                onSelectItem={setSelectedIndex}
-                bordered
-                hasBackground={false}
-              />
-            </div>
+          <div className="max-w-full desktop:max-w-7xl desktop:mx-auto desktop:flex flex-col items-center desktop:justify-between gap-[10px] desktop:gap-[100px] pt-[40px]">
+            <PlanPicker
+              items={items}
+              ref={emblaRef as LegacyRef<EmblaViewportRefType> | undefined}
+              emblaApi={emblaApi}
+              selectedIndex={selectedIndex}
+              onSelectItem={setSelectedIndex}
+              bordered
+              hasBackground={false}
+            />
 
             <div className="flex flex-col gap-[30px]">
               <div className="flex-1 flex flex-col desktop:flex-row items-center gap-[16px] desktop:gap-[80px]">
                 <div className="flex-1 drop-shadow-[2px_8px_50px_rgba(0,0,0,0.1)] bg-white rounded-[20px]">
                   <div className="flex flex-row items-center justify-evenly drop-shadow-[2px_8px_50px_rgba(0,0,0,0.1)] gap-5 bg-black rounded-[16px] p-4">
-                    <span className="flex-1 text-base font-semibold">
+                    <span className="flex-1 text-base font-semibold text-white">
                       Taxas no Débito e Crédito
                     </span>
 
@@ -233,7 +231,7 @@ const TaxesTable = () => {
                             {!isDebit && (
                               <div className="max-w-[40px] flex justify-center items-center bg-[#1F678D10] px-4 py-1 rounded-[8px]">
                                 <span className="text-base font-extrabold text-primary-dark">
-                                  {index + 1}x
+                                  {index}x
                                 </span>
                               </div>
                             )}
@@ -243,7 +241,7 @@ const TaxesTable = () => {
 
                           <div className="w-[70px] float-right flex justify-center items-center bg-[#3DBE6410] px-4 py-1 rounded-[8px]">
                             <span className="text-base font-extrabold text-whatsapp">
-                              {tax}%
+                              {tax.toFixed(2)}%
                             </span>
                           </div>
                         </div>
@@ -253,7 +251,7 @@ const TaxesTable = () => {
                 </div>
                 <div className="flex-1 drop-shadow-[2px_8px_50px_rgba(0,0,0,0.1)] bg-white rounded-[20px] p-2">
                   <div className="flex flex-row items-center justify-evenly drop-shadow-[2px_8px_50px_rgba(0,0,0,0.1)] gap-5 bg-black rounded-[16px] p-4">
-                    <span className="text-base font-semibold">
+                    <span className="text-base font-semibold text-white">
                       Taxas no Débito e Crédito
                     </span>
 
@@ -289,7 +287,7 @@ const TaxesTable = () => {
                             {!isDebit && (
                               <div className="max-w-[40px] flex justify-center items-center bg-[#1F678D10] px-4 py-1 rounded-[8px]">
                                 <span className="text-base font-extrabold text-primary-dark">
-                                  {index + 1}x
+                                  {index}x
                                 </span>
                               </div>
                             )}
@@ -299,7 +297,7 @@ const TaxesTable = () => {
 
                           <div className="w-[70px] float-right flex justify-center items-center bg-[#3DBE6410] px-4 py-1 rounded-[8px]">
                             <span className="text-base font-extrabold text-whatsapp">
-                              {tax}%
+                              {tax.toFixed(2)}%
                             </span>
                           </div>
                         </div>
@@ -309,9 +307,11 @@ const TaxesTable = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col desktop:flex-row drop-shadow-[2px_8px_50px_rgba(0,0,0,0.1)] bg-white rounded-[16px] mt-[16px] desktop:mt-0">
+              <div className="flex-1 flex flex-col desktop:flex-row drop-shadow-[2px_8px_50px_rgba(0,0,0,0.1)] bg-white rounded-[16px] mt-[16px] desktop:mt-0">
                 <div className="flex-1 flex flex-row items-center justify-between drop-shadow-[2px_8px_50px_rgba(0,0,0,0.1)] bg-black rounded-[16px] p-6">
-                  <span className="text-base font-semibold">Taxa no Pix</span>
+                  <span className="text-base font-semibold text-white">
+                    Taxa no Pix
+                  </span>
 
                   <div className="flex items-center justify-center bg-white w-[60px] desktop:w-[85px] h-[40px] desktop:h-[50px] rounded-[8px]">
                     <Icon iconName="pix" />

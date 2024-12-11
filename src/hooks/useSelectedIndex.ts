@@ -7,14 +7,20 @@ type UseSelectedIndexType = {
 };
 
 export const useSelectedIndex = (
-  emblaApi: EmblaCarouselType | undefined
+  emblaApi: EmblaCarouselType | undefined,
+  defaultIndex?: number,
+  setDefaultIndex?: (index: number) => void
 ): UseSelectedIndexType => {
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(defaultIndex ?? 1);
 
-  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-    console.log(emblaApi.selectedScrollSnap());
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, []);
+  const onSelect = useCallback(
+    (emblaApi: EmblaCarouselType) => {
+      const index = emblaApi.selectedScrollSnap();
+      setSelectedIndex(index);
+      setDefaultIndex?.(index);
+    },
+    [setDefaultIndex]
+  );
 
   useEffect(() => {
     if (!emblaApi) return;

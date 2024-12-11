@@ -13,7 +13,12 @@ const AboutUsItem = ({ id, title }: TalkingAboutUsItem) => {
   const thumbnail = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 
   return (
-    <div className="rounded-2xl p-2.5 desktop:p-5 items-center min-w-full min-h-full tablet:w-[373px] desktop:w-[373px] flex flex-col gap-6 tablet:gap-10 desktop:gap-10 bg-white drop-shadow-[2px_8px_50px_rgba(0,0,0,0.10)]">
+    <Link
+      href={`https://www.youtube.com/watch?v=${id}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-2xl cursor-pointer p-2.5 desktop:p-5 items-center min-w-full min-h-full tablet:w-[373px] desktop:w-[373px] flex flex-col gap-6 tablet:gap-10 desktop:gap-10 bg-white drop-shadow-[2px_8px_50px_rgba(0,0,0,0.10)]"
+    >
       <Image
         alt="thumbnail"
         className="rounded-2xl"
@@ -30,7 +35,7 @@ const AboutUsItem = ({ id, title }: TalkingAboutUsItem) => {
           {title}
         </span>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -16,7 +16,7 @@ const config: Config = {
       "mobile-full-video-screen":
         "linear-gradient(#0006,#0006), url('../assets/images/mobile-video-thumb.png')",
       "indicate-participate":
-        "linear-gradient(#0006,#0006), url('../assets/images/participate.png')",
+        "linear-gradient(#0009,#0009), url('../assets/images/participate.png')",
       "home-section3":
         "linear-gradient(#0006,#0006), url('../assets/images/advantages.png')",
       section1: "linear-gradient(#E0E8EA, #FFFFFF, #E4EBED)",
