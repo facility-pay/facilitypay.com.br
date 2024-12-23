@@ -66,7 +66,7 @@ const config: Config = {
       keyframes: {
         scroll: {
           "100%": {
-            transform: "translate(calc(-50% - 0.25rem))",
+            transform: "translate(calc(-50% - 0.75rem))",
           },
         },
         "scroll-right": {

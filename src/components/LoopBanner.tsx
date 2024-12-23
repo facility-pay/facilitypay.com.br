@@ -34,10 +34,17 @@ const items: Array<BannerItemProps> = [
 const LoopBanner = () => {
   return (
     <div className="overflow-x-hidden">
-      <div className="w-max animate-[scroll_10s_linear_infinite] py-1.5">
+      <div className="w-fit animate-[scroll_10s_linear_infinite] py-1.5">
         <ul className="flex flex-nowrap flex-row gap-6">
-          {items.concat(items).map(({ label, icon }, index) => (
+          {items.map(({ label, icon }, index) => (
             <BannerItem key={`${label}-${index}`} label={label} icon={icon} />
+          ))}
+          {items.map(({ label, icon }, index) => (
+            <BannerItem
+              key={`duplicate-${label}-${index}`}
+              label={label}
+              icon={icon}
+            />
           ))}
         </ul>
       </div>

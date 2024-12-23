@@ -165,7 +165,7 @@ export default function Home() {
               Mais que uma máquina. São muitas vantagens:{" "}
             </span>
           </div>
-          <div className="my-auto grid grid-cols-1 justify-items-center tablet:grid-cols-2 desktop:grid-cols-3 gap-10">
+          <div className="flex flex-wrap justify-center my-auto gap-10">
             {machinesAdvantages.map(({ key, icon, label, description }) => (
               <div
                 key={key}

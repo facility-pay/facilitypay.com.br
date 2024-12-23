@@ -446,6 +446,10 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .grid-cols-auto-center > *:nth-last-child(-n + 3):first-child {
+    @apply col-span-3 justify-self-center;
+  }
 }
 
 .min-h-inherit {
