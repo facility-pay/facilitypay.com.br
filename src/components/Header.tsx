@@ -57,7 +57,7 @@ const Header = () => {
                 <Icon iconName="chevron-down" />
               </div>
               <div className="hidden group-hover:block z-50 group-hover:absolute pt-8 left-4">
-                <div className="border border-description-15 m-0 min-w-[calc(100%-32px)] bg-white desktop:w-[230px] desktop:px-2.5 top-[100%] items-start drop-shadow-[4px_12px_50px_rgba(0,0,0,0.3)] py-6 before:content-[''] before:absolute before:top-[-20px] before:left-[20px] before:border-[10px] before:border-transparent before:border-b-description-15 after:content-[''] after:absolute after:top-[-20px] after:left-[20px] after:border-[10px] after:border-transparent after:border-b-white">
+                <div className="border border-description-15 m-0 min-w-[calc(100%-32px)] bg-white desktop:w-[230px] desktop:px-2.5 items-start drop-shadow-[4px_12px_50px_rgba(0,0,0,0.3)] py-6 before:content-[''] before:absolute before:top-[-20px] before:left-[20px] before:border-[10px] before:border-transparent before:border-b-description-15 after:content-[''] after:absolute after:top-[-20px] after:left-[20px] after:border-[10px] after:border-transparent after:border-b-white safari_only">
                   <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-2.5">
                       <span className="font-bold text-sm text-description">

@@ -74,8 +74,8 @@ const Footer = () => {
       <div className="h-[1px] w-full bg-grey-lightest mb-20 px-6 desktop:px-[300px]">
         <div className="h-[6px] bg-secondary" />
       </div>
-      <div className="flex flex-col desktop:flex-row mb-10 items-center desktop:justify-center desktop:pb-8 mx-14 desktop:mx-52 gap-8 mt-10">
-        <div className="flex flex-col gap-8 items-center desktop:pr-20">
+      <div className="max-w-6xl mx-auto flex flex-col desktop:flex-row mb-10 items-center desktop:justify-center desktop:pb-8 gap-8 mt-10">
+        <div className="flex flex-col gap-8 items-center pr-20">
           <Image alt="facility-vertical-logo" src={FacilityVerticalLogo} />
 
           <button className="flex gap-6">
@@ -85,7 +85,7 @@ const Footer = () => {
           </button>
         </div>
 
-        <div className="flex flex-col desktop:flex-row gap-10">
+        <div className="w-full flex flex-col desktop:flex-row gap-10">
           {sections.map(({ name, subSections = [] }) => (
             <div className="flex-initial desktop:flex-1" key={name}>
               <div className="border-b border-grey-lightest pb-4">

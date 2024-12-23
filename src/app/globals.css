@@ -452,6 +452,13 @@ body {
   }
 }
 
+_::-webkit-full-page-media,
+_:future,
+:root .safari_only::after {
+  top: 14px;
+  left: 22px;
+}
+
 .min-h-inherit {
   min-height: inherit;
 }
