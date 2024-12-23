@@ -17,7 +17,7 @@ const Installment = ({ label, value, onChangeValue }: InstallmentProps) => {
           {[...new Array(18)].map((_, index) => (
             <option onChange={() => {}} key={index} value={index}>{`${
               index + 1
-            } parcela${index > 1 ? "s" : ""}`}</option>
+            } parcela${index > 0 ? "s" : ""}`}</option>
           ))}
         </select>
       </div>

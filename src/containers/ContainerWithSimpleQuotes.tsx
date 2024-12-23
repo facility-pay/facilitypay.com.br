@@ -5,6 +5,8 @@ import SimpleQuoteSVG from "@/assets/illustrations/simple-quote.svg";
 import MobileStraightQuotesSVG from "@/assets/illustrations/talking-about-us/mobile-straight-quotes.svg";
 import WhiteStraightQuoteSVG from "@/assets/illustrations/white-straight-quote.svg";
 import WhiteStraightQuotesSVG from "@/assets/illustrations/white-straight-quotes.svg";
+import GoldenStraightQuoteSVG from "@/assets/illustrations/golden-straight-quote.svg";
+import GoldenStraightQuotesSVG from "@/assets/illustrations/golden-straight-quotes.svg";
 
 type ContainerWithSimpleQuotesProps = PropsWithChildren & {
   id: string;
@@ -12,6 +14,7 @@ type ContainerWithSimpleQuotesProps = PropsWithChildren & {
   shouldRenderBackgroundColorOnDesktop?: boolean;
   shouldRenderBackgroundColorOnMobile?: boolean;
   isDark?: boolean;
+  isGolden?: boolean;
   className?: string;
 };
 
@@ -22,6 +25,7 @@ const ContainerWithSimpleQuotes = ({
   shouldRenderBackgroundColorOnMobile = true,
   children,
   isDark = false,
+  isGolden = false,
   className,
 }: ContainerWithSimpleQuotesProps) => {
   return (
@@ -36,7 +40,7 @@ const ContainerWithSimpleQuotes = ({
       ].join(" ")}
     >
       <div className="opacity-50">
-        {isDark && (
+        {!isGolden && isDark && (
           <>
             <div className="absolute top-[3rem] left-[2rem] hidden tablet:flex desktop:flex">
               <WhiteStraightQuotesSVG />
@@ -46,7 +50,17 @@ const ContainerWithSimpleQuotes = ({
             </div>
           </>
         )}
-        {!isDark && shouldQuotesBeInverted ? (
+        {isGolden && (
+          <>
+            <div className="absolute top-[3rem] left-[2rem] hidden tablet:flex desktop:flex">
+              <GoldenStraightQuotesSVG />
+            </div>
+            <div className="absolute bottom-[2rem] right-0 hidden tablet:flex desktop:flex">
+              <GoldenStraightQuoteSVG />
+            </div>
+          </>
+        )}
+        {shouldQuotesBeInverted ? (
           <>
             <div className="absolute top-[3rem] left-[2rem] hidden tablet:flex desktop:flex">
               <SimpleQuoteSVG />
@@ -55,7 +69,7 @@ const ContainerWithSimpleQuotes = ({
               <DoubleQuotesSVG />
             </div>
           </>
-        ) : (
+        ) : !isGolden && !isDark ? (
           <>
             <div className="absolute top-[3rem] left-[2rem] hidden tablet:flex desktop:flex">
               <DoubleReversedQuotesSVG />
@@ -64,7 +78,7 @@ const ContainerWithSimpleQuotes = ({
               <SimpleQuoteSVG />
             </div>
           </>
-        )}
+        ) : null}
         <div className="absolute top-[1rem] left-0 flex tablet:flex desktop:hidden">
           <MobileStraightQuotesSVG />
         </div>

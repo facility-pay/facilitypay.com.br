@@ -85,7 +85,7 @@ const Footer = () => {
           </button>
         </div>
 
-        <div className="flex flex-col desktop:flex-row w-full gap-10">
+        <div className="flex flex-col desktop:flex-row gap-10">
           {sections.map(({ name, subSections = [] }) => (
             <div className="flex-initial desktop:flex-1" key={name}>
               <div className="border-b border-grey-lightest pb-4">
@@ -95,7 +95,7 @@ const Footer = () => {
               <div className="flex flex-col gap-3 pt-4">
                 {subSections.map(({ name: subSectionName, href }) => (
                   <div
-                    className="group/option flex flex-row items-center gap-4"
+                    className="group/option flex flex-row items-center gap-4 self-start"
                     key={subSectionName}
                   >
                     <Icon iconName="chevron-right" className="text-secondary" />

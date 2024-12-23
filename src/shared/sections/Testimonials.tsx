@@ -34,6 +34,118 @@ const testimonials: Array<TestimonialItem> = [
     name: "@jgsfotografias",
     rate: 5,
   },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Ótimo atendimento, rapidinho sanou todas as dúvidas momentâneas. 👏🏻👏🏻👏🏻",
+    name: "@cristianerondaposoperatorio",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description: "Ótimo atendimento muito satisfeita com os atendentes",
+    name: "@deise_moda_intima",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description: "Mt bom! Todas as vezes q precisei foi imediata a ajuda. 👏🏼👏🏼",
+    name: "@_ruthrocha",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Satisfeito com o atendimento e sempre que preciso, resolvem os problemas rápidos.",
+    name: "@caio_vitor_",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Quero aqui deixar registrado que o pequeno infortúnio que tive com a @sejafacility fora prontamente resolvido. Aqui também deixo registrado que as taxas pela @sejafacility atualmente praticadas, de fato, são as menores do mercado. Para quem, assim como eu, está começando um empreendimento, eu super recomendo as máquinas da facility. Obrigado.",
+    name: "@andreoliveiramv",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Estou muito satisfeita com a máquina ,taxa de juros e recebimento,mas falando do atendimento 😍😍😍 que assistência perfeita ,rápida e bem atenciosa,agradeço demais ,ao Eduardo e o Gustavo fica minha gratidão pelo excelente atendimento 😍😍😍",
+    name: "@negga_8",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Já tenho a maquininha há pelo menos uns 6 meses e não tenho reclamações. Quando tive problemas fui atendido com atenção!",
+    name: "@ravifotografia",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Facility pay , está de parabéns com sua prestação de serviço, sua atenção e rapidez nos seus atendimentos, eu recomendo ❤️",
+    name: "@ivair249",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description: "Rapidez e atenção. Excelente atendimento.",
+    name: "@brunopeixotos",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description: "Nota mil",
+    name: "@infofuark",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Atendimento excelente, sempre prestativo e esclareceu todas as dúvidas.",
+    name: "@sia.solucoes",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description:
+      "Atendimento excelente, super atenciosos , tiram sempre minhas dúvidas. Parabéns a toda equipe.",
+    name: "@jony.wesley",
+    rate: 5,
+  },
+  {
+    imageUrl:
+      "https://gravatar.com/avatar/c8d4463f6adc321a43a0bbb5efa222f7?s=400&d=robohash&r=x",
+    title: "Melhor taxa e o melhor atendimento sem dúvida!",
+    description: "Excelente atendimento! Recomendo!",
+    name: "@tech.freitas",
+    rate: 5,
+  },
 ];
 
 type TestimonialsProps = {

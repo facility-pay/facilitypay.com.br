@@ -18,7 +18,7 @@ const config: Config = {
       "indicate-participate":
         "linear-gradient(#0009,#0009), url('../assets/images/participate.png')",
       "home-section3":
-        "linear-gradient(#0006,#0006), url('../assets/images/advantages.png')",
+        "linear-gradient(#0009,#0009), url('../assets/images/advantages.png')",
       section1: "linear-gradient(#E0E8EA, #FFFFFF, #E4EBED)",
       simulator: "linear-gradient(#EFF4F848, #D5DFE748)",
       "loop-banner": "linear-gradient(#E6ECF265, #E6ECF220)",
@@ -66,7 +66,7 @@ const config: Config = {
       keyframes: {
         scroll: {
           "100%": {
-            transform: "translate(calc(-50% - 0.75rem))",
+            transform: "translate(calc(-50% - 0.25rem))",
           },
         },
         "scroll-right": {

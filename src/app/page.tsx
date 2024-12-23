@@ -6,7 +6,6 @@ import Image from "next/image";
 import MiniFacilityLogo from "@/assets/logos/mini-logo.png";
 import { useMemo } from "react";
 import Icon, { IconName } from "@/components/Icon";
-import Link from "next/link";
 import dynamic from "next/dynamic";
 import Layout from "@/containers/Layout";
 
@@ -187,8 +186,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="flex flex-col tablet:flex-row gap-4 items-center justify-between pt-0 tablet:pt-20 w-full">
-            <span className="opacity-0">Saiba mais</span>
+          <div className="flex flex-col tablet:flex-row gap-4 items-center justify-center pt-5 tablet:pt-20 w-full">
             <Button
               type="primary"
               width="100%"
@@ -200,13 +198,6 @@ export default function Home() {
                 className="text-black group-hover:text-secondary"
               />
             </Button>
-            <Link
-              className="flex flex-row items-center gap-4 underline text-sm text-white"
-              href="/"
-            >
-              Saiba mais
-              <Icon iconName="chevron-right" color="white" />
-            </Link>
           </div>
         </div>
       </section>

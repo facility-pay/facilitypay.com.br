@@ -10,6 +10,7 @@ import ModelInticate from "@/assets/images/indicate.png";
 import Link from "next/link";
 import LoopBanner from "@/components/LoopBanner";
 import TopRightArrow from "@/assets/illustrations/indicate/top-right-arrow.svg";
+import BottomArrow from "@/assets/illustrations/indicate/bottom-arrow.svg";
 
 type MachineAdvantageItem = {
   key: string;
@@ -80,6 +81,39 @@ const howToParticipateItems: Array<HowToParticipateItem> = [
   },
 ];
 
+type Rule = {
+  title: string;
+  description: string;
+};
+
+const rules: Array<Rule> = [
+  {
+    title: "Redes sociais",
+    description:
+      "É proibida a criação de perfis em redes sociais que utilizem o nome ou se façam passar pela FacilityPay.",
+  },
+  {
+    title: "Vestimenta",
+    description:
+      "É proibida a produção de camisetas, bonés ou qualquer outro item utilizando a marca FacilityPay sem autorização prévia.",
+  },
+  {
+    title: "Divulgação",
+    description:
+      "A divulgação deve ser realizada exclusivamente com as artes fornecidas pela FacilityPay. Qualquer arte de produção própria que contenha a marca FacilityPay não é permitida.",
+  },
+  {
+    title: "Relação de afiliado",
+    description:
+      "Deixe sempre claro que sua relação com a FacilityPay é uma parceria. É proibido se passar por funcionário da empresa em qualquer circunstância.",
+  },
+  {
+    title: "Suporte",
+    description:
+      "É proibido se passar pelo suporte oficial da FacilityPay em qualquer situação.",
+  },
+];
+
 const Indique = () => {
   const renderLoopBanner = () => (
     <div className="overflow-x-hidden">
@@ -108,7 +142,7 @@ const Indique = () => {
           </p>
         </div>
         <div className={section1ClassName}>
-          <div className="flex tablet:items-center z-10 min-h-inherit bg-no-repeat bg-[url('../assets/shapes/indicate/section1.svg')] bg-[length:130%] tablet:bg-[length:45%] bg-[top_5rem_right_2rem] tablet:bg-[top_8rem_right_15rem]">
+          <div className="flex tablet:items-center z-10 min-h-inherit bg-no-repeat bg-[url('../assets/shapes/indicate/section1-mobile.svg')] desktop:bg-[url('../assets/shapes/indicate/section1.svg')] bg-[length:110%] tablet:bg-[length:45%] bg-[top_5rem_right_0rem] tablet:bg-[top_8rem_right_15rem]">
             <div className="relative flex max-w-[50vw] tablet:pb-[10vh] desktop:pb-[10vh] tablet:pl-[15vw] desktop:pl-[15vw] tablet:pr-[10vw] desktop:pr-[10vw] flex-col items-start gap-5 justify-start bg-no-repeat bg-[url('../assets/illustrations/dots.svg')] bg-[top_3rem_left_5rem]">
               <div className="hidden tablet:flex flex-col gap-6">
                 <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
@@ -120,7 +154,7 @@ const Indique = () => {
                 </p>
               </div>
               <Button
-                className="w-[100vw] absolute left-[3.5rem] bottom-[-4.5rem] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
+                className="w-[100vw] absolute left-[2.25rem] bottom-[-2.5rem] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
                 type="primary"
                 href="#afilliate"
               >
@@ -139,8 +173,8 @@ const Indique = () => {
         id="how-it-works"
         shouldRenderBackgroundColorOnDesktop
       >
-        <div className="max-w-6xl mx-auto">
-          <div className="my-[75px] flex flex-col items-center gap-[20px] py-[110px] min-h-[100vh]">
+        <div className="max-w-7xl mx-auto">
+          <div className="my-[75px] flex flex-col items-center gap-[20px] py-[35px] desktop:py-[110px] min-h-[100vh] px-[30px] desktop:px-0">
             <div className="flex items-center justify-center h-[80px] w-[80px] rounded-full bg-secondary">
               <Icon iconName="flag" />
             </div>
@@ -152,7 +186,11 @@ const Indique = () => {
               Entenda como fazer uma renda extra
             </p>
 
-            <div className="flex flex-col desktop:flex-row desktop:justify-between gap-[30px] desktop:gap-[100px] pt-[40px]">
+            <div className="block desktop:hidden">
+              <Image alt="model-with-machine" src={ModelInticate} />
+            </div>
+
+            <div className="max-w-full flex flex-col desktop:flex-row desktop:justify-between gap-[30px] desktop:gap-[100px] pt-[40px]">
               <div className="flex-1 flex flex-col gap-10">
                 <span className="flex-1 text-description">
                   O programa de afiliados da FacilityPay é uma oportunidade
@@ -171,9 +209,9 @@ const Indique = () => {
                   mercado, enquanto você também ganha!
                 </span>
 
-                <div className="flex flex-row justify-between items-center">
+                <div className="flex flex-col gap-4 desktop:gap-0 desktop:flex-row justify-between items-center">
                   <Button
-                    className="w-[100vw] absolute left-[3.5rem] bottom-[-4.5rem] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
+                    className="min-w-full tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
                     type="primary"
                   >
                     Quero ser afiliado
@@ -194,7 +232,7 @@ const Indique = () => {
                   </Link>
                 </div>
               </div>
-              <div className="flex-1 flex justify-end">
+              <div className="hidden desktop:block flex-1 flex justify-end">
                 <Image alt="model-with-machine" src={ModelInticate} />
               </div>
             </div>
@@ -203,7 +241,7 @@ const Indique = () => {
       </ContainerWithSimpleQuotes>
 
       <ContainerWithSimpleQuotes id="advantages">
-        <div className="max-w-7xl mx-auto z-50 relative py-[100px]">
+        <div className="max-w-7xl mx-auto z-50 relative px-[32px] desktop:px-0 py-[50px] desktop:py-[100px]">
           <div className="flex flex-col items-center justify-center gap-6 pb-14">
             <div className="flex justify-center items-center self-center bg-secondary rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
               <Icon iconName="rocket" />
@@ -216,13 +254,13 @@ const Indique = () => {
             {machinesAdvantages.map(({ key, icon, label, description }) => (
               <div
                 key={key}
-                className="flex flex-col w-full tablet:w-[373px] desktop:w-[373px] bg-white rounded-2xl py-10 px-6 gap-4"
+                className="flex flex-col w-full tablet:w-[373px] desktop:w-[373px] bg-white rounded-2xl py-10 px-[32px] desktop:px-6 gap-4"
               >
                 <div className="flex desktop:flex-col flex-row items-center desktop:items-start gap-4">
-                  <div className="flex justify-center items-center w-16 h-16 bg-[#FFBB00] bg-opacity-20 rounded-full">
+                  <div className="flex justify-center items-center w-[48px] desktop:w-[60px] h-[48px] desktop:h-[60px] bg-[#FFBB00] bg-opacity-20 rounded-full">
                     <Icon iconName={icon} />
                   </div>
-                  <p className="break-words text-base desktop:text-xl font-extrabold text-black">
+                  <p className="flex-1 break-words text-base desktop:text-xl font-extrabold text-black">
                     {label}
                   </p>
                 </div>
@@ -263,22 +301,22 @@ const Indique = () => {
         shouldRenderBackgroundColorOnMobile={false}
         isDark
       >
-        <div className="max-w-7xl mx-auto z-50 relative pt-[100px] pb-[75px] my-[75px]">
-          <div className="flex flex-col items-center gap-[20px] pb-[60px]">
-            <div className="flex items-center justify-center h-[80px] w-[80px] rounded-full bg-secondary">
+        <div className="max-w-7xl mx-auto z-50 relative px-[32px] desktop:px-0 pt-[40px] desktop:pt-[100px] pb-[40px] desktop:pb-[75px] my-[75px]">
+          <div className="flex flex-col justify-center items-center gap-[12px] desktop:gap-[20px] pb-[30px] desktop:pb-[60px]">
+            <div className="flex items-center justify-center h-[56px] w-[56px] desktop:h-[80px] desktop:w-[80px] rounded-full bg-secondary">
               <Icon iconName="flag" />
             </div>
 
-            <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-white">
+            <p className="text-center text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-white">
               Como participar?
             </p>
-            <p className="text-sm desktop:text-lg text-white">
+            <p className="text-center text-sm desktop:text-lg text-white">
               Para se tornar um afiliado da FacilityPay é simples, veja o passo
               a passo abaixo:
             </p>
           </div>
 
-          <div className="my-auto grid grid-cols-1 justify-items-center tablet:grid-cols-2 desktop:grid-cols-3 gap-10">
+          <div className="my-auto grid grid-cols-1 justify-items-center tablet:grid-cols-2 desktop:grid-cols-3 gap-4 desktop:gap-10">
             {howToParticipateItems.map(({ icon, label }, index) => {
               const isLast = index === howToParticipateItems.length - 1;
               return (
@@ -287,25 +325,30 @@ const Indique = () => {
                   className="relative flex flex-col w-full tablet:w-[400px] desktop:w-[400px] bg-white rounded-2xl py-10 px-6 gap-4"
                 >
                   <div className="flex desktop:flex-col flex-row items-center desktop:items-start gap-4">
-                    <div className="flex justify-center items-center w-[60px] h-[60px] bg-secondary bg-opacity-20 rounded-full">
+                    <div className="flex justify-center items-center w-[48px] h-[48px] desktop:w-[60px] desktop:h-[60px] bg-secondary bg-opacity-20 rounded-full">
                       <Icon iconName={icon} />
                     </div>
-                    <p className="break-words text-lg desktop:text-xl font-extrabold text-black">
+                    <p className="flex-1 break-words text-lg desktop:text-xl font-extrabold text-black">
                       {label}
                     </p>
                   </div>
                   {!isLast && (
-                    <div className="absolute left-[95%] z-30 top-[30%]">
+                    <div className="hidden desktop:absolute left-[95%] z-30 top-[30%]">
                       <TopRightArrow />
+                    </div>
+                  )}
+                  {!isLast && (
+                    <div className="absolute desktop:hidden right-[2rem] z-30 top-[80%]">
+                      <BottomArrow />
                     </div>
                   )}
                 </div>
               );
             })}
           </div>
-          <div className="flex flex-row justify-center items-center py-[40px]">
+          <div className="flex flex-row justify-center items-center pt-[32px] desktop:py-[40px]">
             <Button
-              className="w-[100vw] absolute left-[3.5rem] bottom-[-4.5rem] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
+              className="w-[100vw] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
               type="primary"
               href="#afilliate"
             >
@@ -325,7 +368,7 @@ const Indique = () => {
         shouldRenderBackgroundColorOnMobile={false}
         isDark
       >
-        <div className="max-w-7xl mx-auto z-50 relative py-[100px]">
+        <div className="max-w-7xl mx-auto z-50 relative px-[32px] desktop:px-0 py-[40px] desktop:py-[100px]">
           <div className="flex flex-col items-center justify-center gap-6 pb-14">
             <div className="flex justify-center items-center self-center bg-secondary rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
               <Icon iconName="rocket" />
@@ -339,8 +382,8 @@ const Indique = () => {
             </span>
           </div>
 
-          <div className="flex flex-row items-center gap-[40px]">
-            <div className="flex-1 flex flex-col gap-[40px]">
+          <div className="flex flex-col desktop:flex-row items-center gap-[40px]">
+            <div className="min-w-full flex-1 flex flex-col gap-[40px]">
               <div className="flex-1 flex flex-col gap-2">
                 <label className="px-6 text-sm text-white font-bold">
                   Nome completo:
@@ -370,7 +413,7 @@ const Indique = () => {
                 </div>
               </div>
             </div>
-            <div className="flex-1 flex flex-col gap-[40px]">
+            <div className="min-w-full flex-1 flex flex-col gap-[40px]">
               <div className="flex-1 flex flex-col gap-2">
                 <label className="px-6 text-sm text-white font-bold">
                   Contato WhatsApp:
@@ -405,6 +448,65 @@ const Indique = () => {
           <Button className="min-w-full mt-[48px]" type="primary">
             Enviar
           </Button>
+        </div>
+      </ContainerWithSimpleQuotes>
+
+      <ContainerWithSimpleQuotes
+        id="rules"
+        shouldRenderBackgroundColorOnDesktop={false}
+        shouldRenderBackgroundColorOnMobile={false}
+        isGolden
+        isDark
+      >
+        <div className="max-w-7xl mx-auto z-50 relative pt-[40px] desktop:pt-[100px] px-[32px] desktop:px-0 pb-[40px] desktop:pb-[75px] my-[75px]">
+          <div className="flex flex-col items-center gap-[20px] pb-[60px]">
+            <div className="flex items-center justify-center h-[80px] w-[80px] rounded-full bg-secondary">
+              <Icon iconName="flag" />
+            </div>
+
+            <p className="text-center text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-secondary">
+              Regras e condições para os afiliados
+            </p>
+          </div>
+
+          <div className="max-w-5xl flex flex-col desktop:flex-row mx-auto gap-[40px] desktop:gap-[100px]">
+            <div className="flex-1">
+              <p>
+                Assim como em toda boa parceria, precisamos combinar algumas
+                regrinhas básicas para garantir uma convivência tranquila e
+                produtiva. Tudo certo?<br></br>
+                <br></br>Nosso objetivo é crescer juntos com cada afiliado da
+                FacilityPay. Para isso, estabelecemos algumas diretrizes que vão
+                facilitar nossa colaboração e potencializar os resultados.
+                <br></br>
+                <br></br> É importante lembrar que o não cumprimento dessas
+                regras pode levar ao descredenciamento do programa. Contamos com
+                você para que nossa parceria seja um sucesso!
+              </p>
+            </div>
+            <div className="flex-1">
+              <div className="flex flex-col gap-[20px]">
+                <span className="font-bold">
+                  Vamos para algumas regrinhas básicas?
+                </span>
+
+                {rules.map((rule) => (
+                  <div key={rule.title} className="flex flex-col gap-4">
+                    <div className="flex flex-row items-center gap-3">
+                      <Icon
+                        iconName="chevron-right"
+                        className="text-secondary"
+                      />
+                      <p className="text-base text-white font-extrabold">
+                        {rule.title}
+                      </p>
+                    </div>
+                    <p className="text-base text-white">{rule.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </ContainerWithSimpleQuotes>
     </Layout>

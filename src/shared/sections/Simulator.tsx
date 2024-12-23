@@ -37,16 +37,16 @@ const lightTaxes = [
 
 const items: Array<SelectItemProps> = [
   {
-    itemKey: "profit",
-    icon: "one-day",
-    label: "um dia depois",
-    link: "https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c",
-  },
-  {
     itemKey: "spot",
     icon: "one-day",
     label: "um dia depois",
     link: "https://afiliados.facilitypay.com.br/checkout/3ad884d0-d58d-4adc-b1e2-61dcb97d47e0",
+  },
+  {
+    itemKey: "profit",
+    icon: "one-day",
+    label: "um dia depois",
+    link: "https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c",
   },
   {
     itemKey: "light",
@@ -55,6 +55,13 @@ const items: Array<SelectItemProps> = [
     link: "https://afiliados.facilitypay.com.br/checkout/57bfc785-60fb-482a-8798-c3923a2f0643",
   },
 ];
+
+const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(value);
+};
 
 const taxesD1Competitor = [
   4.99, 5.59, 7.7, 8.9, 11.7, 13.3, 15.2, 17, 19, 22.6, 23.1, 23.6, 24.1, 24.6,
@@ -70,9 +77,9 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 
   switch (indexAsAString) {
     case "0":
-      return "profit";
-    case "1":
       return "spot";
+    case "1":
+      return "profit";
     case "2":
       return "light";
     default:
@@ -83,10 +90,11 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 const SimulatorSection = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: "auto",
-    loop: false,
+    loop: true,
     breakpoints: {
       "(min-width: 768px)": { active: false },
     },
+    startIndex: 1,
   });
 
   const { selectedIndex, setSelectedIndex } = useSelectedIndex(emblaApi);
@@ -122,12 +130,8 @@ const SimulatorSection = () => {
     );
 
     return [
-      getFinalValueAfterTax(simulationValue, facilityTax)
-        ?.toFixed(2)
-        .replace(".", ","),
-      getFinalValueAfterTax(simulationValue, competitorTax)
-        ?.toFixed(2)
-        .replace(".", ","),
+      formatCurrency(facilityValue),
+      formatCurrency(competitorValue),
       (facilityValue - competitorValue)?.toFixed(2).replace(".", ","),
     ];
   }, [facilityTaxes, competitorTaxes, simulationValue, installment]);
@@ -278,7 +282,7 @@ const SimulatorSection = () => {
                 className="text-black group-hover:text-secondary"
               />
             </Button>
-            <Link className="underline text-sm text-gray-dark" href="/">
+            <Link className="underline text-sm text-gray-dark" href="/planos">
               Ver todos os planos e taxas
             </Link>
           </div>

@@ -35,7 +35,7 @@ const LoopBanner = () => {
   return (
     <div className="overflow-x-hidden">
       <div className="w-max animate-[scroll_10s_linear_infinite] py-1.5">
-        <ul className="flex flex-row gap-6">
+        <ul className="flex flex-nowrap flex-row gap-6">
           {items.concat(items).map(({ label, icon }, index) => (
             <BannerItem key={`${label}-${index}`} label={label} icon={icon} />
           ))}

@@ -119,16 +119,16 @@ type SelectItemProps = {
 
 const items: Array<SelectItemProps> = [
   {
-    itemKey: "profit",
-    icon: "one-day",
-    label: "um dia depois",
-    link: "https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c",
-  },
-  {
     itemKey: "spot",
     icon: "one-day",
     label: "um dia depois",
     link: "https://afiliados.facilitypay.com.br/checkout/3ad884d0-d58d-4adc-b1e2-61dcb97d47e0",
+  },
+  {
+    itemKey: "profit",
+    icon: "one-day",
+    label: "um dia depois",
+    link: "https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c",
   },
   {
     itemKey: "light",
@@ -217,9 +217,9 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 
   switch (indexAsAString) {
     case "0":
-      return "profit";
-    case "1":
       return "spot";
+    case "1":
+      return "profit";
     case "2":
       return "light";
     default:
@@ -240,10 +240,11 @@ type ChooseMachineProps = {
 const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: "auto",
-    loop: false,
+    loop: true,
     breakpoints: {
       "(min-width: 768px)": { active: false },
     },
+    startIndex: 1,
   });
 
   const { selectedIndex, setSelectedIndex } = useSelectedIndex(emblaApi);

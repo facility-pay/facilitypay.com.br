@@ -14,12 +14,12 @@ type SelectItemProps = {
 
 const items: Array<SelectItemProps> = [
   {
-    itemKey: "profit",
+    itemKey: "spot",
     icon: "one-day",
     label: "um dia depois",
   },
   {
-    itemKey: "spot",
+    itemKey: "profit",
     icon: "one-day",
     label: "um dia depois",
   },
@@ -58,9 +58,9 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
   const indexAsAString = index.toString();
   switch (indexAsAString) {
     case "0":
-      return "profit";
-    case "1":
       return "spot";
+    case "1":
+      return "profit";
     case "2":
       return "light";
     default:
@@ -71,10 +71,11 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 const TaxesSelect = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: "auto",
-    loop: false,
+    loop: true,
     breakpoints: {
       "(min-width: 768px)": { active: false },
     },
+    startIndex: 1,
   });
 
   const { selectedIndex, setSelectedIndex } = useSelectedIndex(emblaApi);

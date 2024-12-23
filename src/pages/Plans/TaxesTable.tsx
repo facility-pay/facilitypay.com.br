@@ -18,12 +18,12 @@ type SelectItemProps = {
 
 const items: Array<SelectItemProps> = [
   {
-    itemKey: "profit",
+    itemKey: "spot",
     icon: "one-day",
     label: "um dia depois",
   },
   {
-    itemKey: "spot",
+    itemKey: "profit",
     icon: "one-day",
     label: "um dia depois",
   },
@@ -106,10 +106,11 @@ const eloSpotTaxes = [
 const TaxesTable = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: "auto",
-    loop: false,
+    loop: true,
     breakpoints: {
       "(min-width: 768px)": { active: false },
     },
+    startIndex: 1,
   });
 
   const { selectedIndex, setSelectedIndex } = useSelectedIndex(emblaApi);
