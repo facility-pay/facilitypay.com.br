@@ -79,6 +79,7 @@ const PostBySlug = ({ post, posts = [], source }: PostBySlugProps) => {
               className="max-w-xs"
               setSearch={() => {}}
               lastPosts={posts.slice(0, 5)}
+              shouldShowSearchInput={false}
             />
           </div>
         </div>

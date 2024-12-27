@@ -24,9 +24,13 @@ const sections: FooterSection = [
         href: "/sobre",
       },
       {
-        name: "Indique e ganhe",
-        href: "/indique",
+        name: "Blog",
+        href: "/blog",
       },
+      // {
+      //   name: "Indique e ganhe",
+      //   href: "/indique",
+      // },
     ],
   },
   {
@@ -50,21 +54,21 @@ const sections: FooterSection = [
 
 type SocialMedia = {
   iconName: IconName;
-  url?: string;
+  url: string;
 };
 
 const socialMedias: Array<SocialMedia> = [
   {
     iconName: "facebook",
-    url: "",
+    url: "https://www.facebook.com/profile.php?id=100095252897063",
   },
   {
     iconName: "instagram",
-    url: "",
+    url: "https://www.instagram.com/sejafacility/",
   },
   {
     iconName: "ytb",
-    url: "",
+    url: "https://www.youtube.com/@sejafacility",
   },
 ];
 
@@ -78,15 +82,18 @@ const Footer = () => {
         <div className="flex flex-col gap-8 items-center desktop:pr-20">
           <Image alt="facility-vertical-logo" src={FacilityVerticalLogo} />
 
-          <button className="flex gap-6">
-            {socialMedias.map(({ iconName }) => (
-              <Icon
+          <div className="flex gap-6">
+            {socialMedias.map(({ iconName, url }) => (
+              <Link
+                href={url}
                 key={iconName}
-                iconName={iconName}
-                className="text-secondary"
-              />
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon iconName={iconName} className="text-secondary" />
+              </Link>
             ))}
-          </button>
+          </div>
         </div>
 
         <div className="w-full flex flex-col desktop:flex-row gap-10">

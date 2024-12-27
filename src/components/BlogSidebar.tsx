@@ -9,48 +9,75 @@ type BlogSidebarProps = {
   setSearch: (search: string) => void;
   lastPosts?: Post[];
   className?: string;
+  shouldShowSearchInput?: boolean;
 };
 
-const BlogSidebar = ({ lastPosts = [], className }: BlogSidebarProps) => {
+const BlogSidebar = ({
+  search = "",
+  setSearch,
+  lastPosts = [],
+  className,
+  shouldShowSearchInput = true,
+}: BlogSidebarProps) => {
   return (
     <div className={["flex flex-col gap-6", className ?? ""].join(" ")}>
-      {/* <div className="hidden desktop:flex flex-col gap-4">
-        <p className="text-xl font-bold text-black">Buscar</p>
-        <div className="relative flex flex-row max-h-[60px] items-center border border-description-55 rounded-full py-4 pl-4 pr-1">
-          <input
-            type="text"
-            inputMode="numeric"
-            className="text-base font-bold text-black outline-0 outline-none bg-transparent placeholder:text-xs placeholder:font-medium"
-            placeholder="Buscar por palavra-chave..."
-            value={search}
-            onChange={(event) => {
-              setSearch(event.target.value);
-            }}
-          />
-          <Button
-            type="primary"
-            className="!rounded-full !min-w-[52px] !h-[52px]"
-          >
-            <Icon iconName="chevron-right" />
-          </Button>
+      {shouldShowSearchInput && (
+        <div className="hidden desktop:flex flex-col gap-4">
+          <p className="text-xl font-bold text-black">Buscar</p>
+          <div className="relative flex flex-row justify-between max-h-[60px] items-center border border-description-55 rounded-full py-4 pl-4 pr-1">
+            <input
+              type="text"
+              inputMode="numeric"
+              className="w-full text-sm text-black outline-0 outline-none bg-transparent placeholder:text-xs placeholder:font-medium"
+              placeholder="Buscar por palavra-chave..."
+              value={search}
+              onChange={(event) => {
+                setSearch(event.target.value);
+              }}
+            />
+            <Button
+              type="primary"
+              className="!rounded-full !min-w-[52px] !h-[52px]"
+            >
+              <Icon iconName="chevron-right" />
+            </Button>
+          </div>
         </div>
-      </div> */}
+      )}
       <div className="flex flex-col gap-4">
         <p className="text-xl font-bold text-black">Nos siga</p>
         <div className="flex flex-row items-center gap-4">
-          <Button type="primary" className="group !min-w-[52px] !h-[52px]">
+          <Button
+            href="https://www.facebook.com/profile.php?id=100095252897063"
+            type="primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group !min-w-[52px] !h-[52px]"
+          >
             <Icon
               iconName="facebook"
               className="text-black group-hover:text-secondary"
             />
           </Button>
-          <Button type="primary" className="group !min-w-[52px] !h-[52px]">
+          <Button
+            href="https://www.instagram.com/sejafacility/"
+            type="primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group !min-w-[52px] !h-[52px]"
+          >
             <Icon
               iconName="instagram"
               className="text-black group-hover:text-secondary"
             />
           </Button>
-          <Button type="primary" className="group !min-w-[52px] !h-[52px]">
+          <Button
+            href="https://www.youtube.com/@sejafacility"
+            type="primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group !min-w-[52px] !h-[52px]"
+          >
             <Icon
               iconName="ytb"
               className="text-black group-hover:text-secondary"
@@ -64,11 +91,11 @@ const BlogSidebar = ({ lastPosts = [], className }: BlogSidebarProps) => {
           const isLast = index === lastPosts.length - 1;
 
           return (
-            <Link
-              href={`/blog/${post.frontMatter.slug}`}
-              key={post.frontMatter.title}
-            >
-              <div className="flex flex-row items-start gap-6">
+            <div key={post.frontMatter.title}>
+              <Link
+                href={`/blog/${post.frontMatter.slug}`}
+                className="flex flex-row items-start gap-6"
+              >
                 <Image
                   alt="post_image"
                   width={60}
@@ -87,11 +114,11 @@ const BlogSidebar = ({ lastPosts = [], className }: BlogSidebarProps) => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </Link>
               {!isLast && (
                 <div className="min-w-full h-[1px] bg-gray-divider-1 my-4 desktop:my-8" />
               )}
-            </Link>
+            </div>
           );
         })}
       </div>

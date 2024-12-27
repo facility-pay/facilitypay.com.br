@@ -11,6 +11,8 @@ type ButtonProps = PropsWithChildren & {
   onClick?: VoidFunction;
   href?: string;
   disabled?: boolean;
+  target?: string;
+  rel?: string;
 };
 
 const Button = ({
@@ -23,6 +25,8 @@ const Button = ({
   className,
   onClick,
   disabled = false,
+  target,
+  rel,
 }: ButtonProps) => {
   const typeClassName = useMemo(() => {
     if (type === "primary") {
@@ -73,7 +77,7 @@ const Button = ({
 
   if (!!href) {
     return (
-      <Link className={classNames} href={href}>
+      <Link className={classNames} href={href} target={target} rel={rel}>
         {children}
         {shouldRenderChevron && <Icon iconName="chevron-right" />}
       </Link>

@@ -20,10 +20,10 @@ const options: NavOption[] = [
     label: "Planos",
     href: "/planos",
   },
-  // {
-  //   label: "Blog",
-  //   href: "/blog",
-  // },
+  {
+    label: "Blog",
+    href: "/blog",
+  },
   {
     label: "Sobre nós",
     href: "/sobre",

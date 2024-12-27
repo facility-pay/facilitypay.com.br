@@ -11,15 +11,27 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import BlogSidebar from "@/components/BlogSidebar";
 import Link from "next/link";
+import { useMemo, useState } from "react";
 
 type BlogProps = {
   posts: Post[];
 };
 
 const Blog = ({ posts = [] }: BlogProps) => {
+  const [search, setSearch] = useState<string>("");
   const featuredPost = posts?.[0];
 
-  console.log(featuredPost.featuredImage);
+  const filteredPosts = useMemo(() => {
+    if (search) {
+      return posts.filter(
+        (post) =>
+          post.frontMatter.title.toLowerCase().includes(search) ||
+          post.frontMatter.excerpt.toLowerCase().includes(search)
+      );
+    }
+
+    return posts;
+  }, [posts, search]);
 
   return (
     <Layout>
@@ -77,68 +89,80 @@ const Blog = ({ posts = [] }: BlogProps) => {
       </section>
       <div className="h-[1px] bg-gray-divider-1 mx-52 my-[40px]" />
       <div className="flex flex-col gap-10 desktop:gap-0 desktop:flex-row px-8 tablet:px-20 desktop:px-20 desktop:mx-32">
-        <div className="flex flex-wrap gap-8">
-          {posts.map((post) => {
-            return (
-              <Link
-                href={`/blog/${post.frontMatter.slug}`}
-                key={post.frontMatter.title}
-                className="group/post w-full desktop:w-[320px] drop-shadow-[0px_5px_30px_rgba(0,0,0,0.08)] bg-white p-[10px] rounded-xl"
-              >
-                <div className="w-full flex items-center justify-center h-[190px] bg-gray-divider-1">
-                  <Image
-                    alt={post.frontMatter.title}
-                    src={post.featuredImage ?? ""}
-                    width={100}
-                    height={190}
-                  />
-                </div>
-                <div className="min-h-[calc(100%-190px)] flex flex-col justify-between gap-4 px-8">
-                  <div className="flex flex-col gap-2">
-                    <div className="flex flex-row items-center gap-4 pt-[32px]">
-                      <Icon iconName="post-date" className="text-description" />
-                      <p className="opacity-80 text-description text-xs font-medium">
-                        {post.frontMatter.date}
-                      </p>
-                    </div>
-
+        <div className="flex flex-wrap gap-8 desktop:min-w-[700px] desktop:max-w-[700px]">
+          {filteredPosts.length > 0 &&
+            filteredPosts.map((post) => {
+              return (
+                <div
+                  key={post.frontMatter.title}
+                  className="w-full desktop:max-h-[540px] desktop:max-w-[320px] drop-shadow-[0px_5px_30px_rgba(0,0,0,0.08)] bg-white p-[10px] rounded-xl"
+                >
+                  <div className="w-full flex items-center justify-center h-[190px] bg-gray-divider-1">
+                    <Image
+                      alt={post.frontMatter.title}
+                      src={post.featuredImage ?? ""}
+                      width={100}
+                      height={190}
+                    />
+                  </div>
+                  <div className="min-h-[calc(100%-190px)] flex flex-col justify-between gap-4 px-8">
                     <div className="flex flex-col gap-2">
-                      <p className="text-black text-base font-bold">
-                        {post.frontMatter.title}
-                      </p>
-                      <p className="text-description text-sm">
-                        {post.frontMatter.excerpt.substring(0, 150) + "..."}
-                      </p>
+                      <div className="flex flex-row items-center gap-4 pt-[32px]">
+                        <Icon
+                          iconName="post-date"
+                          className="text-description"
+                        />
+                        <p className="opacity-80 text-description text-xs font-medium">
+                          {post.frontMatter.date}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col gap-2">
+                        <p className="text-black text-base font-bold">
+                          {post.frontMatter.title}
+                        </p>
+                        <p className="text-description text-sm">
+                          {post.frontMatter.excerpt.substring(0, 150) + "..."}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-
-                  {/* <button
-                  onClick={() => {}}
-                  className="group/read-more flex flex-row items-center gap-6"
-                > */}
-                  {/* </button> */}
-                  <div className="flex flex-row items-center gap-6">
-                    <Button
-                      disabled
-                      type="primary"
-                      className="h-[60px] !min-w-[60px] group-hover/post:bg-black"
+                    <Link
+                      href={`/blog/${post.frontMatter.slug}`}
+                      className="group/post flex flex-row items-center gap-6 cursor-pointer"
                     >
-                      <Icon
-                        iconName="chevron-right"
-                        className="group-hover/post:text-secondary"
-                      />
-                    </Button>
+                      <Button
+                        type="primary"
+                        className="h-[60px] !min-w-[60px] group-hover/post:bg-black"
+                      >
+                        <Icon
+                          iconName="chevron-right"
+                          className="group-hover/post:text-secondary"
+                        />
+                      </Button>
 
-                    <p className="font-semibold text-gray-dark text-sm group-hover/post:underline group-hover/post:text-secondary">
-                      Leia mais
-                    </p>
+                      <p className="font-semibold text-gray-dark text-sm group-hover/post:underline group-hover/post:text-secondary">
+                        Leia mais
+                      </p>
+                    </Link>
                   </div>
                 </div>
-              </Link>
-            );
-          })}
+              );
+            })}
+          {filteredPosts.length === 0 && (
+            <div className="max-w-lg mx-auto">
+              <p className="text-center text-black text-sm">
+                Não foi possível encontrar o post com essas palavras-chaves.
+                Tente novamente!
+              </p>
+            </div>
+          )}
         </div>
-        <BlogSidebar setSearch={() => {}} lastPosts={posts.slice(0, 5)} />
+        <BlogSidebar
+          search={search}
+          className="min-w-sm"
+          setSearch={setSearch}
+          lastPosts={posts.slice(0, 5)}
+        />
       </div>
     </Layout>
   );
