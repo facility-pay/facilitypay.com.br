@@ -447,16 +447,12 @@ body {
     text-wrap: balance;
   }
 
-  .grid-cols-auto-center > *:nth-last-child(-n + 3):first-child {
-    @apply col-span-3 justify-self-center;
+  _::-webkit-full-page-media,
+  _:future,
+  :root .safari_only::after {
+    top: 14px;
+    left: 22px;
   }
-}
-
-_::-webkit-full-page-media,
-_:future,
-:root .safari_only::after {
-  top: 14px;
-  left: 22px;
 }
 
 .min-h-inherit {

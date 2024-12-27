@@ -10,6 +10,7 @@ type ButtonProps = PropsWithChildren & {
   shouldRenderChevron?: boolean;
   onClick?: VoidFunction;
   href?: string;
+  disabled?: boolean;
 };
 
 const Button = ({
@@ -21,6 +22,7 @@ const Button = ({
   shouldRenderChevron = false,
   className,
   onClick,
+  disabled = false,
 }: ButtonProps) => {
   const typeClassName = useMemo(() => {
     if (type === "primary") {
@@ -79,7 +81,7 @@ const Button = ({
   }
 
   return (
-    <button className={classNames} onClick={onClick}>
+    <button className={classNames} disabled={disabled} onClick={onClick}>
       {children}
       {shouldRenderChevron && <Icon iconName="chevron-right" />}
     </button>

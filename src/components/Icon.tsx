@@ -36,6 +36,9 @@ import Off20SVG from "@/assets/icons/20off.svg";
 import PathSVG from "@/assets/icons/path.svg";
 import ContextSVG from "@/assets/icons/context.svg";
 import PromoSVG from "@/assets/icons/promo.svg";
+import BlogSVG from "@/assets/icons/blog.svg";
+import PostDateSVG from "@/assets/icons/post-date.svg";
+import LinkSVG from "@/assets/icons/link.svg";
 
 import AleloSVG from "@/assets/card_brands/alelo.svg";
 import AmexSVG from "@/assets/card_brands/amex.svg";
@@ -114,7 +117,10 @@ export type IconName =
   | "on-time"
   | "context"
   | "promo"
-  | "pix";
+  | "pix"
+  | "blog"
+  | "post-date"
+  | "link";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const icons: { [key in IconName]: any } = {
@@ -174,6 +180,9 @@ const icons: { [key in IconName]: any } = {
   context: ContextSVG,
   promo: PromoSVG,
   pix: PixSVG,
+  blog: BlogSVG,
+  "post-date": PostDateSVG,
+  link: LinkSVG,
 };
 
 type IconProps = {

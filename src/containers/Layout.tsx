@@ -23,12 +23,15 @@ const Layout = ({ renderLoopBanner, children, className }: LayoutProps) => {
       >
         {children}
 
-        <div className="fixed bottom-[2rem] right-[2rem] z-50">
+        <div
+          className="fixed bottom-[2rem] right-[2rem] z-50 rounded-full"
+          style={{ backgroundColor: "#3DBE64" }}
+        >
           <Link
             href="http://wa.me/5527998126432"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-row items-center gap-4 bg-whatsapp !rounded-full hover:bg-whatsapp p-4"
+            className="flex flex-row items-center gap-4 p-4"
           >
             <Icon iconName="whatsapp" />
             <span className="hidden desktop:block font-semibold text-white">

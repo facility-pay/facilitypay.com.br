@@ -19,6 +19,8 @@ const config: Config = {
         "linear-gradient(#0009,#0009), url('../assets/images/participate.png')",
       "home-section3":
         "linear-gradient(#0009,#0009), url('../assets/images/advantages.png')",
+      example:
+        "linear-gradient(#0009,#0009), url(https://facilitypay.com.br/wp-content/uploads/2024/05/FacilityPay-a-melhor-maquina-de-2024-segundo-os-especialistas.png)",
       section1: "linear-gradient(#E0E8EA, #FFFFFF, #E4EBED)",
       simulator: "linear-gradient(#EFF4F848, #D5DFE748)",
       "loop-banner": "linear-gradient(#E6ECF265, #E6ECF220)",

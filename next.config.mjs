@@ -19,6 +19,18 @@ const nextConfig = {
       }
     );
 
+    config.resolve = {
+      ...config.resolve,
+      fallback: {
+        fs: false,
+        path: false,
+        os: false,
+        net: false,
+        tls: false,
+        child_process: false,
+      },
+    };
+
     fileLoaderRule.exclude = /\.svg$/i;
 
     return config;
@@ -36,6 +48,12 @@ const nextConfig = {
         hostname: "img.youtube.com",
         port: "",
         pathname: "/vi/**",
+      },
+      {
+        protocol: "https",
+        hostname: "facilitypay.com.br",
+        port: "",
+        pathname: "/**",
       },
     ],
   },

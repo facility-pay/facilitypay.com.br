@@ -74,13 +74,17 @@ const Footer = () => {
       <div className="h-[1px] w-full bg-grey-lightest mb-20 px-6 desktop:px-[300px]">
         <div className="h-[6px] bg-secondary" />
       </div>
-      <div className="max-w-6xl mx-auto flex flex-col desktop:flex-row mb-10 items-center desktop:justify-center desktop:pb-8 gap-8 mt-10">
-        <div className="flex flex-col gap-8 items-center pr-20">
+      <div className="mx-10 desktop:mx-auto desktop:max-w-6xl flex flex-col desktop:flex-row mb-10 items-center desktop:justify-center desktop:pb-8 gap-8 mt-10">
+        <div className="flex flex-col gap-8 items-center desktop:pr-20">
           <Image alt="facility-vertical-logo" src={FacilityVerticalLogo} />
 
           <button className="flex gap-6">
             {socialMedias.map(({ iconName }) => (
-              <Icon key={iconName} iconName={iconName} />
+              <Icon
+                key={iconName}
+                iconName={iconName}
+                className="text-secondary"
+              />
             ))}
           </button>
         </div>
