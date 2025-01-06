@@ -13,17 +13,10 @@ import Icon from "@/components/Icon";
 import KnowOurMachines from "@/shared/sections/KnowOurMachines";
 import Testimonials from "@/shared/sections/Testimonials";
 import Layout from "@/containers/Layout";
-import LoopBanner from "@/components/LoopBanner";
 
 const About = () => {
-  const renderLoopBanner = () => (
-    <div className="overflow-x-hidden">
-      <LoopBanner />
-    </div>
-  );
-
   return (
-    <Layout renderLoopBanner={renderLoopBanner}>
+    <Layout>
       <section className="relative flex justify-center min-h-inherit px-8 tablet:px-20 desktop:px-20 pb-[40px] desktop:pb-[120px]">
         <div className="hidden desktop:block absolute top-0 left-0">
           <TopLeftSVG />

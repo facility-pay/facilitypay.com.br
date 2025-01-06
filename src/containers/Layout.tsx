@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Icon from "@/components/Icon";
+import LoopBanner from "@/components/LoopBanner";
 import Link from "next/link";
 import { PropsWithChildren, ReactNode } from "react";
 
@@ -9,10 +10,19 @@ type LayoutProps = PropsWithChildren & {
   className?: string;
 };
 
+const shouldRenderLoopBanner = false;
+
 const Layout = ({ renderLoopBanner, children, className }: LayoutProps) => {
+  const renderDefaultLoopBanner = () =>
+    shouldRenderLoopBanner ? (
+      <div className="overflow-x-hidden">
+        <LoopBanner />
+      </div>
+    ) : null;
+
   return (
     <div>
-      {renderLoopBanner?.()}
+      {renderLoopBanner ? renderLoopBanner() : renderDefaultLoopBanner()}
       <Header />
 
       <div

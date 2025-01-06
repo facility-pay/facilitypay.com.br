@@ -23,10 +23,10 @@ const sections: FooterSection = [
         name: "Sobre nós",
         href: "/sobre",
       },
-      {
-        name: "Blog",
-        href: "/blog",
-      },
+      // {
+      //   name: "Blog",
+      //   href: "/blog",
+      // },
       // {
       //   name: "Indique e ganhe",
       //   href: "/indique",

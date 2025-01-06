@@ -8,7 +8,6 @@ import Image from "next/image";
 import { useMemo } from "react";
 import ModelInticate from "@/assets/images/indicate.png";
 import Link from "next/link";
-import LoopBanner from "@/components/LoopBanner";
 import TopRightArrow from "@/assets/illustrations/indicate/top-right-arrow.svg";
 import BottomArrow from "@/assets/illustrations/indicate/bottom-arrow.svg";
 
@@ -115,12 +114,6 @@ const rules: Array<Rule> = [
 ];
 
 const Indique = () => {
-  const renderLoopBanner = () => (
-    <div className="overflow-x-hidden">
-      <LoopBanner />
-    </div>
-  );
-
   const section1ClassName = useMemo(() => {
     const defaultClass =
       "min-h-[60vh] min-w-full tablet:min-h-[100vh] bg-no-repeat bg-[url('../assets/shapes/section1-shape.svg')] bg-right-top";
@@ -130,7 +123,7 @@ const Indique = () => {
   }, []);
 
   return (
-    <Layout renderLoopBanner={renderLoopBanner}>
+    <Layout>
       <section className="bg-section1 pb-[9rem] tablet:pb-0">
         <div className="flex flex-col tablet:hidden max-w-[70vw] desktop:max-w-[80vw] gap-4 px-5 py-10">
           <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">

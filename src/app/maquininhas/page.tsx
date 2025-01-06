@@ -1,6 +1,5 @@
 "use client";
 
-import LoopBanner from "@/components/LoopBanner";
 import Layout from "@/containers/Layout";
 import MachineInformation from "@/pages/Machines/sections/MachineInformation";
 import Section1 from "@/pages/Machines/sections/Section1";
@@ -9,14 +8,8 @@ import Taxes from "@/shared/sections/Taxes";
 import Testimonials from "@/shared/sections/Testimonials";
 
 const Maquininhas = () => {
-  const renderLoopBanner = () => (
-    <div className="overflow-x-hidden">
-      <LoopBanner />
-    </div>
-  );
-
   return (
-    <Layout renderLoopBanner={renderLoopBanner}>
+    <Layout>
       <Section1 />
       <KnowOurMachines title="Conheça nossas maquininhas" />
       <MachineInformation machineKey="mini" shouldRenderDots />

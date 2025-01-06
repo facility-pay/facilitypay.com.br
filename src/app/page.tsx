@@ -1,7 +1,6 @@
 "use client";
 
 import Button from "@/components/Button";
-import LoopBanner from "@/components/LoopBanner";
 import Image from "next/image";
 import MiniFacilityLogo from "@/assets/logos/mini-logo.png";
 import { useMemo } from "react";
@@ -110,14 +109,8 @@ export default function Home() {
     return [defaultClass, classWidth].join(" ");
   }, []);
 
-  const renderLoopBanner = () => (
-    <div className="overflow-x-hidden">
-      <LoopBanner />
-    </div>
-  );
-
   return (
-    <Layout renderLoopBanner={renderLoopBanner}>
+    <Layout>
       <section className="bg-section1 pb-[9rem] tablet:pb-0">
         <div className="flex flex-col tablet:hidden max-w-[70vw] desktop:max-w-[80vw] gap-4 px-5 py-10">
           <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
