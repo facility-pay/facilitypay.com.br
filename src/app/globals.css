@@ -453,6 +453,13 @@ body {
     top: 14px;
     left: 22px;
   }
+
+  _::-webkit-full-page-media,
+  _:future,
+  :root .safari_only::before {
+    top: 14px;
+    left: 22px;
+  }
 }
 
 .min-h-inherit {

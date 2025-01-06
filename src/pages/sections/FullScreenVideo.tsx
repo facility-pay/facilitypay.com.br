@@ -16,7 +16,7 @@ const LoopBanner = () => {
                 <Icon iconName="machine" />
                 <span className="font-bold text-base desktop:text-lg text-black">
                   FacilityPay PRO{" "}
-                  <span className="font-normal">por 12x de R$ 35,81</span>
+                  <span className="font-normal">por 12x de R$ 37,32</span>
                 </span>
               </div>
             );

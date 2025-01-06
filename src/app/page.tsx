@@ -7,6 +7,7 @@ import { useMemo } from "react";
 import Icon, { IconName } from "@/components/Icon";
 import dynamic from "next/dynamic";
 import Layout from "@/containers/Layout";
+import RASeal from "@/components/RASeal";
 
 const section1Copies = {
   title: `As menores taxas do Brasil no parcelado`,
@@ -165,8 +166,14 @@ export default function Home() {
                 className="flex flex-col w-full tablet:w-[373px] desktop:w-[373px] bg-white rounded-2xl py-10 px-6 gap-4"
               >
                 <div className="flex desktop:flex-col flex-row items-center desktop:items-start gap-4">
-                  <div className="flex justify-center items-center w-16 h-16 bg-[#FFBB00] bg-opacity-20 rounded-full">
-                    <Icon iconName={icon} />
+                  <div className="flex flex-row items-center gap-2">
+                    {key === "complain" ? (
+                      <RASeal />
+                    ) : (
+                      <div className="flex justify-center items-center w-16 h-16 bg-[#FFBB00] bg-opacity-20 rounded-full">
+                        <Icon iconName={icon} />
+                      </div>
+                    )}
                   </div>
                   <p className="break-words text-base desktop:text-xl font-extrabold text-black">
                     {label}
