@@ -27,7 +27,7 @@ const Layout = ({ renderLoopBanner, children, className }: LayoutProps) => {
 
       <div
         className={[
-          "w-screen h-screen max-w-full bg-white",
+          "w-screen h-screen max-w-full bg-white overflow-x-hidden",
           className ?? "",
         ].join(" ")}
       >
