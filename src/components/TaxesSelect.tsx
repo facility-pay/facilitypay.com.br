@@ -3,6 +3,7 @@ import Icon, { IconName } from "./Icon";
 import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
 import PlanPicker from "./PlansPicker";
+import { lightTaxes, profitTaxes, spotTaxes } from "@/utils/taxes";
 
 type SelectItemProps = {
   itemKey: "profit" | "spot" | "light";
@@ -38,19 +39,19 @@ type Taxes = {
 
 const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
   profit: {
-    debit: 1.45,
-    credit: 3.29,
-    credit12x: 9.48,
+    debit: profitTaxes[0],
+    credit: profitTaxes[1],
+    credit12x: profitTaxes[12],
   },
   spot: {
-    debit: 0.99,
-    credit: 2.99,
-    credit12x: 11.18,
+    debit: spotTaxes[0],
+    credit: spotTaxes[1],
+    credit12x: spotTaxes[12],
   },
   light: {
-    debit: 1.39,
-    credit: 3.2,
-    credit12x: 10.12,
+    debit: lightTaxes[0],
+    credit: lightTaxes[1],
+    credit12x: lightTaxes[12],
   },
 };
 

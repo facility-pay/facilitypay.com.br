@@ -11,6 +11,11 @@ import PlanPicker from "@/components/PlansPicker";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
 import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
 import ContainerWithSimpleQuotes from "@/containers/ContainerWithSimpleQuotes";
+import {
+  profitTaxes as profitTaxesWithDebit,
+  spotTaxes as spotTaxesWithDebit,
+  lightTaxes as lightTaxesWithDebit,
+} from "@/utils/taxes";
 
 type SelectItemProps = {
   itemKey: "profit" | "spot" | "light";
@@ -20,20 +25,12 @@ type SelectItemProps = {
   link?: string;
   onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
 };
-const profitTaxes = [
-  3.15, 4.19, 4.83, 5.46, 6.09, 6.71, 7.38, 7.99, 8.6, 9.19, 9.78, 10.38, 10.96,
-  11.54, 12.11, 12.69, 13.25, 13.81,
-];
 
-const spotTaxes = [
-  3.18, 5.85, 6.51, 7.18, 7.84, 8.49, 9.14, 9.78, 10.41, 11.04, 11.66, 12.28,
-  12.89, 13.5, 14.1, 14.69, 15.28, 15.86,
-];
+const profitTaxes = profitTaxesWithDebit.slice(1);
 
-const lightTaxes = [
-  3.37, 4.78, 5.38, 5.98, 6.56, 7.15, 8.28, 8.86, 9.43, 10, 10.55, 11.11, 11.66,
-  12.22, 12.76, 13.3, 13.84, 14.37,
-];
+const spotTaxes = spotTaxesWithDebit.slice(1);
+
+const lightTaxes = lightTaxesWithDebit.slice(1);
 
 const items: Array<SelectItemProps> = [
   {

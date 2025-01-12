@@ -7,6 +7,14 @@ import MobileTopRightSVG from "@/assets/shapes/plans/mobile-top-right.svg";
 import Button from "@/components/Button";
 import { brands } from "@/utils/cards";
 import PlanPicker from "@/components/PlansPicker";
+import {
+  eloLightTaxes,
+  eloProfitTaxes,
+  eloSpotTaxes,
+  lightTaxes,
+  profitTaxes,
+  spotTaxes,
+} from "@/utils/taxes";
 
 type SelectItemProps = {
   itemKey: "profit" | "spot" | "light";
@@ -34,30 +42,6 @@ const items: Array<SelectItemProps> = [
   },
 ];
 
-// type Taxes = {
-//   debit: number;
-//   credit: number;
-//   credit12x: number;
-// };
-
-// const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
-//   profit: {
-//     debit: 1.45,
-//     credit: 3.29,
-//     credit12x: 9.48,
-//   },
-//   spot: {
-//     debit: 0.99,
-//     credit: 2.99,
-//     credit12x: 11.18,
-//   },
-//   light: {
-//     debit: 1.39,
-//     credit: 3.2,
-//     credit12x: 10.12,
-//   },
-// };
-
 const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
   const indexAsAString = index.toString();
 
@@ -73,36 +57,6 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
   }
 };
 
-const profitTaxes = [
-  1.39, 3.15, 4.19, 4.83, 5.46, 6.09, 6.71, 7.38, 7.99, 8.6, 9.19, 9.78, 10.38,
-  10.96, 11.54, 12.11, 12.69, 13.25, 13.81,
-];
-
-const spotTaxes = [
-  0.99, 3.18, 5.85, 6.51, 7.18, 7.84, 8.49, 9.14, 9.78, 10.41, 11.04, 11.66,
-  12.28, 12.89, 13.5, 14.1, 14.69, 15.28, 15.86,
-];
-
-const lightTaxes = [
-  1.39, 3.37, 4.78, 5.38, 5.98, 6.56, 7.15, 8.28, 8.86, 9.43, 10, 10.55, 11.11,
-  11.66, 12.22, 12.76, 13.3, 13.84, 14.37,
-];
-
-const eloLightTaxes = [
-  1.45, 3.66, 4.93, 5.53, 6.13, 6.71, 7.3, 8.58, 9.16, 9.73, 10.3, 10.85, 11.41,
-  11.96, 12.52, 13.06, 13.6, 14.14, 14.37,
-];
-
-const eloProfitTaxes = [
-  1.45, 3.48, 4.34, 4.98, 5.61, 6.24, 6.86, 7.58, 8.19, 8.8, 9.39, 9.98, 10.58,
-  11.16, 11.74, 12.31, 12.89, 13.45, 14.01,
-];
-
-const eloSpotTaxes = [
-  0.99, 3.18, 5.85, 6.51, 7.18, 7.84, 8.49, 9.14, 9.78, 10.41, 11.04, 11.66,
-  12.28, 12.89, 13.5, 14.1, 14.69, 15.28, 15.86,
-];
-
 const TaxesTable = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: "auto",
@@ -115,26 +69,6 @@ const TaxesTable = () => {
 
   const { selectedIndex, setSelectedIndex } = useSelectedIndex(emblaApi);
   const selectedItem = mapIndexToItemKey(selectedIndex);
-
-  // const taxes = useMemo(() => {
-  //   const currentTaxInformation = taxesInformation[selectedItem];
-
-  //   return Object.keys(currentTaxInformation).map((key) => {
-  //     const value = currentTaxInformation?.[key as keyof Taxes];
-
-  //     const label =
-  //       key === "debit"
-  //         ? "Débito"
-  //         : key === "credit"
-  //         ? "Crédito"
-  //         : "Crédito em 12 vezes";
-
-  //     return {
-  //       label,
-  //       tax: `${value.toString().replace(".", ",")}%`,
-  //     };
-  //   });
-  // }, [selectedItem]);
 
   const mastercardAndVisaFacilityTaxes = useMemo(() => {
     switch (selectedItem) {
@@ -158,7 +92,7 @@ const TaxesTable = () => {
       default:
         return eloLightTaxes;
     }
-  }, []);
+  }, [selectedItem]);
 
   return (
     <section className="relative min-h-inherit px-8 tablet:px-20 desktop:px-20 pb-[40px] desktop:pb-[120px]">
