@@ -2,7 +2,6 @@ import Separator from "@/components/Separator";
 import {
   MachineImages,
   MachineItem,
-  MachineKey,
   MachineProductItem,
   products,
   useMachineInformation,
@@ -20,6 +19,12 @@ import Image from "next/image";
 import Featured from "@/components/Featured";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
 import { lightTaxes, profitTaxes, spotTaxes } from "@/utils/taxes";
+import {
+  defaultAffiliatesLink,
+  lightAffiliatesLink,
+  sportAffiliatesLink,
+} from "@/utils/links";
+import { values } from "@/utils/values";
 
 type MachineInformationProps = Pick<
   MachineInformationContainerProps,
@@ -43,76 +48,26 @@ const items: Array<SelectItemProps> = [
     itemKey: "spot",
     icon: "one-day",
     label: "um dia depois",
-    link: "https://afiliados.facilitypay.com.br/checkout/3ad884d0-d58d-4adc-b1e2-61dcb97d47e0",
+    link: sportAffiliatesLink,
   },
   {
     itemKey: "profit",
     icon: "one-day",
     label: "um dia depois",
-    link: "https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c",
+    link: defaultAffiliatesLink,
   },
   {
     itemKey: "light",
     icon: "one-day",
     label: "um dia depois",
-    link: "https://afiliados.facilitypay.com.br/checkout/57bfc785-60fb-482a-8798-c3923a2f0643",
+    link: lightAffiliatesLink,
   },
 ];
-
-type Prices = {
-  black: {
-    [key in MachineKey]: number;
-  };
-  normal: {
-    [key in MachineKey]: number;
-  };
-};
 
 type Taxes = {
   debit: number;
   credit: number;
   credit12x: number;
-};
-
-const machinePricesInformation: {
-  [key in SelectItemProps["itemKey"]]: Prices;
-} = {
-  profit: {
-    black: {
-      mini: 179.91,
-      pro: 359.91,
-      smart: 422.91,
-    },
-    normal: {
-      mini: 247.9,
-      pro: 447.9,
-      smart: 547.9,
-    },
-  },
-  spot: {
-    black: {
-      mini: 179.91,
-      pro: 359.91,
-      smart: 422.91,
-    },
-    normal: {
-      mini: 247.9,
-      pro: 447.9,
-      smart: 547.9,
-    },
-  },
-  light: {
-    black: {
-      mini: 93.9,
-      pro: 287.9,
-      smart: 377.9,
-    },
-    normal: {
-      mini: 138.9,
-      pro: 324.9,
-      smart: 419.9,
-    },
-  },
 };
 
 const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
@@ -170,7 +125,7 @@ const MachineInformation = ({
   const { getMachineInformationByKey } = useMachineInformation();
 
   const currentMachinePrice = useMemo(() => {
-    const machinePriceInformation = machinePricesInformation[selectedItem];
+    const machinePriceInformation = values[selectedItem];
 
     return machinePriceInformation;
   }, [selectedItem]);
@@ -302,8 +257,8 @@ const MachineInformation = ({
 
   const renderMachineInformation = useCallback(
     (isFeatured?: boolean) => {
-      const blackFridayPrice = currentMachinePrice.black[machineKey];
-      const previousPrice = currentMachinePrice.normal[machineKey];
+      const blackFridayPrice = currentMachinePrice.previous[machineKey];
+      const previousPrice = currentMachinePrice.current[machineKey];
       const currentLink = items?.[selectedIndex]?.link ?? "/";
 
       return (

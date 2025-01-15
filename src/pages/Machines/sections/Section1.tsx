@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import { defaultAffiliatesLink } from "@/utils/links";
 import { useMemo } from "react";
 
 const section1Copies = {
@@ -46,7 +47,7 @@ const Section1 = () => {
                   className="w-full tablet:w-80"
                   type="primary"
                   shouldRenderChevron
-                  href="https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c"
+                  href={defaultAffiliatesLink}
                 >
                   Adquirir maquininha
                 </Button>

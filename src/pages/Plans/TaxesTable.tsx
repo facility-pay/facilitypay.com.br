@@ -15,6 +15,7 @@ import {
   profitTaxes,
   spotTaxes,
 } from "@/utils/taxes";
+import { defaultAffiliatesLink } from "@/utils/links";
 
 type SelectItemProps = {
   itemKey: "profit" | "spot" | "light";
@@ -272,7 +273,7 @@ const TaxesTable = () => {
             <Button
               type="primary"
               className="max-w-full min-w-full tablet:min-w-96"
-              href="https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c"
+              href={defaultAffiliatesLink}
             >
               Aproveitar taxas
               <Icon

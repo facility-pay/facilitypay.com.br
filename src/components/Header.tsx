@@ -5,6 +5,7 @@ import Link from "next/link";
 import Button from "./Button";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { defaultAffiliatesLink } from "@/utils/links";
 
 type NavOption = {
   label: string;
@@ -149,7 +150,7 @@ const Header = () => {
               <Button
                 className="min-w-full desktop:min-w-[180px]"
                 type="primary"
-                href="https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c"
+                href={defaultAffiliatesLink}
               >
                 Pedir agora
               </Button>
@@ -291,7 +292,7 @@ const Header = () => {
                 <Button
                   className="min-w-full desktop:min-w-[180px]"
                   type="primary"
-                  href="https://afiliados.facilitypay.com.br/checkout/e9e55358-6155-4e06-992c-4d85dc26cc8c"
+                  href={defaultAffiliatesLink}
                 >
                   Pedir agora
                 </Button>
