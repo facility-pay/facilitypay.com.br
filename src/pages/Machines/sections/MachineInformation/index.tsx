@@ -257,8 +257,8 @@ const MachineInformation = ({
 
   const renderMachineInformation = useCallback(
     (isFeatured?: boolean) => {
-      const blackFridayPrice = currentMachinePrice.previous[machineKey];
-      const previousPrice = currentMachinePrice.current[machineKey];
+      const currentPrice = currentMachinePrice.current[machineKey];
+      const previousPrice = currentMachinePrice.previous[machineKey];
       const currentLink = items?.[selectedIndex]?.link ?? "/";
 
       return (
@@ -276,7 +276,7 @@ const MachineInformation = ({
           <span className="font-extrabold text-whatsapp text-xl">
             R${" "}
             <span className="text-4xl">
-              {blackFridayPrice?.toFixed(2).replace(".", ",")}
+              {currentPrice?.toFixed(2).replace(".", ",")}
             </span>
           </span>
           <Separator className="my-1 tablet:my-3 desktop:my-3" />
