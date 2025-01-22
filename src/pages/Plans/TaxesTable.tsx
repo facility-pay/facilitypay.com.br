@@ -48,9 +48,9 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 
   switch (indexAsAString) {
     case "0":
-      return "profit";
-    case "1":
       return "spot";
+    case "1":
+      return "profit";
     case "2":
       return "light";
     default:
