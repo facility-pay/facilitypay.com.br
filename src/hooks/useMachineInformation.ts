@@ -27,7 +27,7 @@ type MachineProductKey =
   | "receipt-by-sms"
   | "nfc"
   | "pix-or-qrcode"
-  | "chip-2g-wifi"
+  | "chip-4g-wifi"
   | "no-rent"
   | "touchscreen"
   | "product-management";
@@ -88,7 +88,7 @@ export const products: Array<MachineProductItem> = [
   { itemKey: "receipt-by-sms", label: "Comprovante por SMS" },
   { itemKey: "nfc", label: "Pagamento por aproximação (NFC)" },
   { itemKey: "pix-or-qrcode", label: "Aceita PIX por QR code" },
-  { itemKey: "chip-2g-wifi", label: "Chip 2G grátis + Wi-fi" },
+  { itemKey: "chip-4g-wifi", label: "Chip 4G grátis + Wi-fi" },
   { itemKey: "no-rent", label: "Sem aluguel" },
   { itemKey: "touchscreen", label: "Tela touchscreen" },
   { itemKey: "product-management", label: "Gestão de produtos/estoque" },
