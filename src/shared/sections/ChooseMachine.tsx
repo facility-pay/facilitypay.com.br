@@ -34,6 +34,7 @@ const MachineCard = ({
   currValue,
   featured,
   disabledProducts,
+  nonExistingProducts,
   buttonCopy = "Pedir agora",
   link = "/",
 }: MachineCardProps) => {
@@ -41,20 +42,29 @@ const MachineCard = ({
 
   const productsWithIcons: Array<MachineProductItem & { isChecked: boolean }> =
     useMemo(() => {
-      return products.map((product) => {
-        if (disabledProducts?.includes(product.itemKey)) {
+      return products
+        .map((product) => {
+          if (disabledProducts?.includes(product.itemKey)) {
+            return {
+              ...product,
+              isChecked: false,
+            };
+          }
+
+          if (nonExistingProducts?.includes(product.itemKey)) {
+            return null;
+          }
+
           return {
             ...product,
-            isChecked: false,
+            isChecked: true,
           };
-        }
-
-        return {
-          ...product,
-          isChecked: true,
-        };
-      });
-    }, [disabledProducts]);
+        })
+        .filter(Boolean)
+        .sort((a, b) => Number(b?.isChecked) - Number(a?.isChecked)) as Array<
+        MachineProductItem & { isChecked: boolean }
+      >;
+    }, [disabledProducts, nonExistingProducts]);
 
   return (
     <div className="relative w-full drop-shadow-[2px_8px_50px_rgba(0,0,0,0.10)] rounded-2xl rounded-tl-[48px] rounded-br-[48px] tablet:w-[373px] px-8 desktop:w-[373px] flex flex-col bg-white drop-shadow-[2px_8px_50px_rgba(0,0,0,0.10)]">

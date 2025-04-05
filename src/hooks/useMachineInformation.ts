@@ -27,6 +27,7 @@ type MachineProductKey =
   | "receipt-by-sms"
   | "nfc"
   | "pix-or-qrcode"
+  | "chip-2g-wifi"
   | "chip-4g-wifi"
   | "no-rent"
   | "touchscreen"
@@ -42,6 +43,7 @@ export type MachineItem = {
   currValue: number;
   featured?: boolean;
   disabledProducts?: Array<MachineProductKey>;
+  nonExistingProducts?: Array<MachineProductKey>;
 };
 
 export type MachineProductItem = {
@@ -59,7 +61,7 @@ const machines: Array<MachineItem> = [
     strong: "Não precisa de celular para vender.",
     prevValue: 299.9,
     currValue: 239.9,
-    disabledProducts: ["touchscreen", "product-management"],
+    disabledProducts: ["touchscreen", "product-management", "chip-4g-wifi"],
   },
   {
     itemKey: "pro",
@@ -71,6 +73,7 @@ const machines: Array<MachineItem> = [
     currValue: 429.8,
     featured: true,
     disabledProducts: ["product-management"],
+    nonExistingProducts: ["chip-2g-wifi"],
   },
   {
     itemKey: "smart",
@@ -80,6 +83,7 @@ const machines: Array<MachineItem> = [
       "A Facility Smart é a maquininha ideal para quem busca modernidade e eficiência. Com sistema Android, tela touch intuitiva e conexão via Wi-Fi ou chip, ela garante praticidade em qualquer tipo de venda.\n\nAlém de versátil, permite emitir comprovantes digitais e acompanhar vendas em tempo real, tudo em um único dispositivo pensado para facilitar seu dia a dia.",
     prevValue: 629,
     currValue: 519.9,
+    nonExistingProducts: ["chip-2g-wifi"],
   },
 ];
 
@@ -88,6 +92,7 @@ export const products: Array<MachineProductItem> = [
   { itemKey: "receipt-by-sms", label: "Comprovante por SMS" },
   { itemKey: "nfc", label: "Pagamento por aproximação (NFC)" },
   { itemKey: "pix-or-qrcode", label: "Aceita PIX por QR code" },
+  { itemKey: "chip-2g-wifi", label: "Chip 2G grátis + Wi-fi" },
   { itemKey: "chip-4g-wifi", label: "Chip 4G grátis + Wi-fi" },
   { itemKey: "no-rent", label: "Sem aluguel" },
   { itemKey: "touchscreen", label: "Tela touchscreen" },

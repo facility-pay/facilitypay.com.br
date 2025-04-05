@@ -203,8 +203,15 @@ const MachineInformation = ({
     [selectedIndex]
   );
 
-  const { title, subtitle, description, strong, allImages, disabledProducts } =
-    getMachineInformationByKey(machineKey);
+  const {
+    title,
+    subtitle,
+    description,
+    strong,
+    allImages,
+    disabledProducts,
+    nonExistingProducts,
+  } = getMachineInformationByKey(machineKey);
 
   const {
     ImageFront,
@@ -245,15 +252,21 @@ const MachineInformation = ({
 
   const filteredProducts = useMemo<MachineProductItem[]>(() => {
     return products.filter((product) => {
-      if (disabledProducts) {
-        return disabledProducts?.find(
-          (disabledProduct) => disabledProduct !== product.itemKey
+      const foundProduct =
+        disabledProducts?.find(
+          (disabledProduct) => disabledProduct === product.itemKey
+        ) ||
+        nonExistingProducts?.find(
+          (nonExistingProduct) => nonExistingProduct === product.itemKey
         );
+
+      if (foundProduct) {
+        return null;
       }
 
       return product;
     });
-  }, [disabledProducts]);
+  }, [disabledProducts, nonExistingProducts]);
 
   const renderMachineInformation = useCallback(
     (isFeatured?: boolean) => {
