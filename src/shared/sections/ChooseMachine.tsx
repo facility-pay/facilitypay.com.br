@@ -16,11 +16,7 @@ import { useSelectedIndex } from "@/hooks/useSelectedIndex";
 import ContainerWithSimpleQuotes from "@/containers/ContainerWithSimpleQuotes";
 import Image from "next/image";
 import { lightTaxes, profitTaxes, spotTaxes } from "@/utils/taxes";
-import {
-  defaultAffiliatesLink,
-  lightAffiliatesLink,
-  sportAffiliatesLink,
-} from "@/utils/links";
+import { getLinkByMachine } from "@/utils/links";
 import { values } from "@/utils/values";
 
 type MachineCardProps = MachineItem & {
@@ -129,7 +125,6 @@ type SelectItemProps = {
   icon: IconName;
   label: string;
   isSelected?: boolean;
-  link?: string;
   onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
 };
 
@@ -138,19 +133,16 @@ const items: Array<SelectItemProps> = [
     itemKey: "spot",
     icon: "one-day",
     label: "um dia depois",
-    link: sportAffiliatesLink,
   },
   {
     itemKey: "profit",
     icon: "one-day",
     label: "um dia depois",
-    link: defaultAffiliatesLink,
   },
   {
     itemKey: "light",
     icon: "one-day",
     label: "um dia depois",
-    link: lightAffiliatesLink,
   },
 ];
 
@@ -323,7 +315,7 @@ const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
   }, [isDark]);
 
   return (
-    <ContainerWithSimpleQuotes id="choose-machine" shouldQuotesBeInverted>
+    <ContainerWithSimpleQuotes id="escolher-maquininha" shouldQuotesBeInverted>
       <div className={sectionClassName}>
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col items-center justify-center self-center gap-4 py-6">
@@ -352,9 +344,13 @@ const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
 
           <div className="flex px-8 grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 flex-row justify-center justify-items-center items-center gap-10 tablet:pt-[60px] desktop:pt-[32px]">
             {machines.map((machine) => {
+              console.log("machine", machine, items[selectedIndex].itemKey);
               const prevPrice = currentMachinePrice.previous[machine.itemKey];
               const currentPrice = currentMachinePrice.current[machine.itemKey];
-              const currentLink = items[selectedIndex]?.link;
+              const currentLink = getLinkByMachine(
+                items[selectedIndex].itemKey,
+                machine.itemKey
+              );
 
               return (
                 <MachineCard

@@ -8,7 +8,6 @@ import Icon, { IconName } from "@/components/Icon";
 import dynamic from "next/dynamic";
 import Layout from "@/containers/Layout";
 import RASeal from "@/components/RASeal";
-import { defaultAffiliatesLink } from "@/utils/links";
 
 const section1Copies = {
   title: `As menores taxas do Brasil no parcelado`,
@@ -137,7 +136,7 @@ export default function Home() {
               <Button
                 className="w-[100vw] absolute left-[3.5rem] bottom-[-4.5rem] tablet:left-0 tablet:bottom-0 tablet:relative tablet:flex"
                 type="primary"
-                href={defaultAffiliatesLink}
+                href="#escolher-maquininha"
               >
                 Aproveitar taxas
                 <Icon
@@ -188,7 +187,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col tablet:flex-row gap-4 items-center justify-center pt-5 tablet:pt-20 w-full">
-            <Button type="primary" width="100%" href={defaultAffiliatesLink}>
+            <Button type="primary" width="100%" href="#escolher-maquininha">
               Adquirir maquininha
               <Icon
                 iconName="chevron-right"

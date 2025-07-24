@@ -16,18 +16,12 @@ import {
   spotTaxes as spotTaxesWithDebit,
   lightTaxes as lightTaxesWithDebit,
 } from "@/utils/taxes";
-import {
-  defaultAffiliatesLink,
-  lightAffiliatesLink,
-  sportAffiliatesLink,
-} from "@/utils/links";
 
 type SelectItemProps = {
   itemKey: "profit" | "spot" | "light";
   icon: IconName;
   label: string;
   isSelected?: boolean;
-  link?: string;
   onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
 };
 
@@ -42,19 +36,16 @@ const items: Array<SelectItemProps> = [
     itemKey: "spot",
     icon: "one-day",
     label: "um dia depois",
-    link: sportAffiliatesLink,
   },
   {
     itemKey: "profit",
     icon: "one-day",
     label: "um dia depois",
-    link: defaultAffiliatesLink,
   },
   {
     itemKey: "light",
     icon: "one-day",
     label: "um dia depois",
-    link: lightAffiliatesLink,
   },
 ];
 
@@ -276,7 +267,7 @@ const SimulatorSection = () => {
             <Button
               type="primary"
               className="max-w-full min-w-full tablet:min-w-96"
-              href={items[selectedIndex]?.link}
+              href="#escolher-maquininha"
             >
               Adquirir maquininha
               <Icon

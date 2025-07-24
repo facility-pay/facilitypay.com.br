@@ -61,7 +61,7 @@ const KnowOurMachines = ({
   }, [isDark]);
 
   return (
-    <section className={sectionClassName}>
+    <section id="saiba-mais" className={sectionClassName}>
       <div
         className={["max-w-7xl mx-auto px-8", minimumHeighClassName].join(" ")}
       >

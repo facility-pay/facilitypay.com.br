@@ -19,11 +19,7 @@ import Image from "next/image";
 import Featured from "@/components/Featured";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
 import { lightTaxes, profitTaxes, spotTaxes } from "@/utils/taxes";
-import {
-  defaultAffiliatesLink,
-  lightAffiliatesLink,
-  sportAffiliatesLink,
-} from "@/utils/links";
+import { getLinkByMachine } from "@/utils/links";
 import { values } from "@/utils/values";
 
 type MachineInformationProps = Pick<
@@ -39,7 +35,6 @@ type SelectItemProps = {
   icon: IconName;
   label: string;
   isSelected?: boolean;
-  link?: string;
   onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
 };
 
@@ -48,19 +43,16 @@ const items: Array<SelectItemProps> = [
     itemKey: "spot",
     icon: "one-day",
     label: "um dia depois",
-    link: sportAffiliatesLink,
   },
   {
     itemKey: "profit",
     icon: "one-day",
     label: "um dia depois",
-    link: defaultAffiliatesLink,
   },
   {
     itemKey: "light",
     icon: "one-day",
     label: "um dia depois",
-    link: lightAffiliatesLink,
   },
 ];
 
@@ -272,7 +264,8 @@ const MachineInformation = ({
     (isFeatured?: boolean) => {
       const currentPrice = currentMachinePrice.current[machineKey];
       const previousPrice = currentMachinePrice.previous[machineKey];
-      const currentLink = items?.[selectedIndex]?.link ?? "/";
+      const currentLink =
+        getLinkByMachine(items?.[selectedIndex]?.itemKey, machineKey) ?? "/";
 
       return (
         <div className="flex flex-col w-full gap-4">
