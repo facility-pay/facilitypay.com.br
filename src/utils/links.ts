@@ -4,19 +4,19 @@ type Machine = "profit" | "light" | "spot";
 
 const links: { [key in Machine]: { [key in MachineKey]: string } } = {
   profit: {
-    mini: "https://facilitypay.pay.yampi.com.br/r/T18HT8G892",
-    pro: "https://facilitypay.pay.yampi.com.br/r/932OMF428B",
-    smart: "https://facilitypay.pay.yampi.com.br/r/6GI17VOUOU",
+    mini: "https://seguro.facilitypay.com.br/r/T18HT8G892",
+    pro: "https://seguro.facilitypay.com.br/r/932OMF428B",
+    smart: "https://seguro.facilitypay.com.br/r/6GI17VOUOU",
   },
   light: {
-    mini: "https://facilitypay.pay.yampi.com.br/r/80TR8GZ1CD",
-    pro: "https://facilitypay.pay.yampi.com.br/r/MD776O1P16",
-    smart: "https://facilitypay.pay.yampi.com.br/r/MIYQ7CT3B3",
+    mini: "https://seguro.facilitypay.com.br/r/80TR8GZ1CD",
+    pro: "https://seguro.facilitypay.com.br/r/MD776O1P16",
+    smart: "https://seguro.facilitypay.com.br/r/MIYQ7CT3B3",
   },
   spot: {
-    mini: "https://facilitypay.pay.yampi.com.br/r/JBW6DGPLFO",
-    pro: "https://facilitypay.pay.yampi.com.br/r/1EW7T7543U",
-    smart: "https://facilitypay.pay.yampi.com.br/r/C6YGLB7H3G",
+    mini: "https://seguro.facilitypay.com.br/r/JBW6DGPLFO",
+    pro: "https://seguro.facilitypay.com.br/r/1EW7T7543U",
+    smart: "https://seguro.facilitypay.com.br/r/C6YGLB7H3G",
   },
 };
 
