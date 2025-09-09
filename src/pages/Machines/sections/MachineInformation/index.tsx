@@ -18,7 +18,7 @@ import MachineInformationContainer, {
 import Image from "next/image";
 import Featured from "@/components/Featured";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
-import { lightTaxes, profitTaxes, spotTaxes } from "@/utils/taxes";
+import { lightTaxes, profitTaxes, maxxTaxes } from "@/utils/taxes";
 import { getLinkByMachine } from "@/utils/links";
 import { values } from "@/utils/values";
 
@@ -31,7 +31,7 @@ type MachineInformationProps = Pick<
 };
 
 type SelectItemProps = {
-  itemKey: "profit" | "spot" | "light";
+  itemKey: "profit" | "maxx" | "light";
   icon: IconName;
   label: string;
   isSelected?: boolean;
@@ -40,9 +40,9 @@ type SelectItemProps = {
 
 const items: Array<SelectItemProps> = [
   {
-    itemKey: "spot",
+    itemKey: "maxx",
     icon: "one-day",
-    label: "um dia depois",
+    label: "em 30 dias - conforme parcelas",
   },
   {
     itemKey: "profit",
@@ -68,10 +68,10 @@ const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
     credit: profitTaxes[1],
     credit12x: profitTaxes[12],
   },
-  spot: {
-    debit: spotTaxes[0],
-    credit: spotTaxes[1],
-    credit12x: spotTaxes[12],
+  maxx: {
+    debit: maxxTaxes[0],
+    credit: maxxTaxes[1],
+    credit12x: maxxTaxes[12],
   },
   light: {
     debit: lightTaxes[0],
@@ -85,7 +85,7 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 
   switch (indexAsAString) {
     case "0":
-      return "spot";
+      return "maxx";
     case "1":
       return "profit";
     case "2":

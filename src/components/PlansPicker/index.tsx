@@ -7,7 +7,7 @@ import { usePrevNextButtons } from "@/hooks/usePrevNextButtons";
 import "./embla.css";
 
 export type Plan = {
-  itemKey: "profit" | "spot" | "light";
+  itemKey: "profit" | "maxx" | "light";
   label: string;
   icon: IconName;
   children?: ReactNode;
