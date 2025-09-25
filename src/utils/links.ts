@@ -1,6 +1,6 @@
 import { MachineKey } from "@/hooks/useMachineInformation";
 
-type Machine = "profit" | "light" | "maxx";
+type Machine = "profit" | "light" | "express";
 
 const links: { [key in Machine]: { [key in MachineKey]: string } } = {
   profit: {
@@ -13,7 +13,7 @@ const links: { [key in Machine]: { [key in MachineKey]: string } } = {
     pro: "https://seguro.facilitypay.com.br/r/MD776O1P16",
     smart: "https://seguro.facilitypay.com.br/r/MIYQ7CT3B3",
   },
-  maxx: {
+  express: {
     mini: "https://seguro.facilitypay.com.br/r/JBW6DGPLFO",
     pro: "https://seguro.facilitypay.com.br/r/1EW7T7543U",
     smart: "https://seguro.facilitypay.com.br/r/C6YGLB7H3G",
@@ -21,7 +21,7 @@ const links: { [key in Machine]: { [key in MachineKey]: string } } = {
 };
 
 export const getLinkByMachine = (
-  key: "profit" | "light" | "maxx",
+  key: "profit" | "light" | "express",
   type: MachineKey
 ) => {
   return links[key][type];

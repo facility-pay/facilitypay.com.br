@@ -13,12 +13,12 @@ import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
 import ContainerWithSimpleQuotes from "@/containers/ContainerWithSimpleQuotes";
 import {
   profitTaxes as profitTaxesWithDebit,
-  maxxTaxes as maxxTaxesWithDebit,
+  expressTaxes as expressTaxesWithDebit,
   lightTaxes as lightTaxesWithDebit,
 } from "@/utils/taxes";
 
 type SelectItemProps = {
-  itemKey: "profit" | "maxx" | "light";
+  itemKey: "profit" | "express" | "light";
   icon: IconName;
   label: string;
   isSelected?: boolean;
@@ -27,15 +27,15 @@ type SelectItemProps = {
 
 const profitTaxes = profitTaxesWithDebit.slice(1);
 
-const maxxTaxes = maxxTaxesWithDebit.slice(1);
+const expressTaxes = expressTaxesWithDebit.slice(1);
 
 const lightTaxes = lightTaxesWithDebit.slice(1);
 
 const items: Array<SelectItemProps> = [
   {
-    itemKey: "maxx",
+    itemKey: "express",
     icon: "one-day",
-    label: "em 30 dias - conforme parcelas",
+    label: "na hora",
   },
   {
     itemKey: "profit",
@@ -70,7 +70,7 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 
   switch (indexAsAString) {
     case "0":
-      return "maxx";
+      return "express";
     case "1":
       return "profit";
     case "2":
@@ -100,8 +100,8 @@ const SimulatorSection = () => {
     switch (selectedTax) {
       case "profit":
         return [profitTaxes, taxesD1Competitor];
-      case "maxx":
-        return [maxxTaxes, taxesD1Competitor];
+      case "express":
+        return [expressTaxes, taxesD1Competitor];
       case "light":
       default:
         return [lightTaxes, taxesD1Competitor];

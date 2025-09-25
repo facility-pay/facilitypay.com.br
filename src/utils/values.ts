@@ -7,7 +7,7 @@ type Prices = {
 };
 
 export const values: {
-  [key in "profit" | "maxx" | "light"]: Prices;
+  [key in "profit" | "express" | "light"]: Prices;
 } = {
   profit: {
     previous: {
@@ -21,7 +21,7 @@ export const values: {
       smart: 452.9,
     },
   },
-  maxx: {
+  express: {
     previous: {
       mini: 359.9,
       pro: 649.9,

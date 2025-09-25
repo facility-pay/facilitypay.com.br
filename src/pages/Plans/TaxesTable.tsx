@@ -10,14 +10,14 @@ import PlanPicker from "@/components/PlansPicker";
 import {
   eloLightTaxes,
   eloProfitTaxes,
-  elomaxxTaxes,
+  eloExpressTaxes,
   lightTaxes,
   profitTaxes,
-  maxxTaxes,
+  expressTaxes,
 } from "@/utils/taxes";
 
 type SelectItemProps = {
-  itemKey: "profit" | "maxx" | "light";
+  itemKey: "profit" | "express" | "light";
   icon: IconName;
   label: string;
   isSelected?: boolean;
@@ -26,9 +26,9 @@ type SelectItemProps = {
 
 const items: Array<SelectItemProps> = [
   {
-    itemKey: "maxx",
+    itemKey: "express",
     icon: "one-day",
-    label: "em 30 dias - conforme parcelas",
+    label: "na hora",
   },
   {
     itemKey: "profit",
@@ -47,7 +47,7 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 
   switch (indexAsAString) {
     case "0":
-      return "maxx";
+      return "express";
     case "1":
       return "profit";
     case "2":
@@ -74,8 +74,8 @@ const TaxesTable = () => {
     switch (selectedItem) {
       case "profit":
         return profitTaxes;
-      case "maxx":
-        return maxxTaxes;
+      case "express":
+        return expressTaxes;
       case "light":
       default:
         return lightTaxes;
@@ -86,8 +86,8 @@ const TaxesTable = () => {
     switch (selectedItem) {
       case "profit":
         return eloProfitTaxes;
-      case "maxx":
-        return elomaxxTaxes;
+      case "express":
+        return eloExpressTaxes;
       case "light":
       default:
         return eloLightTaxes;
