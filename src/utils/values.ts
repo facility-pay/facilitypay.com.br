@@ -16,9 +16,9 @@ export const values: {
       smart: 749.9,
     },
     current: {
-      mini: 129.9,
-      pro: 243.9,
-      smart: 452.9,
+      mini: 199.9,
+      pro: 319.9,
+      smart: 495.9,
     },
   },
   express: {
@@ -28,9 +28,9 @@ export const values: {
       smart: 749.9,
     },
     current: {
-      mini: 129.9,
-      pro: 243.9,
-      smart: 452.9,
+      mini: 199.9,
+      pro: 319.9,
+      smart: 495.9,
     },
   },
   light: {
