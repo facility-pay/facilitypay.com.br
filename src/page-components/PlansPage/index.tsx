@@ -1,7 +1,7 @@
 "use client";
 
 import Layout from "@/containers/Layout";
-import TaxesTable from "@/pages/Plans/TaxesTable";
+import TaxesTable from "@/page-sections/Plans/TaxesTable";
 import dynamic from "next/dynamic";
 
 const MyLazyLoadedChooseMachine = dynamic(

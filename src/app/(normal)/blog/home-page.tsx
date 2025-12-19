@@ -12,6 +12,7 @@ import Button from "@/components/Button";
 import BlogSidebar from "@/components/BlogSidebar";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
 
 type BlogProps = {
   posts: Post[];
@@ -19,6 +20,8 @@ type BlogProps = {
 
 const Blog = ({ posts = [] }: BlogProps) => {
   const [search, setSearch] = useState<string>("");
+  const pathname = usePathname();
+  const routePrefix = pathname.startsWith('/afiliados-facility') ? '/afiliados-facility' : '';
   const featuredPost = posts?.[0];
 
   const filteredPosts = useMemo(() => {
@@ -127,7 +130,7 @@ const Blog = ({ posts = [] }: BlogProps) => {
                       </div>
                     </div>
                     <Link
-                      href={`/blog/${post.frontMatter.slug}`}
+                      href={`${routePrefix}/blog/${post.frontMatter.slug}`}
                       className="group/post flex flex-row items-center gap-6 cursor-pointer"
                     >
                       <Button

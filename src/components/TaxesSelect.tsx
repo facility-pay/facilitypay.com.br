@@ -3,7 +3,7 @@ import Icon, { IconName } from "./Icon";
 import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
 import PlanPicker from "./PlansPicker";
-import { lightTaxes, profitTaxes, expressTaxes } from "@/utils/taxes";
+import { usePlanConfig } from "@/contexts/PlanConfigContext";
 
 type SelectItemProps = {
   itemKey: "profit" | "express" | "light";
@@ -13,46 +13,10 @@ type SelectItemProps = {
   onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
 };
 
-const items: Array<SelectItemProps> = [
-  {
-    itemKey: "express",
-    icon: "one-day",
-    label: "na hora",
-  },
-  {
-    itemKey: "profit",
-    icon: "one-day",
-    label: "um dia depois",
-  },
-  {
-    itemKey: "light",
-    icon: "one-day",
-    label: "um dia depois",
-  },
-];
-
 type Taxes = {
   debit: number;
   credit: number;
   credit12x: number;
-};
-
-const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
-  profit: {
-    debit: profitTaxes[0],
-    credit: profitTaxes[1],
-    credit12x: profitTaxes[12],
-  },
-  express: {
-    debit: expressTaxes[0],
-    credit: expressTaxes[1],
-    credit12x: expressTaxes[12],
-  },
-  light: {
-    debit: lightTaxes[0],
-    credit: lightTaxes[1],
-    credit12x: lightTaxes[12],
-  },
 };
 
 const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
@@ -70,6 +34,28 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 };
 
 const TaxesSelect = () => {
+  const planConfig = usePlanConfig();
+
+  const items: Array<SelectItemProps> = useMemo(
+    () => [
+      {
+        itemKey: "express" as const,
+        icon: planConfig.getPlanMetadata("express").icon,
+        label: planConfig.getPlanMetadata("express").label,
+      },
+      {
+        itemKey: "profit" as const,
+        icon: planConfig.getPlanMetadata("profit").icon,
+        label: planConfig.getPlanMetadata("profit").label,
+      },
+      {
+        itemKey: "light" as const,
+        icon: planConfig.getPlanMetadata("light").icon,
+        label: planConfig.getPlanMetadata("light").label,
+      },
+    ],
+    [planConfig]
+  );
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: "auto",
     loop: true,
@@ -83,7 +69,7 @@ const TaxesSelect = () => {
   const selectedItem = mapIndexToItemKey(selectedIndex);
 
   const taxes = useMemo(() => {
-    const currentTaxInformation = taxesInformation[selectedItem];
+    const currentTaxInformation = planConfig.getTaxInfo(selectedItem);
 
     return Object.keys(currentTaxInformation).map((key) => {
       const value = currentTaxInformation?.[key as keyof Taxes];
@@ -100,7 +86,7 @@ const TaxesSelect = () => {
         tax: `${value.toString().replace(".", ",")}%`,
       };
     });
-  }, [selectedItem]);
+  }, [selectedItem, planConfig]);
 
   return (
     <div className="flex flex-col items-center">

@@ -8,6 +8,8 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/assets/**/*.{js,ts,jsx,tsx,mdx,svg,png}",
     "./src/hooks/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/page-components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/page-sections/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     backgroundImage: {

@@ -1,3 +1,5 @@
+"use client";
+
 import FacilityLogo from "@/assets/logos/facility.png";
 import Image from "next/image";
 import Icon from "./Icon";
@@ -37,13 +39,19 @@ const Header = () => {
 
   const pathname = usePathname();
 
-  const getIsSelected = (currentPath: string) => currentPath === pathname;
+  // Detect if we're in the affiliate route
+  const routePrefix = pathname.startsWith('/afiliados-facility') ? '/afiliados-facility' : '';
+
+  const getIsSelected = (currentPath: string) => {
+    const fullPath = `${routePrefix}${currentPath}`;
+    return fullPath === pathname;
+  };
 
   return (
-    <header className="relative z-50 max-w-full mx-auto py-6">
+    <header className="sticky desktop:relative top-0 z-50 max-w-full mx-auto py-6 bg-white">
       <div className="min-w-full flex flex-row items-center justify-evenly">
         <div className="flex flex-row items-center justify-between">
-          <Link href="/">
+          <Link href={routePrefix || "/"}>
             <Image
               className="border-r border-grey-divider pr-4 desktop:pr-8 cursor-pointer"
               alt="facility-logo"
@@ -133,7 +141,7 @@ const Header = () => {
                     className="block desktop:hidden text-secondary"
                   />
                   <Link
-                    href={href}
+                    href={`${routePrefix}${href}`}
                     className={[
                       "font-semibold text-base text-gray-dark group-hover/option:text-secondary group-hover/option:underline",
                       isSelected ? "text-secondary" : "",
@@ -275,7 +283,7 @@ const Header = () => {
                       className="block desktop:hidden text-secondary"
                     />
                     <Link
-                      href={href}
+                      href={`${routePrefix}${href}`}
                       className={[
                         "font-semibold text-base text-gray-dark group-hover/option:text-secondary",
                         isSelected ? "text-secondary" : "",

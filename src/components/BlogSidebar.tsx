@@ -1,8 +1,11 @@
+"use client";
+
 import { Post } from "@/lib/posts";
 import Button from "./Button";
 import Icon from "./Icon";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type BlogSidebarProps = {
   search?: string;
@@ -19,6 +22,9 @@ const BlogSidebar = ({
   className,
   shouldShowSearchInput = true,
 }: BlogSidebarProps) => {
+  const pathname = usePathname();
+  const routePrefix = pathname.startsWith('/afiliados-facility') ? '/afiliados-facility' : '';
+
   return (
     <div className={["flex flex-col gap-6", className ?? ""].join(" ")}>
       {shouldShowSearchInput && (
@@ -93,7 +99,7 @@ const BlogSidebar = ({
           return (
             <div key={post.frontMatter.title}>
               <Link
-                href={`/blog/${post.frontMatter.slug}`}
+                href={`${routePrefix}/blog/${post.frontMatter.slug}`}
                 className="flex flex-row items-start gap-6"
               >
                 <Image

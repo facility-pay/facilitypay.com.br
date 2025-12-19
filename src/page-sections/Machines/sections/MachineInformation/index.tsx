@@ -18,9 +18,7 @@ import MachineInformationContainer, {
 import Image from "next/image";
 import Featured from "@/components/Featured";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
-import { lightTaxes, profitTaxes, expressTaxes } from "@/utils/taxes";
-import { getLinkByMachine } from "@/utils/links";
-import { values } from "@/utils/values";
+import { usePlanConfig } from "@/contexts/PlanConfigContext";
 
 type MachineInformationProps = Pick<
   MachineInformationContainerProps,
@@ -36,48 +34,6 @@ type SelectItemProps = {
   label: string;
   isSelected?: boolean;
   onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
-};
-
-const items: Array<SelectItemProps> = [
-  {
-    itemKey: "express",
-    icon: "one-day",
-    label: "na hora",
-  },
-  {
-    itemKey: "profit",
-    icon: "one-day",
-    label: "um dia depois",
-  },
-  {
-    itemKey: "light",
-    icon: "one-day",
-    label: "um dia depois",
-  },
-];
-
-type Taxes = {
-  debit: number;
-  credit: number;
-  credit12x: number;
-};
-
-const taxesInformation: { [key in SelectItemProps["itemKey"]]: Taxes } = {
-  profit: {
-    debit: profitTaxes[0],
-    credit: profitTaxes[1],
-    credit12x: profitTaxes[12],
-  },
-  express: {
-    debit: expressTaxes[0],
-    credit: expressTaxes[1],
-    credit12x: expressTaxes[12],
-  },
-  light: {
-    debit: lightTaxes[0],
-    credit: lightTaxes[1],
-    credit12x: lightTaxes[12],
-  },
 };
 
 const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
@@ -104,6 +60,29 @@ const MachineInformation = ({
   position = "left",
   ...props
 }: MachineInformationProps) => {
+  const planConfig = usePlanConfig();
+
+  const items: Array<SelectItemProps> = useMemo(
+    () => [
+      {
+        itemKey: "express" as const,
+        icon: planConfig.getPlanMetadata("express").icon,
+        label: planConfig.getPlanMetadata("express").label,
+      },
+      {
+        itemKey: "profit" as const,
+        icon: planConfig.getPlanMetadata("profit").icon,
+        label: planConfig.getPlanMetadata("profit").label,
+      },
+      {
+        itemKey: "light" as const,
+        icon: planConfig.getPlanMetadata("light").icon,
+        label: planConfig.getPlanMetadata("light").label,
+      },
+    ],
+    [planConfig]
+  );
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: "auto",
     loop: true,
@@ -117,14 +96,13 @@ const MachineInformation = ({
   const { getMachineInformationByKey } = useMachineInformation();
 
   const currentMachinePrice = useMemo(() => {
-    const machinePriceInformation = values[selectedItem];
-
-    return machinePriceInformation;
-  }, [selectedItem]);
+    return planConfig.values[selectedItem];
+  }, [selectedItem, planConfig]);
 
   const renderItem = useCallback(
     (item: Plan, index: number) => {
       const isSelected = index === selectedIndex;
+      const taxInfo = planConfig.getTaxInfo(item.itemKey);
 
       return (
         <div
@@ -179,20 +157,19 @@ const MachineInformation = ({
           </div>
           <div className="flex flex-row items-center px-3">
             <span className="text-white text-xs border-r border-description-55 pr-1">
-              Crédito: <strong>{taxesInformation[item.itemKey].credit}%</strong>
+              Crédito: <strong>{taxInfo.credit}%</strong>
             </span>
             <span className="text-white text-xs border-r border-description-55 pl-1 pr-1">
-              Débito: <strong>{taxesInformation[item.itemKey].debit}%</strong>
+              Débito: <strong>{taxInfo.debit}%</strong>
             </span>
             <span className="text-white text-xs pl-1">
-              Crédito 12x:{" "}
-              <strong>{taxesInformation[item.itemKey].credit12x}%</strong>
+              Crédito 12x: <strong>{taxInfo.credit12x}%</strong>
             </span>
           </div>
         </div>
       );
     },
-    [selectedIndex]
+    [selectedIndex, planConfig]
   );
 
   const {
@@ -265,7 +242,7 @@ const MachineInformation = ({
       const currentPrice = currentMachinePrice.current[machineKey];
       const previousPrice = currentMachinePrice.previous[machineKey];
       const currentLink =
-        getLinkByMachine(items?.[selectedIndex]?.itemKey, machineKey) ?? "/";
+        planConfig.getLinkByMachine(items?.[selectedIndex]?.itemKey, machineKey) ?? "/";
 
       return (
         <div className="flex flex-col w-full gap-4">
@@ -326,6 +303,8 @@ const MachineInformation = ({
       strong,
       filteredProducts,
       currentMachinePrice,
+      planConfig,
+      items,
     ]
   );
 

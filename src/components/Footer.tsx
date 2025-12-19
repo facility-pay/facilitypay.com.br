@@ -1,7 +1,10 @@
+"use client";
+
 import FacilityVerticalLogo from "@/assets/logos/facility-vertical.png";
 import Image from "next/image";
 import Link from "next/link";
 import Icon, { IconName } from "./Icon";
+import { usePathname } from "next/navigation";
 
 type FooterSection = Array<{
   name: string;
@@ -73,6 +76,11 @@ const socialMedias: Array<SocialMedia> = [
 ];
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  // Detect if we're in the affiliate route
+  const routePrefix = pathname.startsWith('/afiliados-facility') ? '/afiliados-facility' : '';
+
   return (
     <footer className="mt-[60px] desktop:mt-[100px]">
       <div className="h-[1px] w-full bg-grey-lightest mb-20 px-6 desktop:px-[300px]">
@@ -111,7 +119,7 @@ const Footer = () => {
                   >
                     <Icon iconName="chevron-right" className="text-secondary" />
                     <Link
-                      href={href ?? ""}
+                      href={href ? `${routePrefix}${href}` : ""}
                       className="text-sm text-gray-dark group-hover/option:text-secondary group-hover/option:underline"
                     >
                       {subSectionName}

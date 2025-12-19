@@ -1,8 +1,8 @@
 "use client";
 
 import Layout from "@/containers/Layout";
-import MachineInformation from "@/pages/Machines/sections/MachineInformation";
-import Section1 from "@/pages/Machines/sections/Section1";
+import MachineInformation from "@/page-sections/Machines/sections/MachineInformation";
+import Section1 from "@/page-sections/Machines/sections/Section1";
 import KnowOurMachines from "@/shared/sections/KnowOurMachines";
 import Taxes from "@/shared/sections/Taxes";
 import Testimonials from "@/shared/sections/Testimonials";

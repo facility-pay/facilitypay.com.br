@@ -1,9 +1,15 @@
+"use client";
+
 import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import TaxesSelect from "@/components/TaxesSelect";
 import { brands } from "@/utils/cards";
+import { usePathname } from "next/navigation";
 
 const Taxes = () => {
+  const pathname = usePathname();
+  const routePrefix = pathname.startsWith('/afiliados-facility') ? '/afiliados-facility' : '';
+
   return (
     <section className="max-w-7xl mx-auto relative mt-[4.5rem] mb-[4.5rem] tablet:mb-[6rem]">
       <div className="bg-white max-w-full px-8 tablet:px-20 desktop:px-20 max-w-7xl mx-auto">
@@ -23,7 +29,7 @@ const Taxes = () => {
           <Button
             type="primary"
             className="max-w-full min-w-full tablet:min-w-96"
-            href="/planos"
+            href={`${routePrefix}/planos`}
           >
             Ver todos os planos e taxas
             <Icon

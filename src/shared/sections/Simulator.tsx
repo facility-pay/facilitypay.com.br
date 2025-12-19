@@ -11,11 +11,8 @@ import PlanPicker from "@/components/PlansPicker";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
 import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
 import ContainerWithSimpleQuotes from "@/containers/ContainerWithSimpleQuotes";
-import {
-  profitTaxes as profitTaxesWithDebit,
-  expressTaxes as expressTaxesWithDebit,
-  lightTaxes as lightTaxesWithDebit,
-} from "@/utils/taxes";
+import { usePlanConfig } from "@/contexts/PlanConfigContext";
+import { usePathname } from "next/navigation";
 
 type SelectItemProps = {
   itemKey: "profit" | "express" | "light";
@@ -24,30 +21,6 @@ type SelectItemProps = {
   isSelected?: boolean;
   onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
 };
-
-const profitTaxes = profitTaxesWithDebit.slice(1);
-
-const expressTaxes = expressTaxesWithDebit.slice(1);
-
-const lightTaxes = lightTaxesWithDebit.slice(1);
-
-const items: Array<SelectItemProps> = [
-  {
-    itemKey: "express",
-    icon: "one-day",
-    label: "na hora",
-  },
-  {
-    itemKey: "profit",
-    icon: "one-day",
-    label: "um dia depois",
-  },
-  {
-    itemKey: "light",
-    icon: "one-day",
-    label: "um dia depois",
-  },
-];
 
 const formatCurrency = (value: number) => {
   return new Intl.NumberFormat("pt-BR", {
@@ -81,6 +54,31 @@ const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
 };
 
 const SimulatorSection = () => {
+  const planConfig = usePlanConfig();
+  const pathname = usePathname();
+  const routePrefix = pathname.startsWith('/afiliados-facility') ? '/afiliados-facility' : '';
+
+  const items: Array<SelectItemProps> = useMemo(
+    () => [
+      {
+        itemKey: "express" as const,
+        icon: planConfig.getPlanMetadata("express").icon,
+        label: planConfig.getPlanMetadata("express").label,
+      },
+      {
+        itemKey: "profit" as const,
+        icon: planConfig.getPlanMetadata("profit").icon,
+        label: planConfig.getPlanMetadata("profit").label,
+      },
+      {
+        itemKey: "light" as const,
+        icon: planConfig.getPlanMetadata("light").icon,
+        label: planConfig.getPlanMetadata("light").label,
+      },
+    ],
+    [planConfig]
+  );
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: "auto",
     loop: true,
@@ -97,16 +95,10 @@ const SimulatorSection = () => {
   const selectedTax = mapIndexToItemKey(selectedIndex);
 
   const [facilityTaxes, competitorTaxes] = useMemo(() => {
-    switch (selectedTax) {
-      case "profit":
-        return [profitTaxes, taxesD1Competitor];
-      case "express":
-        return [expressTaxes, taxesD1Competitor];
-      case "light":
-      default:
-        return [lightTaxes, taxesD1Competitor];
-    }
-  }, [selectedTax]);
+    // Get credit taxes only (slice(1) removes debit at index 0)
+    const creditTaxes = planConfig.taxes[selectedTax].slice(1);
+    return [creditTaxes, taxesD1Competitor];
+  }, [selectedTax, planConfig]);
 
   const [
     facilityFormattedValue,
@@ -275,7 +267,7 @@ const SimulatorSection = () => {
                 className="text-black group-hover:text-secondary"
               />
             </Button>
-            <Link className="underline text-sm text-gray-dark" href="/planos">
+            <Link className="underline text-sm text-gray-dark" href={`${routePrefix}/planos`}>
               Ver todos os planos e taxas
             </Link>
           </div>

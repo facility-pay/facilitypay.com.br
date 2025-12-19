@@ -73,7 +73,7 @@ const MyLazyLoadedSimulator = dynamic(
   }
 );
 const MyLazyLoadedFullScreenVideo = dynamic(
-  () => import("@/pages/sections/FullScreenVideo"),
+  () => import("@/page-sections/sections/FullScreenVideo"),
   {
     ssr: false,
     loading: () => <></>,
