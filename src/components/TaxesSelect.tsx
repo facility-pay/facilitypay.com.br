@@ -4,9 +4,10 @@ import useEmblaCarousel, { EmblaViewportRefType } from "embla-carousel-react";
 import { useSelectedIndex } from "@/hooks/useSelectedIndex";
 import PlanPicker from "./PlansPicker";
 import { usePlanConfig } from "@/contexts/PlanConfigContext";
+import { PlanKey } from "@/types/planConfig";
 
 type SelectItemProps = {
-  itemKey: "profit" | "express" | "light";
+  itemKey: PlanKey;
   icon: IconName;
   label: string;
   isSelected?: boolean;
@@ -19,43 +20,21 @@ type Taxes = {
   credit12x: number;
 };
 
-const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
-  const indexAsAString = index.toString();
-  switch (indexAsAString) {
-    case "0":
-      return "express";
-    case "1":
-      return "profit";
-    case "2":
-      return "light";
-    default:
-      return "profit";
-  }
-};
-
 const TaxesSelect = () => {
   const planConfig = usePlanConfig();
 
   const items: Array<SelectItemProps> = useMemo(
-    () => [
-      {
-        itemKey: "express" as const,
-        icon: planConfig.getPlanMetadata("express").icon,
-        label: planConfig.getPlanMetadata("express").label,
-      },
-      {
-        itemKey: "profit" as const,
-        icon: planConfig.getPlanMetadata("profit").icon,
-        label: planConfig.getPlanMetadata("profit").label,
-      },
-      {
-        itemKey: "light" as const,
-        icon: planConfig.getPlanMetadata("light").icon,
-        label: planConfig.getPlanMetadata("light").label,
-      },
-    ],
+    () => planConfig.planKeys.map((planKey) => ({
+      itemKey: planKey,
+      icon: planConfig.getPlanMetadata(planKey).icon,
+      label: planConfig.getPlanMetadata(planKey).label,
+    })),
     [planConfig]
   );
+
+  const mapIndexToItemKey = (index: number): PlanKey => {
+    return planConfig.planKeys[index] || planConfig.planKeys[0];
+  };
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: "auto",
     loop: true,

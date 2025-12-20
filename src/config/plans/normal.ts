@@ -2,6 +2,7 @@ import { PlanConfig } from "@/types/planConfig";
 
 export const normalPlanConfig: PlanConfig = {
   variant: "normal",
+  planKeys: ["profit", "express", "light"],
   taxes: {
     profit: [
       1.09, 2.99, 4.46, 5.21, 5.96, 6.69, 7.43, 8.2, 8.91, 9.62, 10.32, 11.01,

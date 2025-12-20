@@ -8,51 +8,25 @@ import Button from "@/components/Button";
 import { brands } from "@/utils/cards";
 import PlanPicker from "@/components/PlansPicker";
 import { usePlanConfig } from "@/contexts/PlanConfigContext";
+import { PlanKey } from "@/types/planConfig";
 
 type SelectItemProps = {
-  itemKey: "profit" | "express" | "light";
+  itemKey: PlanKey;
   icon: IconName;
   label: string;
   isSelected?: boolean;
   onSelectItem?: (key: SelectItemProps["itemKey"]) => void;
 };
 
-const mapIndexToItemKey = (index: number): SelectItemProps["itemKey"] => {
-  const indexAsAString = index.toString();
-
-  switch (indexAsAString) {
-    case "0":
-      return "express";
-    case "1":
-      return "profit";
-    case "2":
-      return "light";
-    default:
-      return "profit";
-  }
-};
-
 const TaxesTable = () => {
   const planConfig = usePlanConfig();
 
   const items: Array<SelectItemProps> = useMemo(
-    () => [
-      {
-        itemKey: "express" as const,
-        icon: planConfig.getPlanMetadata("express").icon,
-        label: planConfig.getPlanMetadata("express").label,
-      },
-      {
-        itemKey: "profit" as const,
-        icon: planConfig.getPlanMetadata("profit").icon,
-        label: planConfig.getPlanMetadata("profit").label,
-      },
-      {
-        itemKey: "light" as const,
-        icon: planConfig.getPlanMetadata("light").icon,
-        label: planConfig.getPlanMetadata("light").label,
-      },
-    ],
+    () => planConfig.planKeys.map((planKey) => ({
+      itemKey: planKey,
+      icon: planConfig.getPlanMetadata(planKey).icon,
+      label: planConfig.getPlanMetadata(planKey).label,
+    })),
     [planConfig]
   );
 
@@ -66,6 +40,11 @@ const TaxesTable = () => {
   });
 
   const { selectedIndex, setSelectedIndex } = useSelectedIndex(emblaApi);
+
+  const mapIndexToItemKey = (index: number): PlanKey => {
+    return planConfig.planKeys[index] || planConfig.planKeys[0];
+  };
+
   const selectedItem = mapIndexToItemKey(selectedIndex);
 
   const mastercardAndVisaFacilityTaxes = useMemo(() => {

@@ -1,6 +1,11 @@
 import { IconName } from "@/components/Icon";
 
-export type PlanKey = "profit" | "express" | "light";
+// Normal plan keys
+export type NormalPlanKey = "profit" | "express" | "light";
+// Affiliate plan keys
+export type AffiliatePlanKey = "placeholder_1" | "placeholder_2" | "placeholder_3";
+// Union of all possible plan keys
+export type PlanKey = NormalPlanKey | AffiliatePlanKey;
 export type MachineKey = "mini" | "pro" | "smart";
 
 export interface MachinePrices {
@@ -16,44 +21,18 @@ export interface MachinePrices {
   };
 }
 
-export interface PlanTaxes {
-  profit: number[];
-  express: number[];
-  light: number[];
-  eloProfit?: number[];
-  eloExpress?: number[];
-  eloLight?: number[];
-}
+// Flexible structure to support different plan keys
+export type PlanTaxes = Record<string, number[]>;
 
-export interface PlanValues {
-  profit: MachinePrices;
-  express: MachinePrices;
-  light: MachinePrices;
-}
+export type PlanValues = Record<string, MachinePrices>;
 
-export interface PlanLinks {
-  profit: {
-    mini: string;
-    pro: string;
-    smart: string;
-  };
-  express: {
-    mini: string;
-    pro: string;
-    smart: string;
-  };
-  light: {
-    mini: string;
-    pro: string;
-    smart: string;
-  };
-}
+export type PlanLinks = Record<string, {
+  mini: string;
+  pro: string;
+  smart: string;
+}>;
 
-export interface PlanMetadata {
-  express: { label: string; icon: IconName };
-  profit: { label: string; icon: IconName };
-  light: { label: string; icon: IconName };
-}
+export type PlanMetadata = Record<string, { label: string; icon: IconName }>;
 
 export interface PlanConfig {
   taxes: PlanTaxes;
@@ -61,4 +40,6 @@ export interface PlanConfig {
   links: PlanLinks;
   metadata: PlanMetadata;
   variant: "normal" | "affiliate";
+  // Store the actual plan keys used in this config
+  planKeys: PlanKey[];
 }

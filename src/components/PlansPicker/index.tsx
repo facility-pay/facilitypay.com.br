@@ -2,12 +2,13 @@ import { forwardRef, LegacyRef, ReactNode } from "react";
 import Icon, { IconName } from "../Icon";
 import { EmblaViewportRefType } from "embla-carousel-react";
 import { EmblaCarouselType } from "embla-carousel";
+import { PlanKey } from "@/types/planConfig";
 
 import { usePrevNextButtons } from "@/hooks/usePrevNextButtons";
 import "./embla.css";
 
 export type Plan = {
-  itemKey: "profit" | "express" | "light";
+  itemKey: PlanKey;
   label: string;
   icon: IconName;
   children?: ReactNode;
