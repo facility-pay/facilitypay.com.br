@@ -33,9 +33,9 @@ const About = () => {
             <FacilityLetterSVG />
           </div>
 
-          <span className="text-[2rem] desktop:text-[2.5rem] leading-[2.75rem] font-bold text-dark-blue-heading">
+          <h1 className="text-[2rem] desktop:text-[2.5rem] leading-[2.75rem] font-bold text-dark-blue-heading">
             Sobre nós
-          </span>
+          </h1>
           <span className="text-center desktop:text-start text-lg text-grey-light-text">
             Você já conhece a FacilityPay? Quem somos e como trabalhamos.
           </span>
@@ -81,9 +81,9 @@ const About = () => {
           <div className="bg-primary-dark flex items-center justify-center rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
             <Icon iconName="path" />
           </div>
-          <span className="text-3xl text-dark-blue-heading text-center font-bold">
+          <h2 className="text-3xl text-dark-blue-heading text-center font-bold">
             Nossa trajetória
-          </span>
+          </h2>
           <span className="text-base text-description text-center">
             Conheça como chegamos até aqui
           </span>

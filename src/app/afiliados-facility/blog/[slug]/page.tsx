@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import {
   getAllPosts,
   getAllPostSlugs,
@@ -17,6 +18,48 @@ export const generateStaticParams = () => {
 
   return slugs;
 };
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  if (!slug) {
+    return {
+      title: "Blog",
+    };
+  }
+
+  const post = await getPostBySlug(slug);
+
+  return {
+    title: post.frontMatter.title,
+    description: post.frontMatter.excerpt,
+    openGraph: {
+      title: post.frontMatter.title,
+      description: post.frontMatter.excerpt,
+      type: "article",
+      publishedTime: post.frontMatter.date,
+      url: `https://facilitypay.com.br/afiliados-facility/blog/${slug}`,
+      images: post.featuredImage
+        ? [
+            {
+              url: post.featuredImage,
+              width: 1200,
+              height: 630,
+              alt: post.frontMatter.title,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.frontMatter.title,
+      description: post.frontMatter.excerpt,
+      images: post.featuredImage ? [post.featuredImage] : undefined,
+    },
+  };
+}
 
 const Page = async ({ params }: PageProps) => {
   const { slug } = await params;

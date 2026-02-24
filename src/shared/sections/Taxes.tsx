@@ -14,9 +14,9 @@ const Taxes = () => {
     <section className="max-w-7xl mx-auto relative mt-[4.5rem] mb-[4.5rem] tablet:mb-[6rem]">
       <div className="bg-white max-w-full px-8 tablet:px-20 desktop:px-20 max-w-7xl mx-auto">
         <div className="flex flex-row justify-center self-start items-center">
-          <p className="text-2xl desktop:text-4xl text-center font-bold text-dark-blue-heading">
+          <h2 className="text-2xl desktop:text-4xl text-center font-bold text-dark-blue-heading">
             As menores taxas do Brasil. De verdade!
-          </p>
+          </h2>
         </div>
         <p className="text-sm desktop:text-lg text-center text-description py-6">
           Veja nossos{" "}

@@ -74,9 +74,9 @@ const TaxesTable = () => {
             <Icon iconName="flag" />
           </div>
 
-          <span className="text-[2rem] desktop:text-[2.5rem] leading-[2.75rem] font-bold text-dark-blue-heading text-center desktop:text-start">
+          <h1 className="text-[2rem] desktop:text-[2.5rem] leading-[2.75rem] font-bold text-dark-blue-heading text-center desktop:text-start">
             As menores taxas do Brasil. De verdade!
-          </span>
+          </h1>
           <span className="text-center desktop:text-start text-lg text-grey-light-text">
             Veja nossos <strong>planos:</strong>
           </span>

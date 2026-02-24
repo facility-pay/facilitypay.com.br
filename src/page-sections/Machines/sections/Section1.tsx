@@ -20,9 +20,9 @@ const Section1 = () => {
     <section className="bg-section1">
       <div className="flex flex-col tablet:hidden max-w-[80vw] gap-4 px-8 py-10">
         <p className="text-[18px] text-black font-bold">Facility Smart</p>
-        <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
+        <h1 className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
           {section1Copies.title}
-        </p>
+        </h1>
         <p className="text-sm desktop:text-lg text-description">
           {section1Copies.description}
         </p>
@@ -32,9 +32,9 @@ const Section1 = () => {
           <div className="relative flex tablet:pb-[10vh] desktop:pb-[10vh] tablet:pl-[15vw] desktop:pl-[15vw] tablet:pr-[10vw] desktop:pr-[10vw] flex-col items-start gap-5 justify-start bg-no-repeat bg-[url('../assets/illustrations/dots.svg')] bg-[top_3rem_left_5rem]">
             <div className="hidden max-w-[25vw] tablet:flex flex-col gap-6">
               <p className="text-[24px] text-black font-bold">Facility Smart</p>
-              <p className="text-[2.5rem] leading-[2.75rem] font-bold text-dark-blue-heading">
+              <h1 className="text-[2.5rem] leading-[2.75rem] font-bold text-dark-blue-heading">
                 {section1Copies.title}
-              </p>
+              </h1>
               <p className="text-lg text-description">
                 {section1Copies.description}
               </p>

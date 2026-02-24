@@ -278,9 +278,9 @@ const ChooseMachine = ({ isDark = false, buttonCopy }: ChooseMachineProps) => {
             <div className={iconContainerClassName}>
               <Icon iconName="target" />
             </div>
-            <span className={titleClassName}>
+            <h2 className={titleClassName}>
               Escolha a maquininha certa para o seu negócio
-            </span>
+            </h2>
 
             <span className="text-base text-center desktop:text-lg pt-8 text-description">
               Selecione um dos <strong>planos</strong> para ver os valores das

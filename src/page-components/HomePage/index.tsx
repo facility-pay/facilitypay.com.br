@@ -114,9 +114,9 @@ export default function Home() {
     <Layout>
       <section className="bg-section1 pb-[9rem] tablet:pb-0">
         <div className="flex flex-col tablet:hidden max-w-[70vw] desktop:max-w-[80vw] gap-4 px-5 py-10">
-          <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
+          <h1 className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
             {section1Copies.title}
-          </p>
+          </h1>
           <p className="text-sm desktop:text-lg text-description">
             {section1Copies.description}
           </p>
@@ -126,9 +126,9 @@ export default function Home() {
             <div className="relative flex max-w-[50vw] tablet:pb-[10vh] desktop:pb-[10vh] tablet:pl-[15vw] desktop:pl-[15vw] tablet:pr-[10vw] desktop:pr-[10vw] flex-col items-start gap-5 justify-start bg-no-repeat bg-[url('../assets/illustrations/dots.svg')] bg-[top_3rem_left_5rem]">
               <div className="hidden tablet:flex flex-col gap-6">
                 <Image alt="mini-logo" src={MiniFacilityLogo} />
-                <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
+                <h1 className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
                   {section1Copies.title}
-                </p>
+                </h1>
                 <p className="text-sm desktop:text-lg text-description">
                   {section1Copies.description}
                 </p>
@@ -155,9 +155,9 @@ export default function Home() {
             <div className="flex justify-center items-center border-2 self-center border-secondary rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
               <Icon iconName="rocket" />
             </div>
-            <span className="font-bold text-center text-2xl tablet:text-3xl desktop:text-4xl text-white">
+            <h2 className="font-bold text-center text-2xl tablet:text-3xl desktop:text-4xl text-white">
               Mais que uma máquina. São muitas vantagens:{" "}
-            </span>
+            </h2>
           </div>
           <div className="flex flex-wrap justify-center my-auto gap-10">
             {machinesAdvantages.map(({ key, icon, label, description }) => (

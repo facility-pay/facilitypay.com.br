@@ -126,9 +126,9 @@ const Indique = () => {
     <Layout>
       <section className="bg-section1 pb-[9rem] tablet:pb-0">
         <div className="flex flex-col tablet:hidden max-w-[70vw] desktop:max-w-[80vw] gap-4 px-5 py-10">
-          <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
+          <h1 className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
             Ganhe por máquina indicada
-          </p>
+          </h1>
           <p className="text-sm desktop:text-lg text-description">
             Garanta sua renda extra sem investimento inicial e conquiste sua
             independência financeira
@@ -138,9 +138,9 @@ const Indique = () => {
           <div className="flex tablet:items-center z-10 min-h-inherit bg-no-repeat bg-[url('../assets/shapes/indicate/section1-mobile.svg')] desktop:bg-[url('../assets/shapes/indicate/section1.svg')] bg-[length:110%] tablet:bg-[length:45%] bg-[top_5rem_right_0rem] tablet:bg-[top_8rem_right_15rem]">
             <div className="relative flex max-w-[50vw] tablet:pb-[10vh] desktop:pb-[10vh] tablet:pl-[15vw] desktop:pl-[15vw] tablet:pr-[10vw] desktop:pr-[10vw] flex-col items-start gap-5 justify-start bg-no-repeat bg-[url('../assets/illustrations/dots.svg')] bg-[top_3rem_left_5rem]">
               <div className="hidden tablet:flex flex-col gap-6">
-                <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
+                <h1 className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
                   Ganhe por máquina indicada
-                </p>
+                </h1>
                 <p className="text-sm desktop:text-lg text-description">
                   Garanta sua renda extra sem investimento inicial e conquiste
                   sua independência financeira
@@ -172,9 +172,9 @@ const Indique = () => {
               <Icon iconName="flag" />
             </div>
 
-            <p className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
+            <h2 className="text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-dark-blue-heading">
               Como funciona
-            </p>
+            </h2>
             <p className="text-sm desktop:text-lg text-description">
               Entenda como fazer uma renda extra
             </p>
@@ -239,9 +239,9 @@ const Indique = () => {
             <div className="flex justify-center items-center self-center bg-secondary rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
               <Icon iconName="rocket" />
             </div>
-            <span className="font-bold text-center text-2xl tablet:text-2xl desktop:text-3xl text-dark-blue-heading">
+            <h2 className="font-bold text-center text-2xl tablet:text-2xl desktop:text-3xl text-dark-blue-heading">
               Confira as vantagens de ser um afiliado FacilityPay
-            </span>
+            </h2>
           </div>
           <div className="my-auto grid grid-cols-1 justify-items-center tablet:grid-cols-2 desktop:grid-cols-3 gap-10">
             {machinesAdvantages.map(({ key, icon, label, description }) => (
@@ -300,9 +300,9 @@ const Indique = () => {
               <Icon iconName="flag" />
             </div>
 
-            <p className="text-center text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-white">
+            <h2 className="text-center text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-white">
               Como participar?
-            </p>
+            </h2>
             <p className="text-center text-sm desktop:text-lg text-white">
               Para se tornar um afiliado da FacilityPay é simples, veja o passo
               a passo abaixo:
@@ -366,9 +366,9 @@ const Indique = () => {
             <div className="flex justify-center items-center self-center bg-secondary rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
               <Icon iconName="rocket" />
             </div>
-            <span className="font-bold text-center text-2xl tablet:text-2xl desktop:text-3xl text-white">
+            <h2 className="font-bold text-center text-2xl tablet:text-2xl desktop:text-3xl text-white">
               Quero ser um afiliado
-            </span>
+            </h2>
 
             <span>
               Preencha o formulário abaixo e o nosso time entrará em contato:
@@ -457,9 +457,9 @@ const Indique = () => {
               <Icon iconName="flag" />
             </div>
 
-            <p className="text-center text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-secondary">
+            <h2 className="text-center text-[2rem] desktop:text-[2.75rem] leading-[2.75rem] font-bold text-secondary">
               Regras e condições para os afiliados
-            </p>
+            </h2>
           </div>
 
           <div className="max-w-5xl flex flex-col desktop:flex-row mx-auto gap-[40px] desktop:gap-[100px]">

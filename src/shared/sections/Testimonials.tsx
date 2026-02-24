@@ -174,9 +174,9 @@ const Testimonials = ({ hasBackground = true }: TestimonialsProps) => {
           <div className="bg-primary-dark flex items-center justify-center rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
             <Icon iconName="chat" />
           </div>
-          <span className="text-2xl desktop:text-4xl text-dark-blue-heading text-center font-bold">
+          <h2 className="text-2xl desktop:text-4xl text-dark-blue-heading text-center font-bold">
             O que nossos clientes dizem sobre a FacilityPay
-          </span>
+          </h2>
         </div>
 
         <TestimonialCarousel testimonials={testimonials} />

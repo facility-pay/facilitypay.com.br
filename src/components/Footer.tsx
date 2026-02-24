@@ -79,7 +79,9 @@ const Footer = () => {
   const pathname = usePathname();
 
   // Detect if we're in the affiliate route
-  const routePrefix = pathname.startsWith('/afiliados-facility') ? '/afiliados-facility' : '';
+  const routePrefix = pathname.startsWith("/afiliados-facility")
+    ? "/afiliados-facility"
+    : "";
 
   return (
     <footer className="mt-[60px] desktop:mt-[100px]">
@@ -148,7 +150,7 @@ const Footer = () => {
                 </span>
               </Link>
               <Link
-                href="http://wa.me/5527998126432"
+                href="https://wa.me/5527996174869"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-row items-center gap-2"

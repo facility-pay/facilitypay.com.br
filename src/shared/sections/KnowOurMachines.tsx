@@ -71,7 +71,7 @@ const KnowOurMachines = ({
               <Icon iconName="know-machines" />
             </div>
           )}
-          <span className={titleClassName}>{title}</span>
+          <h2 className={titleClassName}>{title}</h2>
         </div>
         <div
           className={[

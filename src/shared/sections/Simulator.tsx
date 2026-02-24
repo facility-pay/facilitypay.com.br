@@ -110,9 +110,9 @@ const SimulatorSection = () => {
             <div className="bg-primary-dark flex items-center justify-center rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
               <Icon iconName="simulator" />
             </div>
-            <span className="text-2xl desktop:text-4xl text-dark-blue-heading text-center font-bold">
+            <h2 className="text-2xl desktop:text-4xl text-dark-blue-heading text-center font-bold">
               Com a FacilityPay você lucra muito mais!
-            </span>
+            </h2>
             <span className="text-base desktop:text-lg text-description text-center">
               Selecione um dos <strong>planos</strong> para simular:
             </span>

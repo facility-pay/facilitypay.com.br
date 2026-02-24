@@ -40,7 +40,9 @@ const Header = () => {
   const pathname = usePathname();
 
   // Detect if we're in the affiliate route
-  const routePrefix = pathname.startsWith('/afiliados-facility') ? '/afiliados-facility' : '';
+  const routePrefix = pathname.startsWith("/afiliados-facility")
+    ? "/afiliados-facility"
+    : "";
 
   const getIsSelected = (currentPath: string) => {
     const fullPath = `${routePrefix}${currentPath}`;
@@ -96,7 +98,7 @@ const Header = () => {
                         Não sou cliente
                       </span>
                       <Link
-                        href="http://wa.me/5527998126432"
+                        href="https://wa.me/5527996174869"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group/comercial flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg"
@@ -192,7 +194,7 @@ const Header = () => {
                 <div
                   onClick={() =>
                     setShouldShowMobileSupportSection(
-                      !shouldShowMobileSupportSection
+                      !shouldShowMobileSupportSection,
                     )
                   }
                   className="flex flex-row gap-4 items-center"
@@ -242,7 +244,7 @@ const Header = () => {
                           Não sou cliente
                         </span>
                         <Link
-                          href="http://wa.me/5527998126432"
+                          href="https://wa.me/5527996174869"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group/comercial flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg"

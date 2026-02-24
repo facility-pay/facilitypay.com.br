@@ -81,9 +81,9 @@ const TalkingAboutUs = ({
             <div className="bg-primary-dark flex items-center justify-center rounded-full w-[56px] h-[56px] tablet:w-[80px] tablet:h-[80px]">
               <Icon iconName="megaphone" />
             </div>
-            <span className="text-xl tablet:text-3xl desktop:text-3xl text-dark-blue-heading text-center font-bold">
+            <h2 className="text-xl tablet:text-3xl desktop:text-3xl text-dark-blue-heading text-center font-bold">
               O que saiu na mídia?
-            </span>
+            </h2>
           </div>
 
           <div className="flex flex-row justify-center items-center justify-items-center grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-10">

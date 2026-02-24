@@ -8,6 +8,7 @@ import MobileTopLeftGray from "@/assets/illustrations/blog/mobile-top-left-gray.
 import BlogSidebar from "@/components/BlogSidebar";
 import Breadcrumb from "@/components/Breadcrumb";
 import Icon from "@/components/Icon";
+import { ArticleJsonLd } from "@/components/JsonLd";
 
 type PostBySlugProps = {
   post?: Post;
@@ -22,6 +23,13 @@ const PostBySlug = ({ post, posts = [], source }: PostBySlugProps) => {
 
   return (
     <Layout>
+      <ArticleJsonLd
+        title={post.frontMatter.title}
+        description={post.frontMatter.excerpt}
+        url={`https://facilitypay.com.br/afiliados-facility/blog/${post.frontMatter.slug}`}
+        datePublished={post.frontMatter.date}
+        image={post.featuredImage}
+      />
       <section className="relative flex flex-col justify-center min-h-inherit px-8 tablet:px-20 desktop:px-20">
         <div className="hidden desktop:block absolute top-0 left-0 z-0">
           <TopLeftGray />
