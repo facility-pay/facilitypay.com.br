@@ -150,7 +150,7 @@ const Footer = () => {
                 </span>
               </Link>
               <Link
-                href="https://wa.me/5527996174869"
+                href="https://wa.me/5527997833179"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-row items-center gap-2"

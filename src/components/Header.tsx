@@ -98,7 +98,7 @@ const Header = () => {
                         Não sou cliente
                       </span>
                       <Link
-                        href="https://wa.me/5527996174869"
+                        href="https://wa.me/5527997833179"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group/comercial flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg"
@@ -244,7 +244,7 @@ const Header = () => {
                           Não sou cliente
                         </span>
                         <Link
-                          href="https://wa.me/5527996174869"
+                          href="https://wa.me/5527997833179"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="group/comercial flex flex-row items-center gap-4 border hover:bg-whatsapp border-whatsapp p-4 rounded-lg"

@@ -38,7 +38,7 @@ const Layout = ({ renderLoopBanner, children, className }: LayoutProps) => {
           style={{ backgroundColor: "#3DBE64" }}
         >
           <Link
-            href="https://wa.me/5527996174869"
+            href="https://wa.me/5527997833179"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-row items-center gap-4 p-4"
